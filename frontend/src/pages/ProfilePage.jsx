@@ -1,0 +1,266 @@
+import React, { useState } from 'react';
+import { 
+  User, Heart, Ticket, ShoppingBag, CreditCard, LogOut, Camera, Calendar, ChevronDown 
+} from 'lucide-react';
+
+const ProfilePage = () => {
+  const [activeTab, setActiveTab] = useState('Personal');
+  const [formData, setFormData] = useState({
+    firstName: 'Jayvion',
+    lastName: 'Simon',
+    email: 'nannie.abernathy70@yahoo.com',
+    phone: '365-374-4961',
+    birthday: '',
+    gender: 'Male',
+    street: '',
+    zip: '',
+    city: '',
+    country: ''
+  });
+
+  const [profileImg, setProfileImg] = useState(
+    'https://tse3.mm.bing.net/th/id/OIP.tfOvEHoC27BUODsx5P7dXwHaLH?pid=Api&P=0&h=220'
+  );
+
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => setProfileImg(ev.target.result);
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const sidebarItems = [
+    { icon: <User size={18} />, label: "Personal" },
+    { icon: <Ticket size={18} />, label: "Vouchers" },
+    { icon: <ShoppingBag size={18} />, label: "Orders" },
+    { icon: <CreditCard size={18} />, label: "Payment" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#f3f4f6] p-8 font-sans text-gray-800">
+      <div className="mx-auto flex max-w-7xl gap-10">
+
+        {/* --- SIDEBAR --- */}
+        <aside className="w-72 flex-shrink-0 rounded-3xl bg-[#eeeeee]/60 p-6 shadow-sm">
+          <div className="flex flex-col items-center border-b border-gray-300 pb-8 text-center">
+            <div className="relative mb-4">
+              <div className="h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-sm">
+                <img 
+                  src={profileImg} 
+                  alt="Profile" 
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              {/* Image upload button */}
+              <label className="absolute bottom-0 right-0 flex h-8 items-center gap-1 rounded-full bg-white px-2 py-1 text-[10px] font-bold shadow-md hover:bg-gray-50 cursor-pointer">
+                <Camera size={12} /> 
+                <input type="file" accept="image/*" className="hidden" onChange={handleImageChange} />
+              </label>
+            </div>
+            <h2 className="text-xl font-bold">{formData.firstName}</h2>
+            <p className="text-xs text-gray-400">{formData.email}</p>
+          </div>
+
+          <nav className="mt-8 space-y-2">
+            {sidebarItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => setActiveTab(item.label)}
+                className={`flex w-full items-center gap-4 rounded-xl px-4 py-3 text-sm font-semibold transition-all ${
+                  activeTab === item.label
+                    ? 'bg-white text-[#e88154] shadow-sm'
+                    : 'text-gray-500 hover:bg-white/50 hover:text-gray-800'
+                }`}
+              >
+                {item.icon}
+                {item.label}
+              </button>
+            ))}
+
+            <div className="pt-10">
+              <button className="flex w-full items-center gap-4 px-4 py-3 text-sm font-semibold text-gray-500 hover:text-red-500 transition-colors">
+                <LogOut size={18} />
+                Logout
+              </button>
+            </div>
+          </nav>
+        </aside>
+
+        {/* --- MAIN CONTENT --- */}
+        <main className="flex-1">
+          {activeTab === 'Personal' && (
+            <section>
+              <h1 className="mb-8 text-2xl font-bold">Personal</h1>
+              
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Row 1 */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">First name</label>
+                  <input 
+                    type="text" 
+                    name="firstName"
+                    value={formData.firstName} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-[#e88154]" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Last name</label>
+                  <input 
+                    type="text" 
+                    name="lastName"
+                    value={formData.lastName} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                  />
+                </div>
+
+                {/* Row 2 */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Email address</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Phone number</label>
+                  <input 
+                    type="text" 
+                    name="phone"
+                    value={formData.phone} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                  />
+                </div>
+
+                {/* Row 3 */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Birthday</label>
+                  <div className="relative">
+                    <input 
+                      type="text" 
+                      name="birthday"
+                      placeholder="Birthday" 
+                      value={formData.birthday} 
+                      onChange={handleChange}
+                      className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                    />
+                    <Calendar size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Gender</label>
+                  <div className="relative">
+                    <select 
+                      name="gender"
+                      value={formData.gender} 
+                      onChange={handleChange}
+                      className="w-full appearance-none rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    >
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                    <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  </div>
+                </div>
+
+                {/* Row 4 */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Street address</label>
+                  <input 
+                    type="text" 
+                    name="street"
+                    value={formData.street} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Zip/code</label>
+                  <input 
+                    type="text" 
+                    name="zip"
+                    value={formData.zip} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                  />
+                </div>
+
+                {/* Row 5 */}
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">City</label>
+                  <input 
+                    type="text" 
+                    name="city"
+                    value={formData.city} 
+                    onChange={handleChange} 
+                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" 
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-gray-400">Country</label>
+                  <div className="relative">
+                    <select 
+                      name="country"
+                      value={formData.country} 
+                      onChange={handleChange}
+                      className="w-full appearance-none rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    >
+                      <option></option>
+                    </select>
+                    <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Change Password */}
+              <div className="mt-12 border-t border-gray-300 pt-8">
+                <h3 className="text-xl font-bold text-gray-800 mb-4">Change Password</h3>
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-400">Current password</label>
+                    <input type="password" placeholder="Current password" className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-400">New password</label>
+                    <input type="password" placeholder="New password" className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-400">Confirm new password</label>
+                    <input type="password" placeholder="Confirm new password" className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 flex justify-end">
+                <button className="rounded-xl bg-[#1e293b] px-8 py-3 font-bold text-white transition-all hover:bg-black active:scale-95">
+                  Save changes
+                </button>
+              </div>
+            </section>
+          )}
+
+          {/* Placeholder for other tabs */}
+          {activeTab !== 'Personal' && (
+            <section>
+              <h1 className="text-2xl font-bold">{activeTab}</h1>
+              <p className="mt-4 text-gray-600">Content for {activeTab} will appear here.</p>
+            </section>
+          )}
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default ProfilePage;

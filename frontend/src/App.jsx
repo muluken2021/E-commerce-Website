@@ -8,6 +8,7 @@ import Header from './components/Header';
 import CartPage from './pages/CartPage';
 import CategoryPage from './pages/CategoryPage';
 import CheckoutPage from './pages/CheckoutPage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
   return (
@@ -18,8 +19,10 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/productdetail' element={<ProductDetail />} />
         <Route path='/cart' element={<CartPage />} />
-        <Route path='/category' element={<CategoryPage />} />
+        <Route path='/category/:type' element={<CategoryPage />} />
         <Route path='/checkout' element={<CheckoutPage />} />
+        <Route path='/profile' element={<ProfilePage />} />
+
 
 
       </Routes>

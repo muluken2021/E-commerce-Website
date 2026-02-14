@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ReadyToShop = () => {
   return (
@@ -9,9 +10,11 @@ const ReadyToShop = () => {
         <p className="text-gray-500 max-w-xl mx-auto mb-10 text-sm leading-relaxed px-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et reiciendis at facilis quos mollitia, ratione, quibusdam explicabo quo exercitationem.
         </p>
-        <button className="bg-[#d37a4e] text-white px-12 py-4 rounded-2xl font-bold text-lg hover:opacity-90 active:scale-95 transition-all">
-          Shop Now
-        </button>
+        <Link to="/category" >
+            <button className="bg-[#d37a4e] text-white px-12 py-4 rounded-2xl font-bold text-lg hover:opacity-90 active:scale-95 transition-all">
+            Shop Now
+            </button>
+        </Link>
       </div>
     </div>
   );

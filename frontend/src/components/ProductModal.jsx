@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight, Star, MoveRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ProductModal = ({ isOpen, onClose }) => {
   const [activeImage, setActiveImage] = useState(0);
@@ -90,13 +91,18 @@ const ProductModal = ({ isOpen, onClose }) => {
             </p>
 
             <div className="pt-4 flex flex-col gap-5">
-              <button className="w-fit rounded-xl bg-[#cc7a54] px-10 py-3.5 font-bold text-white shadow-lg shadow-orange-900/10 transition-transform active:scale-95">
-                Add To Cart
-              </button>
               
-              <button className="flex items-center gap-2 text-[15px] font-semibold text-gray-500 transition-colors hover:text-gray-800">
-                View Product Detail <MoveRight size={18} />
-              </button>
+              <Link to="/cart" >
+                <button className="w-fit rounded-xl bg-[#cc7a54] px-10 py-3.5 font-bold text-white shadow-lg shadow-orange-900/10 transition-transform active:scale-95">
+                    Add To Cart
+                </button>
+              </Link>
+              
+              <Link to="/productdetail" >
+                <button className="flex items-center gap-2 text-[15px] font-semibold text-gray-500 transition-colors hover:text-gray-800">
+                    View Product Detail <MoveRight size={18} />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
