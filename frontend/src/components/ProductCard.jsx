@@ -4,7 +4,7 @@ const ProductCard = ({ product, onAddToCart }) => {
   const { tag, name, price, img } = product;
 
   return (
-    <div className="min-w-[300px] relative rounded-xl p-6 transition-all border border-transparent bg-gray-100 hover:border-[#D37A4E] hover:bg-gray-50 group">
+    <div className="min-w-[280px] relative rounded-xl p-6 transition-all border border-transparent bg-gray-100 hover:border-[#D37A4E] hover:bg-gray-50 group">
       <span className="text-[10px] font-bold text-gray-400 absolute top-4 left-4">
         25% off
       </span>

@@ -12,14 +12,14 @@ import ReviewsSection from '../components/ReviewSection'
 const Home = () => {
   return (
     <div>
-      <Navbar />
+    
       <Hero />
       <PopularProducts />
       <Categories />
       <Reviews />
       <ReadyToShop />
-      <Footer />
-      <ProductDetail />
+     
+     
      
     </div>
   )
