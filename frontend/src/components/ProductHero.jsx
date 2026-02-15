@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ProductHero = () => {
+const ProductHero = ({product}) => {
   const images = [
     "https://jblstore.com.ph/cdn/shop/files/JBLQuantum100_600x.png?v=1757250762",
     "https://raphasgear.com/cdn/shop/products/JBLQuantum100_1.png?v=1676872403",
@@ -38,12 +38,12 @@ const ProductHero = () => {
 
       {/* Content */}
       <div className="flex flex-col justify-center">
-        <h1 className="text-4xl font-bold">Wireless Over-Ear Headphones</h1>
-        <p className="mt-1 text-sm text-gray-500 font-medium">Category : Headphone</p>
+        <h1 className="text-4xl font-bold">{product.name}</h1>
+        <p className="mt-1 text-sm text-gray-500 font-medium">Category : {product.category}</p>
         
         <div className="mt-4 flex items-baseline gap-4">
-          <span className="text-3xl font-bold">250.0 Birr</span>
-          <span className="text-xl text-gray-400 line-through">250 Birr</span>
+          <span className="text-3xl font-bold">{product.price} Birr</span>
+          <span className="text-xl text-gray-400 line-through">{product.discount}</span>
         </div>
 
         <p className="mt-6 text-sm leading-relaxed text-gray-600">

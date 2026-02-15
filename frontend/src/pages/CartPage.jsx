@@ -1,33 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Wireless Over-Ear Headphones", price: 250.0, quantity: 2, img: "https://jblstore.com.ph/cdn/shop/files/JBLQuantum100_600x.png?v=1757250762" },
-    { id: 2, name: "Wireless Over-Ear Headphones", price: 150.0, quantity: 1, img: "https://jblstore.com.ph/cdn/shop/files/JBLQuantum100_600x.png?v=1757250762" },
-    { id: 3, name: "Wireless Over-Ear Headphones", price: 150.0, quantity: 4, img: "https://jblstore.com.ph/cdn/shop/files/JBLQuantum100_600x.png?v=1757250762" },
-  ]);
+  const { cartItems, addItem, removeItem, updateQuantity, clearCart, totalAmount } = useCart();
 
   const increaseQuantity = (id) => {
-    setCartItems(cartItems.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
+    const item = cartItems.find(item => item.id === id);
+    if (item) addItem(item, 1);
   };
 
   const decreaseQuantity = (id) => {
-    setCartItems(cartItems.map(item => item.id === id ? { ...item, quantity: Math.max(item.quantity - 1, 1) } : item));
+    const item = cartItems.find(item => item.id === id);
+    if (item) updateQuantity(id, Math.max(item.quantity - 1, 1));
   };
-
-  const removeItem = (id) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
-
-  const clearCart = () => setCartItems([]);
-
-  const total = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
 
   return (
     <div className="min-h-screen bg-[#f3f4f6] font-sans text-gray-800 p-6">
-
       <div className="mx-0 lg:mx-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* --- LEFT SIDE: CART ITEMS --- */}
         <div className="lg:col-span-2 space-y-4">
@@ -77,7 +68,7 @@ const CartPage = () => {
           <div className="rounded-2xl bg-[#eeeeee]/60 p-8 shadow-sm">
             <div className="flex items-center justify-between border-b border-gray-300 pb-4">
               <span className="text-xl font-medium">Total :</span>
-              <span className="text-2xl font-bold">{total.toFixed(1)} Birr</span>
+              <span className="text-2xl font-bold">{totalAmount.toFixed(1)} Birr</span>
             </div>
 
             <div className="mt-6 flex gap-2">
@@ -119,10 +110,10 @@ const CartPage = () => {
                 Calculate shipping
               </button>
               <Link to="/checkout" >
-              <button className="cursor-pointer w-full rounded-md bg-[#333333] py-2.5 text-sm font-bold text-white hover:bg-black transition-colors">
-                Checkout Now
-              </button>
-            </Link>
+                <button className="cursor-pointer w-full rounded-md bg-[#333333] py-2.5 text-sm font-bold text-white hover:bg-black transition-colors">
+                  Checkout Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>

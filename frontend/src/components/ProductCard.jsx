@@ -1,42 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ShoppingCart, Star, StarHalf } from "lucide-react";
 
 const ProductCard = ({ product, onAddToCart }) => {
-  const { tag, name, price, img } = product;
+  const { id, tag, name, price, img, discount } = product;
+
+  // Image fallback
+  const [imgSrc, setImgSrc] = useState(img);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    if (!hasError) {
+      setHasError(true);
+      setImgSrc("https://via.placeholder.com/300x300?text=Product+Image");
+    }
+  };
 
   return (
-    <div className="min-w-[280px] relative rounded-xl p-6 transition-all border border-transparent bg-gray-100 hover:border-[#D37A4E] hover:bg-gray-50 group">
-      <span className="text-[10px] font-bold text-gray-400 absolute top-4 left-4">
-        25% off
-      </span>
+    <div className="min-w-[275px] md:max-w-[270px] w-full  bg-gray-100 rounded-2xl border border-gray-200 p-6 shadow-sm font-sans relative hover:shadow-md transition-all"> 
+      {/* Image */}
+      <Link to={`/productdetail/${id}`}>
+        <div className="flex justify-center items-center mb-6 h-40">
+          <img
+            src={imgSrc}
+            alt={name}
+            onError={handleError}
+            className="max-h-full object-contain transition-transform duration-500 hover:scale-110 mix-blend-multiply"
+          />
+        </div>
+      </Link>
 
-      <div className="h-40 flex items-center justify-center mb-6">
-        <img
-          src={img}
-          alt={name}
-          className="max-h-full object-contain mix-blend-multiply"
-        />
-      </div>
+      {/* Product Info */}
+      <div className="space-y-3">
 
-      <div className="text-center">
-        <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mb-1">
-          {tag}
+        {/* Category */}
+        <p className="text-xs text-gray-400 uppercase tracking-widest">
+          {tag || product.category}
         </p>
 
-        <h3 className="text-sm font-bold text-gray-800 mb-1">{name}</h3>
+        {/* Name */}
+        <h2 className="text-lg font-semibold text-slate-800 line-clamp-1">
+          {name}
+        </h2>
 
-        <p className="text-sm font-semibold text-gray-600 mb-4">{price}</p>
+         <h2 className="flex gap-1 text-lg font-semibold text-slate-800 line-clamp-1">
+          <Star color="orange" fill="orange" size={17}/>
+           <Star color="orange" fill="orange" size={17}/>
+           <Star color="orange" fill="orange" size={17}/>
+           <Star color="orange" fill="orange" size={17}/>
+          <StarHalf color="orange" fill="orange" size={17}/>
+        </h2>
+        
 
-        {/* Hover Buttons */}
-        <div className="flex items-center gap-2 justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button
-            className="bg-[#D37A4E] text-white px-4 py-2 rounded-lg text-xs font-bold"
-            onClick={() => onAddToCart(product)}
-          >
-            Add To Cart
-          </button>
-          <button className="text-gray-800 text-xs font-bold px-2">
-            View Product
-          </button>
+
+        {/* View Detail */}
+        <Link
+          to={`/productdetail/${id}`}
+          className="block text-sm text-gray-500 hover:text-orange-500"
+        >
+          View Detail
+        </Link>
+
+        {/* Price + Cart */}
+        <div className="flex items-end justify-between pt-4">
+          <div className="flex flex-col">
+            {discount && (
+              <div className="flex items-center gap-2">
+                <span className="text-gray-400 line-through text-sm">
+                  ${(price * 1.1).toFixed(2)}
+                </span>
+                <span className="bg-blue-50 text-orange-500 px-2 py-0.5 rounded text-xs font-bold">
+                  {discount}
+                </span>
+              </div>
+            )}
+
+            <div className="text-xl font-bold text-slate-800">
+              ${price.toLocaleString()}
+            </div>
+          </div>
+          {/* Add To Cart */}
+          <div className="relative group">
+            <button
+              onClick={() => onAddToCart(product)}
+              className="cursor-pointer bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-xl transition-all shadow-md active:scale-95"
+            >
+              <ShoppingCart size={22} />
+            </button>
+
+            {/* Tooltip */}
+            <span className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gray-900 text-white text-xs px-3 py-1 rounded-md opacity-0 group-hover:opacity-100 transition pointer-events-none">
+              Add to cart
+            </span>
+          </div>
+
         </div>
       </div>
     </div>

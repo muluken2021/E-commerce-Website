@@ -8,6 +8,8 @@ import Footer from '../components/Footer'
 import ReadyToShop from '../components/ReadyToShop'
 import ProductDetail from '../components/ProductDetail'
 import ReviewsSection from '../components/ReviewSection'
+import TrustedSection from '../components/TrustedSection'
+
 
 const Home = () => {
   return (
@@ -16,10 +18,9 @@ const Home = () => {
       <Hero />
       <PopularProducts />
       <Categories />
+      <TrustedSection />
       <Reviews />
-      <ReadyToShop />
-     
-     
+      <ReadyToShop />     
      
     </div>
   )

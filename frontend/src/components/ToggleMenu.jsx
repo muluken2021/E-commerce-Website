@@ -3,10 +3,10 @@ import { ChevronRight, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
   const categories = [
-    { name: "Electronics", img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500", path: "/category/electronics" },
-    { name: "Clothing", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500", path: "/category/beauty-products" },
-    { name: "Furnitures", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500", path: "/category/furnitures" },
-    { name: "Music", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500", path: "/category/music" },
+    { name: "Electronics & Accessories", img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500", path: "/category/electronics" },
+    { name: "Beauty & Personal Care", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500", path: "/category/beauty" },
+    { name: "Groceries & Daily Essentials", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500", path: "/category/groceries" },
+    { name: "Automotive & Motor Accessories", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500", path: "/category/automotive" },
   ];
 
 const ToggleMenu = () => {

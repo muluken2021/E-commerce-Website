@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '../context/CartContext'; 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { cartItems } = useCart(); 
+
+  // Calculate total quantity
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const links = [
     { name: "Home", to: "/" },
@@ -47,7 +52,9 @@ const Navbar = () => {
           <Link to="/cart">
             <button className="cursor-pointer p-2 bg-gray-100 rounded-full relative hover:bg-orange-300">
               <ShoppingCart size={20} />
-              <span className="absolute -top-1 -right-1 bg-orange-300 text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+              <span className="absolute -top-1 -right-1 bg-orange-300 text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                {totalQuantity} {/* ✅ dynamic cart number */}
+              </span>
             </button>
           </Link>
 

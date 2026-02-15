@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Star, MoveRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Star, MoveRight, Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
-const ProductModal = ({ isOpen, onClose }) => {
+const ProductModal = ({ isOpen, onClose, product }) => {
   const [activeImage, setActiveImage] = useState(0);
+  const [quantity, setQuantity] = useState(1); // ✅ quantity state
+  const { addItem } = useCart();
 
-  // Real online images
   const images = [
     "https://jblstore.com.ph/cdn/shop/files/JBLQuantum100_600x.png?v=1757250762",
     "https://raphasgear.com/cdn/shop/products/JBLQuantum100_1.png?v=1676872403",
@@ -17,7 +19,6 @@ const ProductModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
-      {/* Main Container with 600px Max Height */}
       <div className="relative flex h-full max-h-[700px] w-full max-w-lg flex-col overflow-hidden rounded-[2.5rem] bg-white shadow-2xl">
         
         {/* Close Button */}
@@ -28,9 +29,7 @@ const ProductModal = ({ isOpen, onClose }) => {
           <X size={20} />
         </button>
 
-        {/* Scrollable Content Area */}
         <div className="overflow-y-auto overflow-x-hidden">
-          
           {/* Image Gallery */}
           <div className="relative flex flex-col items-center bg-[#eeeeee] pb-5 pt-5 px-8">
             <div className="relative flex w-full items-center justify-between">
@@ -56,7 +55,7 @@ const ProductModal = ({ isOpen, onClose }) => {
             </div>
 
             {/* Thumbnails */}
-            <div className="mt-8 flex gap-3">
+            <div className="mb-[-40px] mt-7 flex gap-3">
               {images.map((img, index) => (
                 <button
                   key={index}
@@ -74,8 +73,8 @@ const ProductModal = ({ isOpen, onClose }) => {
           {/* Product Info */}
           <div className="space-y-4 p-8">
             <header>
-              <h2 className="text-2xl font-bold tracking-tight text-gray-800">Wireless Over-Ear Headphone</h2>
-              <p className="mt-1 text-xl font-bold text-gray-700">250 Birr</p>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-800">{product.name || "jjj"}</h2>
+              <p className="mt-1 text-xl font-bold text-gray-700">{product.price} Birr</p>
               
               <div className="mt-2 flex items-center gap-1">
                 {[1, 2, 3, 4].map((s) => (
@@ -90,15 +89,36 @@ const ProductModal = ({ isOpen, onClose }) => {
               High-quality wireless over-ear headphones with deep bass, noise cancellation, and long battery life.
             </p>
 
+            {/* Quantity Selector */}
+            <div className="flex items-center gap-4 pt-4">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition"
+              >
+                <Minus size={16} />
+              </button>
+              <span className="text-lg font-bold">{quantity}</span>
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition"
+              >
+                <Plus size={16} />
+              </button>
+            </div>
+
             <div className="pt-4 flex flex-col gap-5">
+              {/* Add to cart with quantity */}
+              <button
+                onClick={() => {
+                  addItem({ ...product, price: parseFloat(product.price) }, quantity);
+                  onClose();
+                }}
+                className="w-fit rounded-xl bg-[#cc7a54] px-10 py-3.5 font-bold text-white shadow-lg shadow-orange-900/10 transition-transform active:scale-95"
+              >
+                Add {quantity} To Cart
+              </button>
               
-              <Link to="/cart" >
-                <button className="w-fit rounded-xl bg-[#cc7a54] px-10 py-3.5 font-bold text-white shadow-lg shadow-orange-900/10 transition-transform active:scale-95">
-                    Add To Cart
-                </button>
-              </Link>
-              
-              <Link to="/productdetail" >
+              <Link to={`/productdetail/${product.id}`} >
                 <button className="flex items-center gap-2 text-[15px] font-semibold text-gray-500 transition-colors hover:text-gray-800">
                     View Product Detail <MoveRight size={18} />
                 </button>

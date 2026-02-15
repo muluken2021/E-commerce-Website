@@ -1,56 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import ToggleMenu from "./ToggleMenu";
+import { assets } from "../assets/assets";
+import { Link } from "react-router-dom";
 
-// --- Slides Data ---
 const slides = [
   {
-    title: "Summer Collection",
-    desc: "Explore the best trends of the season.",
-    bg: "bg-yellow-400",
-    image:
-      "https://images.unsplash.com/photo-1529139513055-07f9f2471550?w=500",
+    title: "Fashion Week",
+    text: "black",
+    desc: "Up to 50% off on Nike, Adidas, and premium summer collections.",
+    bg: "bg-orange-400",
+    path : "fashion",
+    img: assets.hero_fashion2,
+    discount: "10% Off",
   },
   {
-    title: "Spring Collection",
-    desc:
-      "Save up to 50% on summer essentials including sweater, dress, sandal and accessories.",
-    bg: "bg-blue-50",
-    image:
-      "https://images.unsplash.com/photo-1617137968427-85924c800a22?w=500",
+    title: "Premium Tech",
+    text: "white",
+    desc: "Upgrade your lifestyle with the latest iPhone 14 and M2 MacBooks.",
+    bg: "bg-gray-200",
+    path : "electronics",
+    img: assets.P_p1,
+    discount: "20% Off",
   },
-  {
-    title: "Winter Collection",
-    desc: "Stay warm with premium winter fashion.",
-    bg: "bg-purple-200",
-    image:
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500",
-  },
-  {
-    title: "Winter Collection",
-    desc: "Stay warm with premium winter fashion.",
-    bg: "bg-purple-200",
-    image:
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500",
-  },
-    {
-    title: "Winter Collection",
-    desc: "Stay warm with premium winter fashion.",
-    bg: "bg-purple-200",
-    image:
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500",
-  },
-    {
-    title: "Winter Collection",
-    desc: "Stay warm with premium winter fashion.",
-    bg: "bg-purple-200",
-    image:
-      "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500",
-  },
-
   
-];
 
+];
 const Hero = () => {
     const [current, setCurrent] = useState(0);
 
@@ -67,40 +42,54 @@ const Hero = () => {
 
 
   return (
-    <div className="md:mx-10 px-4 pt-6">
+    <div className="md:mx-10 px-4 pt-0">
 
       {/* --- Hero Section --- */}
-      <div className="relative overflow-hidden rounded-2xl min-h-[250px] mb-12">
+      <div className="relative overflow-hidden rounded-2xl min-h-[250px] mb-5">
         <div
         className="flex transition-transform duration-700"
         style={{ transform: `translateX(-${current * 100}%)` }}
         >
         {slides.map((slide, index) => (
         <div
-            key={index}
-            className={`min-w-1/2 m-2 rounded-lg  items-center ${slide.bg} relative`}
+          key={index}
+          className={`min-w-1/2 m-2 rounded-2xl flex items-center ${slide.bg}  relative overflow-hidden h-[330px] border border-gray-100 shadow-sm  ${ (index)/2 != 0 ? "text-gray-700" : "text-white" } `}
         >
-              <div className="p-8  z-10 w-1/2">
-                <h2 className="text-4xl font-bold mb-4">{slide.title}</h2>
-                <p className="text-sm opacity-80 mb-6">{slide.desc}</p>
 
-                <button className="bg-slate-800 text-white px-8 py-3 rounded-lg font-semibold">
-                  Shop Now
-                </button>
-              </div>
+          <div className="p-10 z-10 w-3/5">
+            <h2 className="text-2xl font-bold  mb-4 tracking-tight">
+              {slide.discount  || "" } 
+            </h2>          
+            <h2 className="text-3xl font-bold  mb-4 tracking-tight">
+              {slide.title}
+            </h2>
+            <p className="text-base  mb-8 max-w-sm">
+              {slide.desc}
+            </p>
 
+            <Link to={`/category/${slide.path}`} >
+              <button className={`cursor-pointer  px-8 py-3 rounded-xl font-bold transition-all duration-300 transform hover:translate-y-[-2px] ${ (index)/2 != 0 ? "bg-orange-500 text-gray-100" : "bg-white text-gray-700" } `}>
+                Shop Now 
+              </button>
+            </Link>
+          </div>
+
+          {/* The image is masked with a subtle gradient so text is always readable */}
+          <div className="absolute right-10 bottom-0 ">
               <img
-                src={slide.image}
+                src={slide.img}
                 alt={slide.title}
-                className="absolute rounded-lg right-0 bottom-0 h-full object-cover"
+                className="h-85 w-auto "
               />
-            </div>
-          ))}
+              <div className="absolute inset-0 bg-gradient-to-r from-inherit via-transparent to-transparent"></div>
+          </div>
+        </div>
+      ))}
         </div>
       </div>
 
       {/* --- Slider Dots --- */}
-      <div className="flex justify-center gap-2 mb-12">
+      <div className="flex justify-center gap-2 mb-10">
         {Array.from({ length: totalPages }).map((_, index) => (
             <div
             key={index}
