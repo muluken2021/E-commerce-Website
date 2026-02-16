@@ -23,7 +23,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="bg-orange-500 p-1.5 rounded-lg">
+          <div className="bg-brand-500 p-1.5 rounded-lg">
             <span className="text-white font-bold text-xl">S</span>
           </div>
           <span className="font-bold text-xl tracking-tight">OnlineShop</span>
@@ -35,7 +35,7 @@ const Navbar = () => {
             <NavLink
               key={link.to}
               to={link.to}
-              className={({ isActive }) => isActive ? "text-orange-500 font-bold" : "hover:text-orange-500"}
+              className={({ isActive }) => isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"}
             >
               {link.name}
             </NavLink>
@@ -45,14 +45,14 @@ const Navbar = () => {
         {/* Right icons */}
         <div className="flex gap-4 items-center">
           <Link to="/profile">
-            <button className="cursor-pointer p-2 bg-gray-100 rounded-full hover:bg-orange-300">
+            <button className="cursor-pointer p-2 bg-gray-100 rounded-full hover:bg-brand-300">
               <User size={20} />
             </button>
           </Link>
           <Link to="/cart">
-            <button className="cursor-pointer p-2 bg-gray-100 rounded-full relative hover:bg-orange-300">
+            <button className="cursor-pointer p-2 bg-gray-100 rounded-full relative hover:bg-brand-300">
               <ShoppingCart size={20} />
-              <span className="absolute -top-1 -right-1 bg-orange-300 text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-brand-300 text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
                 {totalQuantity} {/* ✅ dynamic cart number */}
               </span>
             </button>
@@ -60,7 +60,7 @@ const Navbar = () => {
 
           {/* Hamburger menu for mobile */}
           <button 
-            className="md:hidden p-2 rounded-md bg-gray-100 hover:bg-orange-300"
+            className="md:hidden p-2 rounded-md bg-gray-100 hover:bg-brand-300"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -76,7 +76,7 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               onClick={() => setMenuOpen(false)}
-              className={({ isActive }) => isActive ? "text-orange-500 font-bold block" : "hover:text-orange-500 block"}
+              className={({ isActive }) => isActive ? "text-brand-500 font-bold block" : "hover:text-brand-500 block"}
             >
               {link.name}
             </NavLink>

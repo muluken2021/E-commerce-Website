@@ -27,7 +27,7 @@ const ProductHero = ({product}) => {
               key={index}
               onClick={() => setMainImage(img)}
               className={`h-20 w-20 rounded-xl border-2 p-2 cursor-pointer ${
-                mainImage === img ? "border-orange-400" : "border-gray-300"
+                mainImage === img ? "border-brand-400" : "border-gray-300"
               } bg-white`}
             >
               <img src={img} alt={`thumb-${index}`} className="h-full w-full object-contain mix-blend-multiply" />
@@ -60,7 +60,7 @@ const ProductHero = ({product}) => {
                 key={opt}
                 onClick={() => setSelectedOption(opt)}
                 className={`rounded border px-4 py-1 text-xs transition-colors ${
-                  selectedOption === opt ? 'border-orange-500 text-orange-500' : 'border-gray-400 text-gray-600'
+                  selectedOption === opt ? 'border-brand-500 text-brand-500' : 'border-gray-400 text-gray-600'
                 }`}
               >
                 {opt}
@@ -71,7 +71,7 @@ const ProductHero = ({product}) => {
         </div>
 
         {/* Add to Cart */}
-        <button className="mt-8 w-fit rounded-lg bg-[#e88154] px-12 py-3 font-bold text-white transition-transform active:scale-95">
+        <button className="mt-8 w-fit rounded-lg bg-brand-500 px-12 py-3 font-bold text-white transition-transform active:scale-95">
           Add To Cart
         </button>
       </div>

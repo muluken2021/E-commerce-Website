@@ -18,7 +18,7 @@ const BrandFilter = ({ brands, selectedBrand, setSelectedBrand }) => {
              className={`px-2 py-2 rounded-full border 
                 ${
                 selectedBrand === brand
-                    ? "bg-orange-500 border-orange-500"
+                    ? "bg-brand-500 border-brand-500"
                     : "border-gray-500"
                 }`}
             ></span>
@@ -26,7 +26,7 @@ const BrandFilter = ({ brands, selectedBrand, setSelectedBrand }) => {
             <span
             className={`${
                 selectedBrand === brand
-                ? "text-orange-500 font-bold"
+                ? "text-brand-500 font-bold"
                 : "text-gray-600"
             }`}
             >

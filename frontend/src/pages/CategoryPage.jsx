@@ -91,7 +91,7 @@ useEffect(() => {
         <aside className="pr-4 w-full md:w-70 flex-shrink-0 space-y-10  md:sticky md:top-5 md:h-[calc(100vh-2rem)] overflow-y-auto scroller-hide">
           <button
             onClick={resetFilters}
-            className="w-full rounded-md bg-red-400 px-4 py-2 text-white font-bold hover:bg-red-500"
+            className="w-full rounded-md bg-brand-400 px-4 py-2 text-white font-bold hover:bg-brand-500"
           >
             Reset All Filters
           </button>
@@ -176,7 +176,7 @@ useEffect(() => {
                   key={i + 1}
                   onClick={() => handlePageChange(i + 1)}
                   className={`px-3 py-1 border rounded ${
-                    currentPage === i + 1 ? "bg-orange-500 text-white" : ""
+                    currentPage === i + 1 ? "bg-brand-500 text-white" : ""
                   }`}
                 >
                   {i + 1}

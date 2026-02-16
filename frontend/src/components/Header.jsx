@@ -13,7 +13,7 @@ const Header = () => {
           <input
             type="text"
             placeholder="Searching for ...."
-            className="w-full bg-gray-200 py-3 px-4 rounded-md outline-none focus:ring-1 ring-orange-400"
+            className="w-full bg-gray-200 py-3 px-4 rounded-md outline-none focus:ring-1 ring-brand-400"
           />
           <Search
             className="absolute right-4 top-3.5 text-gray-400"

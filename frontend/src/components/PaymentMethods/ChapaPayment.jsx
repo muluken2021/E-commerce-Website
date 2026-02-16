@@ -25,7 +25,7 @@ const ChapaPayment = () => {
       </p>
       <button
         onClick={handleChapaPayment}
-        className="bg-orange-400 text-white px-6 py-3 rounded-xl font-bold hover:bg-orange-500 transition"
+        className="bg-brand-400 text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-500 transition"
       >
         Proceed to Chapa
       </button>

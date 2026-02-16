@@ -67,7 +67,7 @@ const CheckoutForm = () => {
         placeholder="Name on Card"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all"
+        className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:outline-none transition-all"
         required
       />
 
@@ -82,7 +82,7 @@ const CheckoutForm = () => {
         type="submit"
         disabled={!stripe || processing}
         className={`w-full p-4 rounded-xl font-bold text-white transition ${
-          processing ? "bg-gray-400" : "bg-orange-400 hover:bg-orange-500"
+          processing ? "bg-gray-400" : "bg-brand-400 hover:bg-brand-500"
         }`}
       >
         {processing ? "Processing..." : "Pay Now"}

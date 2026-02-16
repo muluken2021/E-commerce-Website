@@ -2,19 +2,70 @@ import React from 'react';
 import { Trash2, Plus, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const CartPage = () => {
   const { cartItems, addItem, removeItem, updateQuantity, clearCart, totalAmount } = useCart();
 
   const increaseQuantity = (id) => {
     const item = cartItems.find(item => item.id === id);
-    if (item) addItem(item, 1);
+    if (item) {
+      addItem(item, 1);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: `Added 1 more ${item.name}`,
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
+    }
   };
 
   const decreaseQuantity = (id) => {
     const item = cartItems.find(item => item.id === id);
-    if (item) updateQuantity(id, Math.max(item.quantity - 1, 1));
+    if (item) {
+      const newQty = Math.max(item.quantity - 1, 1);
+      updateQuantity(id, newQty);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'info',
+        title: `Decreased quantity of ${item.name}`,
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+      });
+    }
+  };
+
+  const handleRemoveItem = (id) => {
+    const item = cartItems.find(item => item.id === id);
+    removeItem(id);
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'error',
+      title: `${item.name} removed from cart`,
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+    });
+  };
+
+  const handleClearCart = () => {
+    clearCart();
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'error',
+      title: `Cart cleared`,
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+    });
   };
 
   return (
@@ -47,7 +98,7 @@ const CartPage = () => {
                   {(item.price * item.quantity).toFixed(1)} Birr
                 </span>
 
-                <button onClick={() => removeItem(item.id)} className="h-8 w-8 rounded bg-red-400 flex items-center justify-center text-white hover:bg-red-500 transition-colors">
+                <button onClick={() => handleRemoveItem(item.id)} className="h-8 w-8 rounded bg-red-400 flex items-center justify-center text-white hover:bg-red-500 transition-colors">
                   <Trash2 size={16} fill="white" />
                 </button>
               </div>
@@ -56,7 +107,7 @@ const CartPage = () => {
 
           {cartItems.length > 0 && (
             <div className="flex justify-end pt-4">
-              <button onClick={clearCart} className="flex items-center gap-2 rounded-md border border-red-400 px-4 py-2 text-xs font-bold text-red-400 hover:bg-red-50 transition-colors">
+              <button onClick={handleClearCart} className="flex items-center gap-2 rounded-md border border-red-400 px-4 py-2 text-xs font-bold text-red-400 hover:bg-red-50 transition-colors">
                 <span className="h-3 w-3 bg-red-400 rounded-full"></span> Clear cart
               </button>
             </div>

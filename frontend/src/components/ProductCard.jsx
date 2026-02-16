@@ -43,20 +43,15 @@ const ProductCard = ({ product, onAddToCart }) => {
           {name}
         </h2>
 
-         <h2 className="flex gap-1 text-lg font-semibold text-slate-800 line-clamp-1">
-          <Star color="orange" fill="orange" size={17}/>
-           <Star color="orange" fill="orange" size={17}/>
-           <Star color="orange" fill="orange" size={17}/>
-           <Star color="orange" fill="orange" size={17}/>
-          <StarHalf color="orange" fill="orange" size={17}/>
-        </h2>
-        
-
+         <div className="flex gap-0.5 text-brand-400 mb-3">
+            {Array(4).fill(0).map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+            <StarHalf  size={14} fill="currentColor" />
+          </div>
 
         {/* View Detail */}
         <Link
           to={`/productdetail/${id}`}
-          className="block text-sm text-gray-500 hover:text-orange-500"
+          className="block text-sm text-gray-500 hover:text-brand-500"
         >
           View Detail
         </Link>
@@ -69,7 +64,7 @@ const ProductCard = ({ product, onAddToCart }) => {
                 <span className="text-gray-400 line-through text-sm">
                   ${(price * 1.1).toFixed(2)}
                 </span>
-                <span className="bg-blue-50 text-orange-500 px-2 py-0.5 rounded text-xs font-bold">
+                <span className="bg-blue-50 text-brand-500 px-2 py-0.5 rounded text-xs font-bold">
                   {discount}
                 </span>
               </div>
@@ -83,7 +78,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           <div className="relative group">
             <button
               onClick={() => onAddToCart(product)}
-              className="cursor-pointer bg-orange-600 hover:bg-orange-700 text-white p-3 rounded-xl transition-all shadow-md active:scale-95"
+              className="cursor-pointer bg-brand-600 hover:bg-brand-700 text-white p-3 rounded-xl transition-all shadow-md active:scale-95"
             >
               <ShoppingCart size={22} />
             </button>

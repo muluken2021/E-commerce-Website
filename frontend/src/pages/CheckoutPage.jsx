@@ -24,7 +24,7 @@ const CheckoutPage = () => {
 
                 placeholder="Full Name"
 
-                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-[#e88154]"
+                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-brand-500"
 
               />
 
@@ -34,7 +34,7 @@ const CheckoutPage = () => {
 
                 placeholder="Phone Number"
 
-                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-[#e88154]"
+                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-brand-500"
 
               />
 
@@ -44,7 +44,7 @@ const CheckoutPage = () => {
 
                 placeholder="Email Address"
 
-                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-[#e88154]"
+                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-brand-500"
 
               />
 
@@ -56,7 +56,7 @@ const CheckoutPage = () => {
 
                   
 
-                  className="w-full appearance-none rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm text-gray-500 outline-none focus:border-[#e88154]"
+                  className="w-full appearance-none rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm text-gray-500 outline-none focus:border-brand-500"
 
                 >
 
@@ -84,7 +84,7 @@ const CheckoutPage = () => {
 
                 placeholder="Address 1"
 
-                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-[#e88154]"
+                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-brand-500"
 
               />
 
@@ -94,7 +94,7 @@ const CheckoutPage = () => {
 
                 placeholder="Zip Code"
 
-                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-[#e88154]"
+                className="rounded-md border border-gray-400 bg-transparent px-4 py-3 text-sm outline-none focus:border-brand-500"
 
               />
 

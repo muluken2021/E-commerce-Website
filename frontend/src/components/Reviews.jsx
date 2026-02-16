@@ -20,7 +20,7 @@ const Reviews = () => {
             <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
               <span className="text-[10px] font-bold text-gray-400 mb-2 block">{rev.date}</span>
               <h4 className="font-bold text-gray-800 mb-1">{rev.name}</h4>
-              <div className="flex gap-0.5 text-yellow-400 mb-3">
+              <div className="flex gap-0.5 text-brand-400 mb-3">
                 {Array(5).fill(0).map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
               </div>
               <p className="text-xs text-gray-500 leading-relaxed">{rev.text}</p>

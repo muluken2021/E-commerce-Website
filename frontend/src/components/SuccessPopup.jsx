@@ -30,11 +30,11 @@ const SuccessPopup = ({ isOpen, onClose }) => {
 
           {/* Action Buttons */}
           <div className="mt-10 flex flex-col gap-4">
-            <button className="w-full rounded-2xl bg-[#d17a50] py-4 text-lg font-bold text-white shadow-lg shadow-orange-900/10 transition-transform active:scale-[0.98]">
+            <button className="w-full rounded-2xl bg-brand-500 py-4 text-lg font-bold text-white shadow-lg shadow-brand-900/10 transition-transform active:scale-[0.98]">
               Proceed To checkout
             </button>
             
-            <button className="w-full rounded-2xl border-2 border-[#ff9d7d] bg-white py-4 text-lg font-bold text-[#ff9d7d] transition-transform active:scale-[0.98]">
+            <button className="w-full rounded-2xl border-2 border-brand-500 bg-white py-4 text-lg font-bold text-brand-500 transition-transform active:scale-[0.98]">
               Go to cart
             </button>
           </div>

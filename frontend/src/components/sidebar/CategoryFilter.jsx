@@ -39,7 +39,7 @@ const CategoryFilter = ({
                 <span
                   className={`px-2 py-2 rounded-full border flex items-center  ${
                     selectedCategory === cat.name
-                      ? "text-white bg-orange-400 border-orange-00"
+                      ? "text-white bg-brand-400 border-brand-00"
                       : "border-gray-500"
                   }`}
                 >
@@ -51,7 +51,7 @@ const CategoryFilter = ({
                 <span
                   className={`ml-2 font-medium ${
                     selectedCategory === cat.name
-                      ? "text-orange-500"
+                      ? "text-brand-500"
                       : "text-gray-700"
                   }`}
                 >
@@ -77,9 +77,9 @@ const CategoryFilter = ({
                         setSelectedSubCategory(sub);
                         setSelectedCategory(cat.name); // ensure parent category is set
                       }}
-                      className={`cursor-pointer text-sm hover:text-orange-500 ${
+                      className={`cursor-pointer text-sm hover:text-brand-500 ${
                         selectedSubCategory === sub
-                          ? "text-orange-500 font-bold"
+                          ? "text-brand-500 font-bold"
                           : "text-gray-500"
                       }`}
                     >

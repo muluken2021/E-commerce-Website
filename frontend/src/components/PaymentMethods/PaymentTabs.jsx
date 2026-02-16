@@ -8,13 +8,13 @@ const PaymentTabs = ({ selectedMethod, setSelectedMethod }) => {
         onClick={() => setSelectedMethod("card")}
         className={`flex-1 flex flex-col items-start p-4 rounded-xl border-2 transition-all ${
           selectedMethod === "card"
-            ? "border-orange-400 bg-white ring-4 ring-blue-50"
+            ? "border-brand-400 bg-white ring-4 ring-blue-50"
             : "border-gray-100 bg-gray-50"
         }`}
       >
         <CreditCard
           className={`w-5 h-5 mb-1 ${
-            selectedMethod === "card" ? "text-orange-400" : "text-gray-400"
+            selectedMethod === "card" ? "text-brand-400" : "text-gray-400"
           }`}
         />
         <span className="font-semibold text-gray-700">Card</span>
@@ -24,7 +24,7 @@ const PaymentTabs = ({ selectedMethod, setSelectedMethod }) => {
         onClick={() => setSelectedMethod("chapa")}
         className={`flex-1 flex flex-col items-start p-4 rounded-xl border-2 transition-all ${
           selectedMethod === "chapa"
-            ? "border-orange-400 bg-white ring-4 ring-blue-50"
+            ? "border-brand-400 bg-white ring-4 ring-blue-50"
             : "border-gray-100 bg-gray-50"
         }`}
       >

@@ -6,7 +6,7 @@ const ReadyToShop = () => {
   return (
     <div className="flex justify-center px-6">
       {/* Container with a subtle gradient and glow effect */}
-      <div className="relative max-w-5xl w-full bg-white rounded-[3rem] py-16 lg:py-14 text-center mb-24 border border-orange-400  overflow-hidden">
+      <div className="relative max-w-5xl w-full bg-white rounded-[3rem] py-16 lg:py-14 text-center mb-24 border border-brand-400  overflow-hidden">
         
         
         <div className="relative z-10 px-6">
@@ -20,7 +20,7 @@ const ReadyToShop = () => {
           </p>
 
           <Link to="/category/all" className="inline-block group">
-            <button className="flex items-center gap-3 bg-orange-500 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-[#d37a4e] active:scale-95 transition-all duration-300 ">
+            <button className="flex items-center gap-3 bg-brand-500 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-[#d37a4e] active:scale-95 transition-all duration-300 ">
               <ShoppingBag size={20} />
               <span>Explore Collection</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
