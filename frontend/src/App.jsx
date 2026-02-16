@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductDetail from './components/ProductDetail';
 import Navbar from './components/Navbar';
@@ -9,12 +9,18 @@ import CartPage from './pages/CartPage';
 import CategoryPage from './pages/CategoryPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ProfilePage from './pages/ProfilePage';
+import AuthPage from './pages/AuthPage';
+
 
 const App = () => {
+  const location = useLocation();
+  const hideLayout = location.pathname === '/login'; // hide navbar/footer for login
+
   return (
     <div>
-      <Navbar />
-      <Header />
+      {!hideLayout && <Navbar />}
+      {!hideLayout && <Header />}
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/productdetail/:id' element={<ProductDetail />} />
@@ -22,11 +28,10 @@ const App = () => {
         <Route path='/category/:id' element={<CategoryPage />} />
         <Route path='/checkout' element={<CheckoutPage />} />
         <Route path='/profile' element={<ProfilePage />} />
-
-
-
+        <Route path='/login' element={<AuthPage />} />
       </Routes>
-      <Footer/>
+
+      {!hideLayout && <Footer />}
     </div>
   );
 };

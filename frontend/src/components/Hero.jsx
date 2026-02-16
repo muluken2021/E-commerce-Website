@@ -4,11 +4,12 @@ import { assets } from "../assets/assets";
 import { motion } from "framer-motion"; // ✅ import framer-motion
 
 const slides = [
+
   {
     title: "Fashion Week",
     text: "black",
     desc: "Up to 50% off on Nike, Adidas, and premium summer collections.",
-    bg: "bg-red-500",
+    bg: "bg-brand-500",
     path: "fashion",
     img: assets.hero_fashion2,
     discount: "10% Off",
@@ -23,24 +24,36 @@ const slides = [
     discount: "20% Off",
   },
   {
-    title: "Premium Tech",
-    text: "white",
-    desc: "Upgrade your lifestyle with the latest iPhone 14 and M2 MacBooks.",
-    bg: "bg-gray-200",
-    path: "electronics",
-    img: assets.P_p1,
-    discount: "20% Off",
+    title: "Beauty & Care",
+    text: "black",
+    desc: "Premium skincare and beauty products at unbeatable prices.",
+    bg: "bg-brand-400",
+    path: "beauty",
+    img: assets.hero_beauty,
+    discount: "15% Off",
   },
   {
-    title: "Premium Tech",
+    title: "Groceries & Daily Essentials",
     text: "white",
-    desc: "Upgrade your lifestyle with the latest iPhone 14 and M2 MacBooks.",
+    desc: "Fresh groceries and daily essentials delivered to your doorstep.",
     bg: "bg-gray-200",
-    path: "electronics",
-    img: assets.P_p1,
-    discount: "20% Off",
+    path: "groceries",
+    img: assets.hero_grocery,
+    discount: "25% Off",
+  },
+  {
+    title: "Automotive Essentials",
+    text: "black",
+    desc: "Top-quality car accessories and tools for your vehicle.",
+    bg: "bg-brand-500",
+    path: "automotive",
+    img: assets.hero_automotivi,
+    discount: "30% Off",
   },
 ];
+
+
+
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
@@ -94,7 +107,7 @@ const Hero = () => {
                 </Link>
               </div>
 
-              <div className="absolute right-10 bottom-0">
+              <div className=" right-10 bottom-0">
                 <img src={slide.img} alt={slide.title} className="h-85 w-auto" />
                 <div className="absolute inset-0 bg-gradient-to-r from-inherit via-transparent to-transparent"></div>
               </div>

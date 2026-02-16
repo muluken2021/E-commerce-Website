@@ -10,6 +10,7 @@ import ProductDetail from '../components/ProductDetail'
 import ReviewsSection from '../components/ReviewSection'
 import TrustedSection from '../components/TrustedSection'
 import MegaMenu from '../components/MegaMenu'
+import LoginPage from './LoginPage'
 
 
 const Home = () => {
@@ -22,6 +23,8 @@ const Home = () => {
       <TrustedSection />
       <Reviews />
       <ReadyToShop />     
+      <LoginPage />
+      
       
     </div>
   )

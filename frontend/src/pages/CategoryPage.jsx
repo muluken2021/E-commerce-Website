@@ -160,37 +160,44 @@ useEffect(() => {
           />
         )}
 
-
-          {/* Pagination */}
+          {/*Pagination */}
           {totalPages > 1 && (
-            <div className="flex justify-center gap-2 mt-6 flex-wrap">
+            <div className="flex justify-center gap-3 py-10 flex-wrap items-center">
+              {/* Previous Button */}
               <button
                 onClick={() => handlePageChange(currentPage - 1)}
-                className="px-3 py-1 border rounded disabled:opacity-50"
                 disabled={currentPage === 1}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 disabled:opacity-50 hover:bg-gray-200 transition"
               >
-                Prev
+                &lt;
               </button>
+
+              {/* Page Numbers */}
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
                   key={i + 1}
                   onClick={() => handlePageChange(i + 1)}
-                  className={`px-3 py-1 border rounded ${
-                    currentPage === i + 1 ? "bg-brand-500 text-white" : ""
+                  className={`w-10 h-10 flex items-center justify-center rounded-full border transition ${
+                    currentPage === i + 1
+                      ? "bg-brand-500 text-white border-brand-500"
+                      : "border-gray-300 hover:bg-gray-200"
                   }`}
                 >
                   {i + 1}
                 </button>
               ))}
+
+              {/* Next Button */}
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
-                className="px-3 py-1 border rounded disabled:opacity-50"
                 disabled={currentPage === totalPages}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 disabled:opacity-50 hover:bg-gray-200 transition"
               >
-                Next
+                &gt;
               </button>
             </div>
           )}
+
 
           {filteredProducts.length === 0 && (
             <p className="text-gray-500 mt-6">No products match the selected filters.</p>
