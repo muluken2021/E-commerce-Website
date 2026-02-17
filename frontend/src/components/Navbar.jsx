@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext'; 
+import MegaMenu from './MegaMenu'; // import the mega menu
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { cartItems } = useCart(); 
 
-  // Calculate total quantity
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const links = [
     { name: "Home", to: "/" },
-    { name: "Menu", to: "/menu" },
+    { name: "Menu", to: "/menu" }, // <-- MegaMenu will appear on hover here
     { name: "Shop", to: "/category/all" },
     { name: "Products", to: "/products" }
   ];
 
   return (
     <div className="bg-white border-b border-gray-200 sticky top-0 z-50">
-      <div className="md:mx-10 px-4 h-16 flex items-center justify-between">
+      <div className="md:mx-10 px-4 h-16 flex items-center justify-between relative">
 
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -30,17 +30,40 @@ const Navbar = () => {
         </div>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-8 font-medium">
-          {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) => isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"}
-            >
-              {link.name}
-            </NavLink>
-          ))}
-        </nav>
+
+<nav className="hidden md:flex gap-8 font-medium">
+
+  {links.map((link) => (
+    <div key={link.to} className="relative group">
+
+      <NavLink
+        to={link.to}
+        className={({ isActive }) =>
+          isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"
+        }
+      >
+        {link.name}
+      </NavLink>
+
+      {/* Show mega menu only for Menu item */}
+      {link.name === "Menu" && (
+        <div className="
+          absolute
+          left-1/2 -translate-x-1/2
+          top-full
+          w-screen
+          hidden group-hover:block
+          z-50
+        ">
+          <MegaMenu />
+        </div>
+      )}
+
+    </div>
+  ))}
+
+</nav>
+
 
         {/* Right icons */}
         <div className="flex gap-4 items-center">
@@ -53,7 +76,7 @@ const Navbar = () => {
             <button className="cursor-pointer p-2 bg-gray-100 rounded-full relative hover:bg-brand-300">
               <ShoppingCart size={20} />
               <span className="absolute -top-1 -right-1 bg-brand-300 text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                {totalQuantity} {/* ✅ dynamic cart number */}
+                {totalQuantity}
               </span>
             </button>
           </Link>
@@ -76,7 +99,9 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               onClick={() => setMenuOpen(false)}
-              className={({ isActive }) => isActive ? "text-brand-500 font-bold block" : "hover:text-brand-500 block"}
+              className={({ isActive }) =>
+                isActive ? "text-brand-500 font-bold block" : "hover:text-brand-500 block"
+              }
             >
               {link.name}
             </NavLink>

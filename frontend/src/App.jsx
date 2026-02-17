@@ -10,6 +10,8 @@ import CategoryPage from './pages/CategoryPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ProfilePage from './pages/ProfilePage';
 import AuthPage from './pages/AuthPage';
+import ContactPage from './pages/ContactPage';
+import ScrollToTop from './components/ScrollToTop';
 
 
 const App = () => {
@@ -20,7 +22,7 @@ const App = () => {
     <div>
       {!hideLayout && <Navbar />}
       {!hideLayout && <Header />}
-
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/productdetail/:id' element={<ProductDetail />} />
@@ -28,6 +30,7 @@ const App = () => {
         <Route path='/category/:id' element={<CategoryPage />} />
         <Route path='/checkout' element={<CheckoutPage />} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/contactus' element={<ContactPage />} />
         <Route path='/login' element={<AuthPage />} />
       </Routes>
 

@@ -8,7 +8,6 @@ const ProductCard = ({ product, onAddToCart }) => {
   // Image fallback
   const [imgSrc, setImgSrc] = useState(img);
   const [hasError, setHasError] = useState(false);
-  console.log(product);
   
   const handleError = () => {
     if (!hasError) {

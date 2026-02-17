@@ -45,7 +45,6 @@ const ProfilePage = () => {
 
   const sidebarItems = [
     { icon: <User size={18} />, label: "Personal" },
-    { icon: <Ticket size={18} />, label: "Vouchers" },
     { icon: <ShoppingBag size={18} />, label: "Orders" },
     { icon: <CreditCard size={18} />, label: "Payment" },
   ];

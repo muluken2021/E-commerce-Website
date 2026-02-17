@@ -15,7 +15,8 @@ const Categories = () => {
     <section className="md:mx-12 px-4 md:py-16">
       <h2 className="text-xl md:text-3xl font-bold pb-5 md:pb-10 text-gray-800">Browse Products By Category</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-[600px]">
+   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
         {/* Large Fashions Card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
