@@ -14,7 +14,7 @@ const Reviews = () => {
         
 
         {/* Review Grid */}
-        <h2 className="text-3xl font-bold mb-10">Popular Review</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-10">Popular Review</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {reviewData.map((rev, i) => (
             <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">

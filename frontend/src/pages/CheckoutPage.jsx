@@ -9,12 +9,12 @@ const CheckoutPage = () => {
   const [selectedMethod, setSelectedMethod] = useState("card");
 
   return (
-    <div className="min-h-screen bg-[#f3f4f6] font-sans text-gray-800">
+    <div className="min-h-screen pb-12 font-sans text-gray-800">
       <div className="md:mx-12 mx-3 mt-10 grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* LEFT: Shipping + Payment */}
         <div className="lg:col-span-2 space-y-8">
           {/* Shipping Form */}
-          <div className="rounded-2xl bg-[#eeeeee]/60 p-5 md:p-10 shadow-sm">
+          <div className="rounded-2xl bg-gray-50 p-5 md:p-10 shadow-sm">
             <h3 className="mb-8 text-xl font-bold text-gray-700">Shipping Address</h3>
              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
 
@@ -104,7 +104,7 @@ const CheckoutPage = () => {
           </div>
 
           {/* Payment Section */}
-          <div className="rounded-2xl bg-[#eeeeee]/60 p-5 md:p-10 shadow-sm">
+          <div className="rounded-2xl bg-gray-50 p-5 md:p-10 shadow-sm">
             <h3 className="mb-8 text-xl font-bold text-gray-700">Payment</h3>
             <PaymentTabs
               selectedMethod={selectedMethod}
@@ -120,7 +120,7 @@ const CheckoutPage = () => {
       
           {/* --- RIGHT SIDE: SUMMARY --- */}
 
-        <div className="h-fit rounded-2xl bg-[#eeeeee]/60 p-10 shadow-sm">
+        <div className="h-fit rounded-2xl bg-gray-50 p-10 shadow-sm">
 
           <div className="space-y-5 border-b border-gray-300 pb-8">
 

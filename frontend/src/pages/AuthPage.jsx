@@ -9,14 +9,14 @@ const AuthPage = () => {
   const switchForm = () => setIsLogin(!isLogin);
 
   return (
-    <div className="w-full flex items-center justify-center bg-gray-100 min-h-[100vh] p-4">
-      <div className="max-w-7xl w-full bg-white flex flex-col md:flex-row  shadow-xl overflow-hidden">
+    <div className="w-full flex items-center justify-center  h-screen ">
+      <div className=" w-full  flex flex-col md:flex-row   overflow-hidden">
 
         {/* Left - Form */}
         {isLogin ? <SignInForm switchForm={switchForm} /> : <SignUpForm switchForm={switchForm} />}
 
         {/* Right - Promo */}
-        <div className="hidden md:flex w-1/2 bg-brand-600 text-white p-8 flex-col justify-center items-center relative overflow-hidden">
+        <div className="hidden md:flex w-1/2 h-screen bg-brand-600 text-white p-8 flex-col justify-center items-center relative overflow-hidden">
           <div className="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl"></div>
           <div className="relative z-10 text-center space-y-4">
             <h2 className="text-3xl font-bold">Shop the Best Deals</h2>

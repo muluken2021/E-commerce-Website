@@ -4,11 +4,12 @@ import { ShoppingCart, Star, StarHalf } from "lucide-react";
 
 const ProductCard = ({ product, onAddToCart }) => {
   const { id, tag, name, price, img, discount } = product;
-
+  
   // Image fallback
   const [imgSrc, setImgSrc] = useState(img);
   const [hasError, setHasError] = useState(false);
-
+  console.log(product);
+  
   const handleError = () => {
     if (!hasError) {
       setHasError(true);
@@ -17,7 +18,7 @@ const ProductCard = ({ product, onAddToCart }) => {
   };
 
   return (
-    <div className="min-w-[275px] md:max-w-[270px] w-full  bg-gray-100 rounded-2xl border border-gray-200 p-6 shadow-sm font-sans relative hover:shadow-md transition-all"> 
+    <div className="min-w-[275px] md:max-w-[220px] w-full  bg-gray-100 rounded-2xl border border-gray-200 p-6 shadow-sm font-sans relative hover:shadow-md transition-all"> 
       {/* Image */}
       <Link to={`/productdetail/${id}`}>
         <div className="flex justify-center items-center mb-6 h-40">

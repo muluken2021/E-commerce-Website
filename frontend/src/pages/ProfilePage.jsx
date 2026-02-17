@@ -51,11 +51,11 @@ const ProfilePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f3f4f6] p-4 md:p-8 font-sans text-gray-800">
+    <div className="min-h-screen  p-4 md:p-8 font-sans text-gray-800">
       <div className="mx-auto flex max-w-7xl flex-col md:flex-row gap-6 md:gap-10">
 
         {/* ---------- SIDEBAR ---------- */}
-        <aside className="w-full md:w-72 flex-shrink-0 rounded-3xl bg-[#eeeeee]/60 p-4 md:p-6 shadow-sm">
+        <aside className="w-full md:w-72 flex-shrink-0 rounded-3xl bg-gray-50 p-4 md:p-6 shadow-sm">
 
           {/* Profile */}
           <div className="flex flex-col items-center border-b border-gray-300 pb-6 md:pb-8 text-center">
@@ -138,7 +138,7 @@ const ProfilePage = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-500"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -152,7 +152,7 @@ const ProfilePage = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -166,7 +166,7 @@ const ProfilePage = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -180,7 +180,7 @@ const ProfilePage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ const ProfilePage = () => {
                       name="birthday"
                       value={formData.birthday}
                       onChange={handleChange}
-                      className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                      className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                     />
                     <Calendar
                       size={18}
@@ -214,7 +214,7 @@ const ProfilePage = () => {
                       name="gender"
                       value={formData.gender}
                       onChange={handleChange}
-                      className="w-full appearance-none rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                      className="w-full appearance-none rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                     >
                       <option>Male</option>
                       <option>Female</option>
@@ -236,7 +236,7 @@ const ProfilePage = () => {
                     name="street"
                     value={formData.street}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -250,7 +250,7 @@ const ProfilePage = () => {
                     name="zip"
                     value={formData.zip}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -264,7 +264,7 @@ const ProfilePage = () => {
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
 
@@ -278,7 +278,7 @@ const ProfilePage = () => {
                       name="country"
                       value={formData.country}
                       onChange={handleChange}
-                      className="w-full appearance-none rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                      className="w-full appearance-none rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                     >
                       <option></option>
                     </select>
@@ -300,24 +300,24 @@ const ProfilePage = () => {
                   <input
                     type="password"
                     placeholder="Current password"
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                   <input
                     type="password"
                     placeholder="New password"
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                   <input
                     type="password"
                     placeholder="Confirm new password"
-                    className="w-full rounded-xl bg-[#eeeeee]/80 px-4 py-3 text-sm outline-none"
+                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
                   />
                 </div>
               </div>
 
               {/* Save Button */}
               <div className="mt-10 flex justify-center md:justify-end">
-                <button className="w-full md:w-auto rounded-xl bg-[#1e293b] px-8 py-3 font-bold text-white hover:bg-black active:scale-95">
+                <button className="w-full md:w-auto rounded-xl bg-brand-500 px-8 py-3 font-bold text-white hover:bg-black active:scale-95">
                   Save changes
                 </button>
               </div>

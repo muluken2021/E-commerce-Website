@@ -15,7 +15,6 @@ const PopularProducts = () => {
   };
   
   
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedProduct(null);
@@ -23,7 +22,7 @@ const PopularProducts = () => {
 
   return (
     <section className="mx-auto px-4 pb-15">
-      <h2 className="text-start mx-10 text-2xl font-bold text-gray-800 mb-8">
+      <h2 className="text-center mx-10 text-xl md:text-2xl font-bold text-gray-800 mb-8">
         Popular Products
       </h2>
 
@@ -32,6 +31,7 @@ const PopularProducts = () => {
           <ProductCard key={p.id} product={p} onAddToCart={handleAddToCart} />
         ))}
       </div>
+      
 
       {/* Modal */}
       {selectedProduct && (

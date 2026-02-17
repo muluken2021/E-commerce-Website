@@ -143,7 +143,7 @@ useEffect(() => {
             </button>
           </div>
 
-         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
+         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 justify-center">
   
           {currentProducts.map((p) => (
             <ProductCard key={p.id} product={p} onAddToCart={handleAddToCart} />

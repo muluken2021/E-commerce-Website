@@ -5,7 +5,7 @@ const SignInForm = ({ switchForm }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+    <div className="w-full md:w-1/2 p-8 md:p-15 xl:p-32 flex flex-col justify-center">
       {/* Heading */}
       <h1 className="text-3xl font-bold text-gray-600 mb-2">Welcome Back</h1>
       <p className="text-gray-400 mb-6 text-sm">

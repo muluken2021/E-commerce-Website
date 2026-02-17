@@ -41,15 +41,15 @@ const slides = [
     img: assets.hero_grocery,
     discount: "25% Off",
   },
-  {
-    title: "Automotive Essentials",
-    text: "black",
-    desc: "Top-quality car accessories and tools for your vehicle.",
-    bg: "bg-brand-500",
-    path: "automotive",
-    img: assets.hero_automotivi,
-    discount: "30% Off",
-  },
+  // {
+  //   title: "Automotive Essentials",
+  //   text: "black",
+  //   desc: "Top-quality car accessories and tools for your vehicle.",
+  //   bg: "bg-brand-500",
+  //   path: "automotive",
+  //   img: assets.hero_automotivi,
+  //   discount: "30% Off",
+  // },
 ];
 
 
@@ -81,11 +81,13 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}       // ✅ initial motion
               animate={{ opacity: 1, y: 0 }}        // ✅ animate only on mount
               transition={{ duration: 0.6, delay: index * 0.2 }} // staggered effect
-              className={`min-w-1/2 m-2 rounded-2xl flex items-center ${slide.bg} relative overflow-hidden h-[330px] border border-gray-100 shadow-sm ${
+              className={`min-w-full md:min-w-1/2 m-2 rounded-2xl md:flex item-center ${slide.bg} relative overflow-hidden h-[330px] border border-gray-100 shadow-sm ${
                 index % 2 !== 0 ? "text-gray-700" : "text-white"
               }`}
             >
-              <div className="p-10 z-10 w-3/5">
+             
+              
+              <div className="p-10 z-10 md:w-3/5">
                 <h2 className="text-2xl font-bold mb-4 tracking-tight">
                   {slide.discount || ""}
                 </h2>
@@ -107,10 +109,12 @@ const Hero = () => {
                 </Link>
               </div>
 
-              <div className=" right-10 bottom-0">
-                <img src={slide.img} alt={slide.title} className="h-85 w-auto" />
-                <div className="absolute inset-0 bg-gradient-to-r from-inherit via-transparent to-transparent"></div>
+               <div className="hidden md:block md:right-10 md:bottom-0">
+                <img src={slide.img} alt={slide.title} className="h-30 md:h-85 w-auto" />
+                <div className="relative  bg-gradient-to-r from-inherit via-transparent to-transparent"></div>
               </div>
+
+              
             </motion.div>
           ))}
         </div>

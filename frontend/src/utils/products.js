@@ -1,7 +1,6 @@
 import { assets } from "../assets/assets";
 
 export const popularproducts = [
-  /* ========== Electronics & Accessories ========== */
   {
     id: 1,
     name: "Apple iPhone 14",
