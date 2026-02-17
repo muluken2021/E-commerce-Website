@@ -4,7 +4,7 @@ import { categories } from "../utils/categories"; // adjust path if needed
 
 const MegaMenu = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto bg-white/95 backdrop-blur-md shadow-2xl rounded-3xl border border-gray-100 overflow-hidden font-sans">
+    <div className="w-full max-w-6xl mx-auto bg-white/95 backdrop-blur-md shadow-xl border border-gray-100 overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto">
 
         {/* Main Content */}

@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-6">
-              <div className="bg-brand-500 p-1.5 rounded-lg text-white font-bold italic">S</div>
+              <div className="bg-brand-500 p-1.5 rounded-lg text-white font-bold italic"></div>
               <span className="font-bold text-xl">OnlineShop</span>
             </div>
             <p className="text-xs text-gray-500 leading-relaxed mb-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et reiciendis at facilis quos mollitia, ratione, quibusdam explicabo quo.</p>
@@ -29,6 +29,7 @@ const Footer = () => {
               <Link to="/"><li className="hover:text-brand-500 cursor-pointer">Home</li></Link>
               <Link to="/contactus"><li className="hover:text-brand-500 cursor-pointer">Contact</li></Link>
               <Link to="/category/all"><li className="hover:text-brand-500 cursor-pointer">Shop Now</li></Link>
+              <Link to="/support"><li className="hover:text-brand-500 cursor-pointer">Support </li></Link>
              
             </ul>
           </div>

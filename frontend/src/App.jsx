@@ -12,6 +12,7 @@ import ProfilePage from './pages/ProfilePage';
 import AuthPage from './pages/AuthPage';
 import ContactPage from './pages/ContactPage';
 import ScrollToTop from './components/ScrollToTop';
+import Support from './pages/Support';
 
 
 const App = () => {
@@ -31,6 +32,8 @@ const App = () => {
         <Route path='/checkout' element={<CheckoutPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/contactus' element={<ContactPage />} />
+        <Route path='/support' element={<Support />} />
+
         <Route path='/login' element={<AuthPage />} />
       </Routes>
 

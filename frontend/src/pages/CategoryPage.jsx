@@ -143,11 +143,11 @@ useEffect(() => {
             </button>
           </div>
 
-<div className="grid grid-cols-[repeat(auto-fit,minmax(250px,auto))] gap-6 justify-start">
-  {currentProducts.map((p) => (
-    <ProductCard key={p.id} product={p} onAddToCart={handleAddToCart} />
-  ))}
-</div>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,auto))] gap-6 justify-center md:justify-start">
+          {currentProducts.map((p) => (
+            <ProductCard key={p.id} product={p} onAddToCart={handleAddToCart} />
+          ))}
+        </div>
 
 
         {/* Modal should be outside grid */}

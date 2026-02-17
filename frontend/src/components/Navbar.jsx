@@ -3,6 +3,7 @@ import { ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../context/CartContext'; 
 import MegaMenu from './MegaMenu'; // import the mega menu
+import UserDropdown from './UserDropdown';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,54 +25,51 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="bg-brand-500 p-1.5 rounded-lg">
-            <span className="text-white font-bold text-xl">S</span>
+            <span className="text-white font-bold text-xl"></span>
           </div>
           <span className="font-bold text-xl tracking-tight">OnlineShop</span>
         </div>
 
         {/* Desktop nav */}
 
-<nav className="hidden md:flex gap-8 font-medium">
+        <nav className="hidden md:flex gap-8 font-medium">
 
-  {links.map((link) => (
-    <div key={link.to} className="relative group">
+          {links.map((link) => (
+            <div key={link.to} className="relative group">
 
-      <NavLink
-        to={link.to}
-        className={({ isActive }) =>
-          isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"
-        }
-      >
-        {link.name}
-      </NavLink>
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"
+                }
+              >
+                {link.name}
+              </NavLink>
 
-      {/* Show mega menu only for Menu item */}
-      {link.name === "Menu" && (
-        <div className="
-          absolute
-          left-1/2 -translate-x-1/2
-          top-full
-          w-screen
-          hidden group-hover:block
-          z-50
-        ">
-          <MegaMenu />
-        </div>
-      )}
+              {/* Show mega menu only for Menu item */}
+              {link.name === "Menu" && (
+                <div className="
+                  absolute
+                  left-1/2 -translate-x-1/2
+                  top-full
+                  w-screen
+                  hidden group-hover:block
+                  z-50
+                ">
+                  <MegaMenu />
+                </div>
+              )}
 
-    </div>
-  ))}
+            </div>
+          ))}
 
-</nav>
+        </nav>
 
 
         {/* Right icons */}
         <div className="flex gap-4 items-center">
-          <Link to="/profile">
-            <button className="cursor-pointer p-2 bg-gray-100 rounded-full hover:bg-brand-300">
-              <User size={20} />
-            </button>
-          </Link>
+        
+
           <Link to="/cart">
             <button className="cursor-pointer p-2 bg-gray-100 rounded-full relative hover:bg-brand-300">
               <ShoppingCart size={20} />
@@ -80,6 +78,9 @@ const Navbar = () => {
               </span>
             </button>
           </Link>
+
+         {/* profile */}
+          <UserDropdown  />
 
           {/* Hamburger menu for mobile */}
           <button 
