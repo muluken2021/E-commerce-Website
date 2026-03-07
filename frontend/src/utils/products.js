@@ -9,7 +9,7 @@ export const popularproducts = [
     brand: "Samsung",
     price: 1000,
     discount: "15% off",
-    img: "https://images.unsplash.com/photo-1672193202452-9d5fa84f6a4b?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1678911820864-e2c567c655d7?auto=format&fit=crop&q=100&w=1200&h=1200", 
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const popularproducts = [
     brand: "Zara",
     price: 29.99,
     discount: "15% off",
-    img: "https://images.unsplash.com/photo-1602810311272-b27421db6f9d?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&q=100&w=1200&h=1200",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ export const popularproducts = [
     brand: "Apple",
     price: 1500,
     discount: "5% off",
-    img: "https://images.unsplash.com/photo-1612831455541-2a8b2a28b7d4?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=100&w=1200&h=1200",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ export const popularproducts = [
     brand: "Adidas",
     price: 1400,
     discount: "10% off",
-    img: "https://images.unsplash.com/photo-1602810310739-2cf3b8f4a0f2?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=100&w=1200&h=1200",
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ export const popularproducts = [
     brand: "JBL",
     price: 250,
     discount: "25% off",
-    img: "https://images.unsplash.com/photo-1606813904863-1b8c0f79f92b?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=100&w=1200&h=1200",
   },
   {
     id: 6,
@@ -59,10 +59,9 @@ export const popularproducts = [
     brand: "Adidas",
     price: 450,
     discount: "15% off",
-    img: "https://images.unsplash.com/photo-1625339769342-2c3e08b4cb0f?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1622273509395-927702f74051?auto=format&fit=crop&q=100&w=1200&h=1200",
   },
 ];
-
 export const products = [
   /* ========== Electronics & Accessories ========== */
   {
