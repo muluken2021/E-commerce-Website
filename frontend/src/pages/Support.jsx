@@ -44,41 +44,11 @@ const Support = () => {
     <div className="min-h-screen bg-white font-sans text-slate-900">
 
       {/* HERO SECTION */}
-      <header className="text-white">
-        <div className="bg-brand-400 rounded-4xl md:px-12 py-18 px-6 max-w-7xl mx-auto text-center md:text-left">
-          <h1 className="text-3xl md:text-5xl font-semibold mb-8 md:mb-10 tracking-tight">How can we help?</h1>
 
-          {/* Search */}
-          <div className="relative max-w-3xl mx-auto md:mx-0 mb-6">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-100" size={22} />
-            <input
-              type="text"
-              placeholder="Search guides, FAQs, and more"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full py-4 md:py-5 pl-14 pr-6 rounded-full border text-gray-50 text-lg focus:outline-none shadow-xl transition-all"
-            />
-          </div>
-
-          {/* Top Searches */}
-          <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start">
-            <span className="text-sm opacity-70">Top searches</span>
-            {topSearches.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => setSearchTerm(tag)}
-                className="bg-white/20 hover:bg-white/30 border border-white/20 px-4 py-1.5 rounded-full text-sm transition-colors duration-200"
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
-      </header>
 
       {/* STARTER CARDS */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-medium mb-10">New to Our Platform? Start here.</h2>
+        <h2 className="text-3xl font-medium mb-10">How we can help you ?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {filteredCards.map((card) => (
             <div key={card.id} className="group cursor-pointer" onClick={() => setSelectedCard(card)}>

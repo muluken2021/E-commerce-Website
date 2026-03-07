@@ -8,14 +8,12 @@ import UserDropdown from './UserDropdown';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { cartItems } = useCart(); 
-
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const links = [
     { name: "Home", to: "/" },
-    { name: "Menu", to: "/menu" }, // <-- MegaMenu will appear on hover here
+    { name: "Menu", to: null }, // MegaMenu only
     { name: "Shop", to: "/category/all" },
-    { name: "Products", to: "/products" }
   ];
 
   return (
@@ -31,22 +29,24 @@ const Navbar = () => {
         </div>
 
         {/* Desktop nav */}
-
         <nav className="hidden md:flex gap-8 font-medium">
-
           {links.map((link) => (
-            <div key={link.to} className="relative group">
+            <div key={link.name} className="relative group">
+              {link.to ? (
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ) : (
+                // Non-clickable Menu for MegaMenu
+                <span className="cursor-pointer hover:text-brand-500">{link.name}</span>
+              )}
 
-              <NavLink
-                to={link.to}
-                className={({ isActive }) =>
-                  isActive ? "text-brand-500 font-bold" : "hover:text-brand-500"
-                }
-              >
-                {link.name}
-              </NavLink>
-
-              {/* Show mega menu only for Menu item */}
+              {/* MegaMenu only for Menu item */}
               {link.name === "Menu" && (
                 <div className="
                   absolute
@@ -59,17 +59,12 @@ const Navbar = () => {
                   <MegaMenu />
                 </div>
               )}
-
             </div>
           ))}
-
         </nav>
-
 
         {/* Right icons */}
         <div className="flex gap-4 items-center">
-        
-
           <Link to="/cart">
             <button className="cursor-pointer p-2 bg-gray-100 rounded-full relative hover:bg-brand-300">
               <ShoppingCart size={20} />
@@ -79,8 +74,8 @@ const Navbar = () => {
             </button>
           </Link>
 
-         {/* profile */}
-          <UserDropdown  />
+          {/* Profile */}
+          <UserDropdown />
 
           {/* Hamburger menu for mobile */}
           <button 
@@ -96,16 +91,27 @@ const Navbar = () => {
       {menuOpen && (
         <div className="md:hidden px-4 pb-4 flex flex-col gap-3 bg-white border-t border-gray-200">
           {links.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                isActive ? "text-brand-500 font-bold block" : "hover:text-brand-500 block"
-              }
-            >
-              {link.name}
-            </NavLink>
+            <div key={link.name} className="relative">
+              {link.to ? (
+                <NavLink
+                  to={link.to}
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    isActive ? "text-brand-500 font-bold block" : "hover:text-brand-500 block"
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ) : (
+                <span className="block cursor-pointer hover:text-brand-500" onClick={(e) => e.preventDefault()}>
+                  {link.name}
+                  {/* Optionally show MegaMenu on click for mobile */}
+                  <div className="mt-2">
+                    <MegaMenu />
+                  </div>
+                </span>
+              )}
+            </div>
           ))}
         </div>
       )}
