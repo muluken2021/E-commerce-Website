@@ -3,53 +3,51 @@ import { Link } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { motion } from "framer-motion"; // ✅ import framer-motion
 
-const slides = [
-
+export const slides = [
   {
+    id: 1,
     title: "Fashion Week",
     text: "black",
     desc: "Up to 50% off on Nike, Adidas, and premium summer collections.",
     bg: "bg-brand-500",
     path: "fashion",
-    img: assets.hero_fashion2,
+    // Premium lifestyle fashion shot (Clean background)
+    img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=100&w=1920&auto=format&fit=crop",
     discount: "10% Off",
   },
   {
+    id: 2,
     title: "Premium Tech",
     text: "white",
     desc: "Upgrade your lifestyle with the latest iPhone 14 and M2 MacBooks.",
     bg: "bg-gray-200",
     path: "electronics",
-    img: assets.P_p1,
+    // Sleek minimalist tech setup
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=100&w=1920&auto=format&fit=crop",
     discount: "20% Off",
   },
   {
+    id: 3,
     title: "Beauty & Care",
     text: "black",
     desc: "Premium skincare and beauty products at unbeatable prices.",
     bg: "bg-brand-400",
     path: "beauty",
-    img: assets.hero_beauty,
+    // High-end cosmetic/skincare aesthetic
+    img: "https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?q=100&w=1920&auto=format&fit=crop",
     discount: "15% Off",
   },
   {
+    id: 4,
     title: "Groceries & Daily Essentials",
     text: "white",
     desc: "Fresh groceries and daily essentials delivered to your doorstep.",
     bg: "bg-gray-200",
     path: "groceries",
-    img: assets.hero_grocery,
+    // Vibrant fresh organic produce
+    img: "https://images.unsplash.com/photo-1542838132-92c53300491e?q=100&w=1920&auto=format&fit=crop",
     discount: "25% Off",
   },
-  // {
-  //   title: "Automotive Essentials",
-  //   text: "black",
-  //   desc: "Top-quality car accessories and tools for your vehicle.",
-  //   bg: "bg-brand-500",
-  //   path: "automotive",
-  //   img: assets.hero_automotivi,
-  //   discount: "30% Off",
-  // },
 ];
 
 
