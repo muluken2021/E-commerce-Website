@@ -1,7 +1,7 @@
 import { assets } from "../assets/assets";
 
 export const popularproducts = [
-    {
+  {
     id: 1,
     name: "Samsung Galaxy S23",
     category: "Electronics & Accessories",
@@ -9,7 +9,7 @@ export const popularproducts = [
     brand: "Samsung",
     price: 1000,
     discount: "15% off",
-    img: assets.P_p1,
+    img: "https://images.unsplash.com/photo-1672193202452-9d5fa84f6a4b?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 2,
@@ -19,9 +19,8 @@ export const popularproducts = [
     brand: "Zara",
     price: 29.99,
     discount: "15% off",
-    img: assets.P_p2,
+    img: "https://images.unsplash.com/photo-1602810311272-b27421db6f9d?auto=format&fit=crop&w=500&q=80",
   },
-
   {
     id: 3,
     name: "MacBook Air M2",
@@ -30,7 +29,7 @@ export const popularproducts = [
     brand: "Apple",
     price: 1500,
     discount: "5% off",
-   img: assets.P_p3,
+    img: "https://images.unsplash.com/photo-1612831455541-2a8b2a28b7d4?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 4,
@@ -40,7 +39,7 @@ export const popularproducts = [
     brand: "Adidas",
     price: 1400,
     discount: "10% off",
-    img: assets.P_p4,
+    img: "https://images.unsplash.com/photo-1602810310739-2cf3b8f4a0f2?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 5,
@@ -50,17 +49,17 @@ export const popularproducts = [
     brand: "JBL",
     price: 250,
     discount: "25% off",
-    img: assets.P_p5,
+    img: "https://images.unsplash.com/photo-1606813904863-1b8c0f79f92b?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: 6,
     name: "Little Boy Hoodie",
     category: "Fashion & Clothing",
-    subcategory: "Men",
+    subcategory: "Kids",
     brand: "Adidas",
     price: 450,
     discount: "15% off",
-    img: assets.P_p6,
+    img: "https://images.unsplash.com/photo-1625339769342-2c3e08b4cb0f?auto=format&fit=crop&w=500&q=80",
   },
 ];
 
