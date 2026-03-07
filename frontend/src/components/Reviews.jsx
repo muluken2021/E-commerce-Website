@@ -2,12 +2,28 @@ import React from 'react';
 import { Star } from 'lucide-react';
 
 const Reviews = () => {
-  const reviewData = Array(4).fill({
-    name: "Muluken kassaw",
+const reviewData = [
+  {
+    name: "Selam Tesfaye",
+    date: "05 MAR 2026",
+    text: "The delivery was super fast and the food arrived piping hot. Loved the packaging too!"
+  },
+  {
+    name: "Abebe Mekonnen",
+    date: "28 FEB 2026",
+    text: "Tried the new spicy chicken meal — flavor was on point! Definitely ordering again."
+  },
+  {
+    name: "Hana Gebremariam",
+    date: "20 FEB 2026",
+    text: "Good portion sizes and fresh ingredients. The app was easy to navigate as well."
+  },
+  {
+    name: "Yonas Fikremariam",
     date: "12 FEB 2026",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et reiciendis at facilis quos mollitia, ratione, quibusdam explicabo quo exercitationem, iusto voluptatibus."
-  });
-
+    text: "Ordered late at night and it still arrived quickly. Excellent service and tasty food!"
+  }
+];
   return (
     <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4">

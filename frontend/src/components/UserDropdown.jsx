@@ -14,7 +14,7 @@ export default function UserDropdown() {
     phone: "+09 363 398 46",
     role: "Admin",
     location: "Addis Ababa, Ethiopia",
-    photo: "https://tse3.mm.bing.net/th/id/OIP.tfOvEHoC27BUODsx5P7dXwHaLH?pid=Api&P=0&h=220",
+    photo: "https://tse2.mm.bing.net/th/id/OIP.U0lavRZhl9Y5-e_-UiptAwHaHa?pid=Api&P=0&h=220",
     bio: "Team Manager",
     linkedin: "url",
     github: "url",

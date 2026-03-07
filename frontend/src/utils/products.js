@@ -1,26 +1,27 @@
 import { assets } from "../assets/assets";
 
 export const popularproducts = [
-  {
+    {
     id: 1,
-    name: "Apple iPhone 14",
-    category: "Electronics & Accessories",
-    subcategory: "Smartphones & tablets",
-    brand: "Apple",
-    price: 1200,
-    discount: "10% off",
-    img: assets.P_p1,
-  },
-  {
-    id: 2,
     name: "Samsung Galaxy S23",
     category: "Electronics & Accessories",
     subcategory: "Smartphones & tablets",
     brand: "Samsung",
     price: 1000,
     discount: "15% off",
+    img: assets.P_p1,
+  },
+  {
+    id: 2,
+    name: "Women Top",
+    category: "Fashion & Clothing",
+    subcategory: "Women",
+    brand: "Zara",
+    price: 29.99,
+    discount: "15% off",
     img: assets.P_p2,
   },
+
   {
     id: 3,
     name: "MacBook Air M2",
@@ -33,10 +34,10 @@ export const popularproducts = [
   },
   {
     id: 4,
-    name: "Dell XPS 13",
-    category: "Electronics & Accessories",
-    subcategory: "Laptops & computers",
-    brand: "Dell",
+    name: "Men Hoodie",
+    category: "Fashion & Clothing",
+    subcategory: "Men",
+    brand: "Adidas",
     price: 1400,
     discount: "10% off",
     img: assets.P_p4,
@@ -53,10 +54,10 @@ export const popularproducts = [
   },
   {
     id: 6,
-    name: "Apple AirPods Pro",
-    category: "Electronics & Accessories",
-    subcategory: "Headphones & earphones",
-    brand: "Apple",
+    name: "Little Boy Hoodie",
+    category: "Fashion & Clothing",
+    subcategory: "Men",
+    brand: "Adidas",
     price: 450,
     discount: "15% off",
     img: assets.P_p6,

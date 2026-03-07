@@ -14,9 +14,9 @@ const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState("Personal");
 
   const [formData, setFormData] = useState({
-    firstName: "Jayvion",
-    lastName: "Simon",
-    email: "nannie.abernathy70@yahoo.com",
+    firstName: "Danel",
+    lastName: "Kassaw",
+    email: "danelkassaw21.com",
     phone: "365-374-4961",
     birthday: "",
     gender: "Male",
@@ -27,7 +27,7 @@ const ProfilePage = () => {
   });
 
   const [profileImg, setProfileImg] = useState(
-    "https://tse3.mm.bing.net/th/id/OIP.tfOvEHoC27BUODsx5P7dXwHaLH?pid=Api&P=0&h=220"
+    "https://tse2.mm.bing.net/th/id/OIP.U0lavRZhl9Y5-e_-UiptAwHaHa?pid=Api&P=0&h=220"
   );
 
   const handleChange = (e) => {
