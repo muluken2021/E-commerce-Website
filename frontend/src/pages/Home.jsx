@@ -1,26 +1,20 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import PopularProducts from '../components/PopularProducts'
-import Categories from '../components/Categories'
-import Reviews from '../components/Reviews'
-import ReadyToShop from '../components/ReadyToShop'
-import TrustedSection from '../components/TrustedSection'
-
-
+import React from 'react';
+import Hero from '../components/Hero';
+import Categories from '../components/Categories';
+import PopularProducts from '../components/PopularProducts';
+import ArticlesSection from '../components/ArticlesSection';
+import Reviews from '../components/Reviews';
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-white min-h-screen">
       <Hero />
-      <PopularProducts />
       <Categories />
-      <TrustedSection />
+      <PopularProducts />
+      <ArticlesSection />
       <Reviews />
-      <ReadyToShop />       
-    
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

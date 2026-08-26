@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
 
+/* Apply Outfit font globally */
+* {
+  font-family: 'Outfit', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #101828;
+}
+
 @theme {
   --font-*: initial;
   --font-outfit: Outfit, sans-serif;
@@ -37,20 +47,20 @@
   --color-white: #ffffff;
   --color-black: #101828;
 
-/* RED BRAND COLORS */
+/* GREEN BRAND COLORS (Lenny Design) */
 
---color-brand-25:  #fef2f2;
---color-brand-50:  #fee2e2;
---color-brand-100: #fecaca;
---color-brand-200: #fca5a5;
---color-brand-300: #f87171;
---color-brand-400: #ef4444;
---color-brand-500: #dc2626; /* base red */
---color-brand-600: #b91c1c;
---color-brand-700: #991b1b;
---color-brand-800: #7f1d1d;
---color-brand-900: #661515;
---color-brand-950: #3b0a0a;
+--color-brand-25:  #f0fdf4;
+--color-brand-50:  #dcfce7;
+--color-brand-100: #bbf7d0;
+--color-brand-200: #86efac;
+--color-brand-300: #4ade80;
+--color-brand-400: #22c55e;
+--color-brand-500: #1a7c4a; /* base green */
+--color-brand-600: #166534;
+--color-brand-700: #14532d;
+--color-brand-800: #1b4332;
+--color-brand-900: #052e16;
+--color-brand-950: #022c22;
 
 
 

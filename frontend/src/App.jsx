@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import ProductDetail from './components/ProductDetail';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Header from './components/Header';
 import CartPage from './pages/CartPage';
 import CategoryPage from './pages/CategoryPage';
 import CheckoutPage from './pages/CheckoutPage';
@@ -22,7 +21,6 @@ const App = () => {
   return (
     <div>
       {!hideLayout && <Navbar />}
-      {!hideLayout && <Header />}
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />

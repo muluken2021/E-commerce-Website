@@ -1,89 +1,76 @@
-import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import React, { useState, useEffect } from 'react';
+import { ChevronDown } from 'lucide-react';
 
-const CategoryFilter = ({
+export default function CategoryFilter({
   categories,
   selectedCategory,
   selectedSubCategory,
   setSelectedCategory,
   setSelectedSubCategory,
-}) => {
-  const [openCategory, setOpenCategory] = useState(null);
+}) {
+  const [open, setOpen] = useState(null);
 
-  // Sync openCategory with selectedCategory (from URL or page load)
   useEffect(() => {
     if (selectedCategory) {
       const cat = categories.find((c) => c.name === selectedCategory);
-      if (cat) setOpenCategory(cat.id);
+      if (cat) setOpen(cat.id);
     }
   }, [selectedCategory, categories]);
 
   return (
     <div>
-      <h3 className="text-xl font-bold mb-6">Categories</h3>
-
-      <ul className="space-y-4">
+      <h3 className="text-[13px] font-black text-gray-900 mb-4">Categories</h3>
+      <ul className="space-y-1">
         {categories.map((cat) => {
-          const Icon = cat.icon; // get the component
+          const Icon = cat.icon;
+          const isActive = selectedCategory === cat.name;
+          const isOpen = open === cat.id;
+
           return (
             <li key={cat.id}>
-              {/* Parent Category */}
-              <div
+              <button
                 onClick={() => {
                   setSelectedCategory(cat.name);
                   setSelectedSubCategory(null);
-                  setOpenCategory(openCategory === cat.id ? null : cat.id);
+                  setOpen(isOpen ? null : cat.id);
                 }}
-                className="flex items-center justify-start cursor-pointer"
+                className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-left transition-colors ${
+                  isActive
+                    ? 'bg-brand-25 text-brand-700'
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-brand-700'
+                }`}
               >
-                <span
-                  className={`px-2 py-2 rounded-full border flex items-center  ${
-                    selectedCategory === cat.name
-                      ? "text-white bg-brand-400 border-brand-00"
-                      : "border-gray-500"
-                  }`}
-                >
-                  {/* Render icon */}
-                  {Icon && <Icon size={18} />}
-                </span>
+                {Icon && (
+                  <span className={`flex-shrink-0 ${isActive ? 'text-brand-700' : 'text-gray-400'}`}>
+                    <Icon size={15} />
+                  </span>
+                )}
+                <span className="flex-1 text-[13px] font-semibold">{cat.name}</span>
+                {cat.subcategories?.length > 0 && (
+                  <ChevronDown
+                    size={13}
+                    className={`transition-transform text-gray-400 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+                  />
+                )}
+              </button>
 
-                
-                <span
-                  className={`ml-2 font-medium ${
-                    selectedCategory === cat.name
-                      ? "text-brand-500"
-                      : "text-gray-700"
-                  }`}
-                >
-                  {cat.name}
-                </span>
-                <div className="">
-                    <ChevronDown
-                    size={18}
-                    className={`transition-transform duration-300 ${
-                        openCategory === cat.id ? "rotate-180" : ""
-                    }`}
-                    />
-                </div>
-              </div>
-
-              {/* Subcategories */}
-              {openCategory === cat.id && cat.subcategories?.length > 0 && (
-                <ul className="ml-10 mt-2 space-y-2">
+              {isOpen && cat.subcategories?.length > 0 && (
+                <ul className="ml-8 mt-1 space-y-0.5">
                   {cat.subcategories.map((sub) => (
-                    <li
-                      key={sub}
-                      onClick={() => {
-                        setSelectedSubCategory(sub);
-                        setSelectedCategory(cat.name); // ensure parent category is set
-                      }}
-                      className={`cursor-pointer text-sm hover:text-brand-500 ${
-                        selectedSubCategory === sub
-                          ? "text-brand-500 font-bold"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      {sub}
+                    <li key={sub}>
+                      <button
+                        onClick={() => {
+                          setSelectedSubCategory(sub);
+                          setSelectedCategory(cat.name);
+                        }}
+                        className={`w-full text-left px-3 py-2 rounded-lg text-[12.5px] transition-colors ${
+                          selectedSubCategory === sub
+                            ? 'text-brand-700 font-bold bg-brand-25'
+                            : 'text-gray-500 hover:text-brand-700 hover:bg-gray-50'
+                        }`}
+                      >
+                        {sub}
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -94,6 +81,4 @@ const CategoryFilter = ({
       </ul>
     </div>
   );
-};
-
-export default CategoryFilter;
+}

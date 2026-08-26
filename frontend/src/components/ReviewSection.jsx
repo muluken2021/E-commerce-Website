@@ -1,74 +1,84 @@
-import React from 'react';
-import { Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { Star, ThumbsUp, ThumbsDown } from 'lucide-react';
 import ReviewForm from './ReviewForm';
 
-const ReviewsSection = () => {
-  const reviews = [
-    {
-      id: 1,
-      name: "Muluken Kassaw",
-      rating: 4.7,
-      time: "1 weeks ago",
-      avatar: "/api/placeholder/40/40",
-      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et reiciendis at facilis quos mollitia, ratione, quibusdam explicabo quo exercitationem, iusto voluptatibus. Illum perferendis dolorum, aut nam cumque incidunt excepturi."
-    },
-    {
-      id: 2,
-      name: "Abel Alemu",
-      rating: 4.7,
-      time: "3 weeks ago",
-      avatar: "/api/placeholder/40/40",
-      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et reiciendis at facilis quos mollitia, ratione, quibusdam explicabo quo exercitationem, iusto voluptatibus. Illum perferendis dolorum, aut nam cumque incidunt excepturi."
-    },
-    {
-      id: 3,
-      name: "Mahder Belay",
-      rating: 4.7,
-      time: "5 weeks ago",
-      avatar: "/api/placeholder/40/40",
-      comment: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi et reiciendis at facilis quos mollitia, ratione, quibusdam explicabo quo exercitationem, iusto voluptatibus. Illum perferendis dolorum, aut nam cumque incidunt excepturi."
-    }
-  ];
+const sample = [
+  { id: 1, name: 'Muluken Kassaw', rating: 5, time: '1 week ago', avatar: 'https://i.pravatar.cc/40?img=11', comment: 'Absolutely fantastic product. Build quality is exceptional and it arrived ahead of schedule. Would definitely purchase again and recommend to friends.', helpful: 24 },
+  { id: 2, name: 'Abel Alemu',     rating: 4, time: '3 weeks ago', avatar: 'https://i.pravatar.cc/40?img=8',  comment: 'Great product overall. Functions exactly as advertised. Minor packaging issue but the product itself is top notch. Very happy with the purchase.', helpful: 18 },
+  { id: 3, name: 'Mahder Belay',   rating: 5, time: '5 weeks ago', avatar: 'https://i.pravatar.cc/40?img=45', comment: 'Premium quality and great value. The design is modern and elegant. Highly recommend this to anyone who wants reliable performance at a fair price.', helpful: 31 },
+];
+
+const RatingBar = ({ stars, count, total }) => (
+  <div className="flex items-center gap-3 text-[12px]">
+    <span className="w-3 text-gray-600 font-semibold">{stars}</span>
+    <Star size={11} fill="#fbbf24" className="text-yellow-400 flex-shrink-0" />
+    <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+      <div
+        className="h-full bg-yellow-400 rounded-full transition-all"
+        style={{ width: `${total ? (count / total) * 100 : 0}%` }}
+      />
+    </div>
+    <span className="w-6 text-gray-400">{count}</span>
+  </div>
+);
+
+export default function ReviewsSection() {
+  const total = sample.length;
+  const avg = (sample.reduce((s, r) => s + r.rating, 0) / total).toFixed(1);
 
   return (
-    <div className="">
-      {/* Review List */}
-      <div className="space-y-8">
-        {reviews.map((review) => (
-          <div key={review.id} className="flex flex-col gap-3">
-            <div className="flex items-center gap-3">
-              <img 
-                src={review.avatar} 
-                alt={review.name} 
-                className="h-10 w-10 rounded-full object-cover"
-              />
-              <h4 className="text-lg font-semibold text-gray-800">{review.name}</h4>
-            </div>
-            
-            <div className="flex items-center gap-2">
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star 
-                    key={i} 
-                    size={14} 
-                    className={i < 5 ? "fill-brand-400 text-brand-400" : "text-gray-300"} 
-                  />
+    <div className="space-y-8">
+      {/* Summary */}
+      <div className="flex flex-col sm:flex-row gap-8 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+        <div className="text-center flex-shrink-0">
+          <p className="text-5xl font-black text-gray-900">{avg}</p>
+          <div className="flex gap-0.5 justify-center my-2">
+            {Array(5).fill(0).map((_, i) => (
+              <Star key={i} size={14} className={i < Math.round(avg) ? 'text-yellow-400' : 'text-gray-200'} fill={i < Math.round(avg) ? '#fbbf24' : '#e5e7eb'} />
+            ))}
+          </div>
+          <p className="text-[12px] text-gray-400">{total} reviews</p>
+        </div>
+        <div className="flex-1 space-y-2">
+          {[5, 4, 3, 2, 1].map((s) => (
+            <RatingBar key={s} stars={s} count={sample.filter((r) => r.rating === s).length} total={total} />
+          ))}
+        </div>
+      </div>
+
+      {/* Reviews */}
+      <div className="space-y-6">
+        {sample.map((r) => (
+          <div key={r.id} className="bg-white border border-gray-100 rounded-2xl p-5">
+            <div className="flex items-start justify-between gap-4 mb-3">
+              <div className="flex items-center gap-3">
+                <img src={r.avatar} alt={r.name} className="w-9 h-9 rounded-full object-cover" />
+                <div>
+                  <p className="text-[13px] font-bold text-gray-900">{r.name}</p>
+                  <p className="text-[11px] text-gray-400">{r.time}</p>
+                </div>
+              </div>
+              <div className="flex gap-0.5 flex-shrink-0">
+                {Array(5).fill(0).map((_, i) => (
+                  <Star key={i} size={12} className={i < r.rating ? 'text-yellow-400' : 'text-gray-200'} fill={i < r.rating ? '#fbbf24' : '#e5e7eb'} />
                 ))}
               </div>
-              <span className="text-sm font-medium text-gray-600">{review.rating}</span>
-              <span className="text-sm text-gray-400">{review.time}</span>
             </div>
-
-            <p className="max-w-3xl text-sm leading-relaxed text-gray-500">
-              {review.comment}
-            </p>
+            <p className="text-[13px] text-gray-600 leading-relaxed mb-4">{r.comment}</p>
+            <div className="flex items-center gap-3 text-[11px] text-gray-400">
+              <span>Helpful?</span>
+              <button className="flex items-center gap-1 hover:text-green-600 transition-colors">
+                <ThumbsUp size={12} /> {r.helpful}
+              </button>
+              <button className="flex items-center gap-1 hover:text-red-500 transition-colors">
+                <ThumbsDown size={12} />
+              </button>
+            </div>
           </div>
         ))}
       </div>
 
-     <ReviewForm />
+      <ReviewForm />
     </div>
   );
-};
-
-export default ReviewsSection;
+}
