@@ -2,8 +2,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Star, Heart, Eye, Minus, Plus, CheckCircle2 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import Swal from 'sweetalert2';
+import { useLangCurrency } from '../context/LanguageCurrencyContext';
 
 const ProductHero = ({ product }) => {
+  const { formatPrice } = useLangCurrency();
   // Extract data fields matching your specific schema with fallback safety
   const id = product?.id;
   const brandName = product?.brand || 'Queen Sheba Kids';
@@ -165,7 +167,7 @@ const ProductHero = ({ product }) => {
           {/* Price & Stock Display */}
           <div className="flex items-center gap-3 mb-4">
             <span className="font-serif text-2xl font-bold text-gray-900">
-              {typeof rawPrice === 'number' ? `$${rawPrice.toFixed(2)}` : rawPrice}
+              {typeof rawPrice === 'number' ? formatPrice(rawPrice) : rawPrice}
             </span>
             {originalPrice && (
               <span className="text-xs text-gray-400 line-through font-serif">

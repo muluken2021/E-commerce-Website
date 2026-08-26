@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Lock, ChevronDown, CheckCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useLangCurrency } from '../context/LanguageCurrencyContext';
 
 export default function CheckoutPage() {
   const [step, setStep] = useState(1);
@@ -23,6 +24,7 @@ export default function CheckoutPage() {
   });
 
   const { cartItems, totalAmount } = useCart();
+  const { formatPrice } = useLangCurrency();
 
   const handleInputChange = (key) => (e) => {
     setForm((prev) => ({ ...prev, [key]: e.target.value }));
@@ -270,7 +272,7 @@ export default function CheckoutPage() {
                 </div>
 
                 <div className="font-serif text-xs text-gray-800 font-medium">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  {formatPrice(item.price * item.quantity)}
                 </div>
               </div>
             ))}
@@ -294,15 +296,15 @@ export default function CheckoutPage() {
           <div className="space-y-2.5 pt-4 border-t border-gray-200 text-xs text-gray-600">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="font-medium text-gray-800">${totalAmount.toFixed(2)}</span>
+              <span className="font-medium text-gray-800">{formatPrice(totalAmount)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span className="font-medium text-gray-800">${shippingCost.toFixed(2)}</span>
+              <span className="font-medium text-gray-800">{formatPrice(shippingCost)}</span>
             </div>
             <div className="flex justify-between font-serif text-sm font-medium text-gray-800 pt-2 border-t border-gray-200">
               <span>Total</span>
-              <span>${grandTotal.toFixed(2)}</span>
+              <span>{formatPrice(grandTotal)}</span>
             </div>
           </div>
 

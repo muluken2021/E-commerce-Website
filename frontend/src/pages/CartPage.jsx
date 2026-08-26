@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { assets } from '../assets/assets';
 import Swal from 'sweetalert2';
+import { useLangCurrency } from '../context/LanguageCurrencyContext';
 
 const CartPage = () => {
   const { cartItems, addItem, removeItem, updateQuantity, clearCart, totalAmount } = useCart();
+  const { t, formatPrice } = useLangCurrency();
   const [giftWrap, setGiftWrap] = useState(false);
 
   const toast = (icon, title) =>
@@ -48,14 +50,14 @@ const CartPage = () => {
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 py-16 bg-white">
         <img src={assets.empitycart} alt="Empty cart" className="w-56 sm:w-72 mb-8 opacity-80" />
-        <h2 className="font-serif text-2xl font-medium text-gray-800 mb-2">Your cart is empty</h2>
+        <h2 className="font-serif text-2xl font-medium text-gray-800 mb-2">{t('cartEmpty')}</h2>
         <p className="text-gray-400 text-xs sm:text-sm max-w-sm mb-8 leading-relaxed">
-          Looks like you haven't added anything yet. Explore our products and find something you love.
+          {t('cartEmptyDesc')}
         </p>
         <Link to="/products">
           <button className="flex items-center gap-2.5 bg-[#AA061B] hover:bg-[#760312] text-white px-8 py-3 rounded-lg font-medium text-xs tracking-wider uppercase transition-all shadow-md">
             <ShoppingBag size={16} />
-            Start Shopping
+            {t('startShopping')}
             <ArrowRight size={14} />
           </button>
         </Link>
@@ -69,21 +71,21 @@ const CartPage = () => {
         {/* Header with Breadcrumb */}
         <div className="text-center mb-12">
           <h1 className="font-serif text-3xl md:text-4xl font-medium text-gray-800 tracking-tight">
-            Shopping Cart
+            {t('shoppingCart')}
           </h1>
           <div className="flex items-center justify-center gap-2 text-[11px] text-gray-400 mt-2 font-light">
-            <Link to="/" className="hover:text-black transition-colors">Home</Link>
+            <Link to="/" className="hover:text-black transition-colors">{t('home')}</Link>
             <span>&gt;</span>
-            <span className="text-gray-600">Your Shopping Cart</span>
+            <span className="text-gray-600">{t('yourShoppingCart')}</span>
           </div>
         </div>
 
         {/* Table Header */}
         <div className="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-gray-200 text-xs font-serif text-gray-800">
-          <div className="col-span-6">Product</div>
-          <div className="col-span-2 text-center">Price</div>
-          <div className="col-span-2 text-center">Quantity</div>
-          <div className="col-span-2 text-right">Total</div>
+          <div className="col-span-6">{t('product')}</div>
+          <div className="col-span-2 text-center">{t('price')}</div>
+          <div className="col-span-2 text-center">{t('quantity')}</div>
+          <div className="col-span-2 text-right">{t('total')}</div>
         </div>
 
         {/* Cart Items List */}
@@ -118,15 +120,15 @@ const CartPage = () => {
                       onClick={() => handleRemove(item.id)}
                       className="text-xs text-gray-400 underline hover:text-red-500 transition-colors mt-3 text-left w-fit cursor-pointer"
                     >
-                      Remove
+                      {t('remove')}
                     </button>
                   </div>
                 </div>
 
                 {/* Price */}
                 <div className="md:col-span-2 text-left md:text-center font-serif text-sm text-gray-800">
-                  <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">Price:</span>
-                  ${itemPrice.toFixed(2)}
+                  <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">{t('price')}:</span>
+                  {formatPrice(itemPrice)}
                 </div>
 
                 {/* Quantity Counter */}
@@ -146,8 +148,8 @@ const CartPage = () => {
 
                 {/* Total */}
                 <div className="md:col-span-2 text-left md:text-right font-serif text-sm text-gray-800 font-medium">
-                  <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">Total:</span>
-                  ${(itemPrice * item.quantity).toFixed(2)}
+                  <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">{t('total')}:</span>
+                  {formatPrice(itemPrice * item.quantity)}
                 </div>
 
               </div>
@@ -167,26 +169,26 @@ const CartPage = () => {
               className="w-4 h-4 rounded border-gray-300 text-black focus:ring-0 cursor-pointer accent-black"
             />
             <span>
-              For <strong className="font-semibold text-gray-800">$10.00</strong> Please Wrap The Product
+              {t('for')} <strong className="font-semibold text-gray-800">{formatPrice(10)}</strong> {t('giftWrap')}
             </span>
           </label>
 
           <div className="w-full max-w-sm pt-4 border-t border-gray-100 flex flex-col gap-5">
             {/* Subtotal */}
             <div className="flex items-center justify-between font-serif text-base text-gray-800">
-              <span>Subtotal</span>
-              <span className="font-medium">${subtotal.toFixed(2)}</span>
+              <span>{t('subtotal')}</span>
+              <span className="font-medium">{formatPrice(subtotal)}</span>
             </div>
 
             {/* Action Buttons */}
             <div className="flex flex-col gap-3 text-center">
               <Link to="/checkout" className="w-full">
                 <button className="w-full bg-black text-white text-xs font-medium py-3.5 rounded shadow hover:bg-gray-800 transition-colors cursor-pointer">
-                  Checkout
+                  {t('checkout')}
                 </button>
               </Link>
               <Link to="/cart" className="text-xs text-gray-800 font-serif underline hover:text-gray-500 transition-colors">
-                View Cart
+                {t('viewCart')}
               </Link>
             </div>
           </div>

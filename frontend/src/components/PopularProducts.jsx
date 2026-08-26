@@ -3,27 +3,32 @@ import { Link } from 'react-router-dom';
 import { Star } from 'lucide-react';
 import { newArrivalsData, categories } from "../utils/newArrivalsData.js";
 import ProductCard from './ProductCard.jsx';
+import { useLangCurrency } from '../context/LanguageCurrencyContext';
 
 export default function NewArrivals() {
+  const { t, formatPrice, language } = useLangCurrency();
   const [activeTab, setActiveTab] = useState("Women's Fashion");
 
-  const filteredProducts = newArrivalsData.filter(
-    (item) => item.category === activeTab
-  );
+  const filteredProducts = newArrivalsData.filter((item) => item.category === activeTab);
+
+  const parsePrice = (val) => {
+    if (typeof val === 'number') return val;
+    return parseFloat(String(val).replace(/[^0-9.]/g, '')) || 0;
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 bg-white">
-      {/* ── Header ── */}
+      {/* Header */}
       <div className="text-center mb-10 max-w-xl mx-auto">
         <h2 className="font-serif text-3xl md:text-4xl font-medium text-gray-800 tracking-tight">
-          New Arrivals
+          {t('newArrivalsTitle')}
         </h2>
         <p className="text-xs md:text-sm text-gray-400 mt-3 leading-relaxed">
-          Discover our latest handwoven traditional fashion items crafted for elegance and everyday wear.
+          {t('newArrivalsDesc')}
         </p>
       </div>
 
-      {/* ── Filter Tabs ── */}
+      {/* Filter Tabs */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
         {categories.map((cat) => (
           <button
@@ -40,9 +45,7 @@ export default function NewArrivals() {
         ))}
       </div>
 
-     
-
-      {/* ── Product Grid ── */}
+      {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12 min-h-[350px]">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((item) => (
@@ -51,7 +54,6 @@ export default function NewArrivals() {
               key={item.id}
               className="bg-white rounded-2xl overflow-hidden p-4 shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-gray-100 transition-all duration-300 hover:-translate-y-1 block group"
             >
-              {/* Product Image */}
               <div className="w-full h-72 rounded-xl overflow-hidden bg-gray-100 mb-4">
                 <img
                   src={item.image}
@@ -59,33 +61,27 @@ export default function NewArrivals() {
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-
-              {/* Content Details */}
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-gray-800 group-hover:text-[#AA061B] transition-colors">
-                    {item.title}
+                    {language === 'am' ? (item.title_am || item.title) : item.title}
                   </h3>
-                  {/* Star Rating */}
                   <div className="flex items-center gap-0.5 text-amber-400">
                     {[...Array(item.rating)].map((_, i) => (
                       <Star key={i} size={12} fill="currentColor" stroke="none" />
                     ))}
                   </div>
                 </div>
-
                 <p className="text-[11px] text-gray-400 font-medium">{item.brand}</p>
-                
-             <p className="text-[10px] text-gray-400 pt-1">
-                ({item.reviewsCount}) Customer Reviews
-              </p>
-
+                <p className="text-[10px] text-gray-400 pt-1">
+                  ({item.reviewsCount}) {t('customerReviews')}
+                </p>
                 <div className="flex items-center justify-between pt-2">
                   <span className="text-base font-bold text-gray-900">
-                    {item.price}
+                    {formatPrice(parsePrice(item.price))}
                   </span>
                   <span className="text-[10px] font-medium text-rose-400">
-                    {item.stockStatus}
+                    {language === 'am' ? (item.stockStatus_am || item.stockStatus) : item.stockStatus}
                   </span>
                 </div>
               </div>
@@ -98,11 +94,11 @@ export default function NewArrivals() {
         )}
       </div>
 
-      {/* ── CTA Button ── */}
+      {/* CTA */}
       <div className="flex justify-center">
         <Link to="/products">
-          <button className="bg-[#AA061B] text-white text-xs font-semibold px-10 py-3.5 rounded-lg shadow-md hover:bg-[#8d0517]  transition-colors cursor-pointer">
-            View More
+          <button className="bg-[#AA061B] text-white text-xs font-semibold px-10 py-3.5 rounded-lg shadow-md hover:bg-[#8d0517] transition-colors cursor-pointer">
+            {t('viewMore')}
           </button>
         </Link>
       </div>

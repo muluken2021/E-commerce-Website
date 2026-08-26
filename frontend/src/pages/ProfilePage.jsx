@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   User,
-  Ticket,
   ShoppingBag,
   CreditCard,
   LogOut,
@@ -9,8 +8,10 @@ import {
   Calendar,
   ChevronDown,
 } from "lucide-react";
+import { useLangCurrency } from "../context/LanguageCurrencyContext";
 
 const ProfilePage = () => {
+  const { t } = useLangCurrency();
   const [activeTab, setActiveTab] = useState("Personal");
 
   const [formData, setFormData] = useState({
@@ -44,9 +45,9 @@ const ProfilePage = () => {
   };
 
   const sidebarItems = [
-    { icon: <User size={18} />, label: "Personal" },
-    { icon: <ShoppingBag size={18} />, label: "Orders" },
-    { icon: <CreditCard size={18} />, label: "Payment" },
+    { icon: <User size={18} />, labelKey: "personal" },
+    { icon: <ShoppingBag size={18} />, labelKey: "orders" },
+    { icon: <CreditCard size={18} />, labelKey: "payment" },
   ];
 
   return (
@@ -92,16 +93,16 @@ const ProfilePage = () => {
 
             {sidebarItems.map((item) => (
               <button
-                key={item.label}
-                onClick={() => setActiveTab(item.label)}
+                key={item.labelKey}
+                onClick={() => setActiveTab(item.labelKey)}
                 className={`flex items-center gap-3 rounded-xl px-3 md:px-4 py-2 md:py-3 text-sm font-semibold whitespace-nowrap transition-all ${
-                  activeTab === item.label
+                  activeTab === item.labelKey
                     ? "bg-white text-brand-500 shadow-sm"
                     : "text-gray-500 hover:bg-white/50 hover:text-gray-800"
                 }`}
               >
                 {item.icon}
-                {item.label}
+                {t(item.labelKey)}
               </button>
             ))}
 
@@ -109,7 +110,7 @@ const ProfilePage = () => {
             <div className="md:pt-10">
               <button className="flex items-center gap-3 px-3 md:px-4 py-2 md:py-3 text-sm font-semibold text-gray-500 hover:text-red-500 transition-colors whitespace-nowrap">
                 <LogOut size={18} />
-                Logout
+                {t('logout')}
               </button>
             </div>
           </nav>
@@ -118,217 +119,89 @@ const ProfilePage = () => {
         {/* ---------- MAIN CONTENT ---------- */}
         <main className="flex-1 w-full">
 
-          {activeTab === "Personal" && (
+          {activeTab === "personal" && (
             <section>
-              <h1 className="mb-6 md:mb-8 text-xl md:text-2xl font-bold">
-                Personal
-              </h1>
-
-              {/* Form */}
+              <h1 className="mb-6 md:mb-8 text-xl md:text-2xl font-bold">{t('personal')}</h1>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-
-                {/* First Name */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    First name
-                  </label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('firstName')}</label>
+                  <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* Last Name */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('lastName')}</label>
+                  <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* Email */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('emailAddress2')}</label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* Phone */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Phone number
-                  </label>
-                  <input
-                    type="text"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('phoneNumber2')}</label>
+                  <input type="text" name="phone" value={formData.phone} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* Birthday */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Birthday
-                  </label>
+                  <label className="text-xs font-bold text-gray-400">{t('birthday')}</label>
                   <div className="relative">
-                    <input
-                      type="text"
-                      name="birthday"
-                      value={formData.birthday}
-                      onChange={handleChange}
-                      className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                    />
-                    <Calendar
-                      size={18}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
+                    <input type="text" name="birthday" value={formData.birthday} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
+                    <Calendar size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   </div>
                 </div>
-
-                {/* Gender */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Gender
-                  </label>
+                  <label className="text-xs font-bold text-gray-400">{t('gender')}</label>
                   <div className="relative">
-                    <select
-                      name="gender"
-                      value={formData.gender}
-                      onChange={handleChange}
-                      className="w-full appearance-none rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                    >
+                    <select name="gender" value={formData.gender} onChange={handleChange} className="w-full appearance-none rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300">
                       <option>Male</option>
                       <option>Female</option>
                     </select>
-                    <ChevronDown
-                      size={18}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
+                    <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   </div>
                 </div>
-
-                {/* Street */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Street address
-                  </label>
-                  <input
-                    type="text"
-                    name="street"
-                    value={formData.street}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('streetAddress')}</label>
+                  <input type="text" name="street" value={formData.street} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* Zip */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Zip/code
-                  </label>
-                  <input
-                    type="text"
-                    name="zip"
-                    value={formData.zip}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('zipCode')}</label>
+                  <input type="text" name="zip" value={formData.zip} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* City */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    City
-                  </label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <label className="text-xs font-bold text-gray-400">{t('city')}</label>
+                  <input type="text" name="city" value={formData.city} onChange={handleChange} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
-
-                {/* Country */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-400">
-                    Country
-                  </label>
+                  <label className="text-xs font-bold text-gray-400">{t('country')}</label>
                   <div className="relative">
-                    <select
-                      name="country"
-                      value={formData.country}
-                      onChange={handleChange}
-                      className="w-full appearance-none rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                    >
+                    <select name="country" value={formData.country} onChange={handleChange} className="w-full appearance-none rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300">
                       <option></option>
                     </select>
-                    <ChevronDown
-                      size={18}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
+                    <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   </div>
                 </div>
               </div>
 
-              {/* Change Password */}
               <div className="mt-10 md:mt-12 border-t border-gray-300 pt-6 md:pt-8">
-                <h3 className="text-lg md:text-xl font-bold mb-4">
-                  Change Password
-                </h3>
-
+                <h3 className="text-lg md:text-xl font-bold mb-4">{t('changePassword')}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                  <input
-                    type="password"
-                    placeholder="Current password"
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
-                  <input
-                    type="password"
-                    placeholder="New password"
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
-                  <input
-                    type="password"
-                    placeholder="Confirm new password"
-                    className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300"
-                  />
+                  <input type="password" placeholder={t('currentPassword')} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
+                  <input type="password" placeholder={t('newPassword')} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
+                  <input type="password" placeholder={t('confirmNewPassword')} className="w-full rounded-xl bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-1 focus:ring-brand-300" />
                 </div>
               </div>
 
-              {/* Save Button */}
               <div className="mt-10 flex justify-center md:justify-end">
                 <button className="w-full md:w-auto rounded-xl bg-brand-500 px-8 py-3 font-bold text-white hover:bg-black active:scale-95">
-                  Save changes
+                  {t('saveChanges')}
                 </button>
               </div>
             </section>
           )}
 
           {/* Other Tabs */}
-          {activeTab !== "Personal" && (
+          {activeTab !== "personal" && (
             <section>
-              <h1 className="text-xl md:text-2xl font-bold">{activeTab}</h1>
+              <h1 className="text-xl md:text-2xl font-bold">{t(activeTab)}</h1>
               <p className="mt-4 text-gray-600">
-                Content for {activeTab} will appear here.
+                {t('contentFor')} {t(activeTab)} {t('willAppear')}
               </p>
             </section>
           )}

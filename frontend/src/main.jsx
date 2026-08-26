@@ -4,13 +4,16 @@ import './index.css';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom'; 
 import { CartProvider } from './context/CartContext.jsx';
+import { LanguageCurrencyProvider } from './context/LanguageCurrencyContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-     <CartProvider>
-      <App />
-     </CartProvider>
+      <LanguageCurrencyProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </LanguageCurrencyProvider>
     </BrowserRouter>
   </StrictMode>,
 );

@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Eye, ShoppingCart, Star } from 'lucide-react';
+import { useLangCurrency } from '../context/LanguageCurrencyContext';
 
 const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
-  // Normalize dataset fields (title/name, image/img, price formatting)
+  const { t, formatPrice, language } = useLangCurrency();
+
+  // Pick localised fields based on active language
   const id = product.id;
-  const name = product.title || product.name || 'Untitled Product';
+  const name = language === 'am'
+    ? (product.title_am || product.name_am || product.title || product.name || 'ምርት')
+    : (product.title || product.name || 'Untitled Product');
   const brand = product.brand || '';
   const img = product.image || product.img || '';
   const price = product.price ?? 0;
   const origPrice = product.origPrice;
   const rating = product.rating || 0;
   const reviews = product.reviewsCount || '';
-  const stockStatus = product.stockStatus || '';
+  const rawStock = language === 'am'
+    ? (product.stockStatus_am || product.stockStatus || '')
+    : (product.stockStatus || '');
   const discount = product.discount;
   const colors = product.colors || [];
 
-  const isSoldOut = product.isSoldOut || stockStatus.toLowerCase() === 'sold out';
-  const isAlmostSoldOut = stockStatus.toLowerCase() === 'almost sold out';
-  const isLimitedOffer = stockStatus.toLowerCase() === 'limited time offer';
+  const stockLower = (product.stockStatus || '').toLowerCase();
+  const isSoldOut      = product.isSoldOut || stockLower === 'sold out';
+  const isAlmostSoldOut= stockLower === 'almost sold out';
+  const isLimitedOffer = stockLower === 'limited time offer';
 
   const [imgSrc, setImgSrc] = useState(img);
   const [errored, setErrored] = useState(false);
@@ -38,10 +46,12 @@ const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
     }
   };
 
+  // Convert a raw price value (always stored as USD base) to the selected currency
   const renderPrice = (val) => {
-    if (typeof val === 'number') return `$${val.toFixed(2)}`;
-    if (typeof val === 'string') return val.startsWith('$') ? val : `$${val}`;
-    return '$0.00';
+    const num = typeof val === 'number'
+      ? val
+      : parseFloat(String(val).replace(/[^0-9.]/g, '')) || 0;
+    return formatPrice(num);
   };
 
   return (
@@ -62,7 +72,7 @@ const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
         {isSoldOut ? (
           <div className="absolute inset-0 bg-black/20 flex items-center justify-center pointer-events-none">
             <span className="w-16 h-16 rounded-full bg-black/70 text-white text-[10px] font-medium tracking-wider uppercase flex items-center justify-center text-center p-1 backdrop-blur-xs">
-              Sold Out
+              {t('soldOut')}
             </span>
           </div>
         ) : (
@@ -74,12 +84,12 @@ const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
             )}
             {isAlmostSoldOut && (
               <span className="bg-amber-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider shadow-xs">
-                Almost Sold Out
+                {t('almostSoldOut')}
               </span>
             )}
             {isLimitedOffer && (
               <span className="bg-black text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider shadow-xs">
-                Limited Offer
+                {t('limitedOffer')}
               </span>
             )}
           </div>
@@ -126,7 +136,7 @@ const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
               className="w-full py-2 bg-white/95 hover:bg-black text-gray-900 hover:text-white text-xs font-medium tracking-wide rounded-xs shadow-sm transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm"
             >
               <ShoppingCart size={13} />
-              Add to Cart
+              {t('addToCart')}
             </button>
           </div>
         )}
