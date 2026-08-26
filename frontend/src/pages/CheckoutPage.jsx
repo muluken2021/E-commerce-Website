@@ -1,47 +1,51 @@
 import React, { useState } from 'react';
-import { CreditCard, Wallet, Lock, ChevronDown, CheckCircle } from 'lucide-react';
+import { Lock, ChevronDown, CheckCircle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import PaymentTabs from '../components/PaymentMethods/PaymentTabs';
-import CardPayment from '../components/PaymentMethods/CardPayment';
-import ChapaPayment from '../components/PaymentMethods/ChapaPayment';
-
-const Field = ({ label, type = 'text', placeholder, value, onChange, required }) => (
-  <div className="space-y-1.5">
-    <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block">{label}</label>
-    <input
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      required={required}
-      className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm outline-none focus:border-brand-600 focus:bg-white transition-all"
-    />
-  </div>
-);
 
 export default function CheckoutPage() {
-  const [method, setMethod] = useState('card');
-  const [step, setStep] = useState(1); // 1 = shipping, 2 = payment, 3 = confirmation
-  const [form, setForm] = useState({ name: '', phone: '', email: '', country: '', address: '', zip: '' });
-  const { cartItems, totalAmount, clearCart } = useCart();
+  const [step, setStep] = useState(1);
+  const [discountCode, setDiscountCode] = useState('');
+  const [saveInfoDelivery, setSaveInfoDelivery] = useState(false);
+  const [saveInfoPayment, setSaveInfoPayment] = useState(false);
 
-  const f = (key) => (e) => setForm((p) => ({ ...p, [key]: e.target.value }));
-  const shipping = totalAmount > 200 ? 0 : 15;
-  const tax = +(totalAmount * 0.08).toFixed(2);
-  const grand = +(totalAmount + shipping + tax).toFixed(2);
+  const [form, setForm] = useState({
+    email: '',
+    country: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    postalCode: '',
+    cardNumber: '',
+    expirationDate: '',
+    securityCode: '',
+    cardHolderName: '',
+  });
+
+  const { cartItems, totalAmount } = useCart();
+
+  const handleInputChange = (key) => (e) => {
+    setForm((prev) => ({ ...prev, [key]: e.target.value }));
+  };
+
+  const shippingCost = 40.0;
+  const grandTotal = totalAmount + shippingCost;
 
   if (step === 3) {
     return (
-      <div className="min-h-[70vh] flex items-center justify-center px-4">
+      <div className="min-h-[70vh] flex items-center justify-center px-4 bg-white">
         <div className="text-center max-w-sm">
           <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5">
             <CheckCircle size={36} className="text-green-500" />
           </div>
-          <h2 className="text-2xl font-black text-gray-900 mb-2">Order Placed!</h2>
-          <p className="text-gray-400 text-sm mb-8">
+          <h2 className="font-serif text-2xl font-medium text-gray-800 mb-2">Order Placed!</h2>
+          <p className="text-gray-400 text-xs sm:text-sm mb-8 leading-relaxed">
             Thanks for your order. We'll send a confirmation to your email and ship within 2-3 business days.
           </p>
-          <a href="/" className="inline-block bg-brand-800 hover:bg-brand-700 text-white px-10 py-3 rounded-xl font-bold text-sm transition-all">
+          <a
+            href="/"
+            className="inline-block bg-black hover:bg-gray-800 text-white px-8 py-3 rounded text-xs font-medium uppercase tracking-wider transition-all"
+          >
             Continue Shopping
           </a>
         </div>
@@ -50,151 +54,258 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 min-h-screen">
-      <h1 className="text-2xl font-black text-gray-900 mb-8">Checkout</h1>
+    <div className="w-full bg-white min-h-screen text-gray-800 font-sans">
+      {/* Page Title Header */}
+      <div className="py-8 text-center border-b border-gray-100">
+        <h1 className="font-serif text-3xl md:text-4xl font-medium tracking-wide text-gray-800">
+          FASCO Demo Checkout
+        </h1>
+      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* ── Left ── */}
-        <div className="lg:col-span-2 space-y-5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12">
+        {/* ── Left Column: Checkout Forms ── */}
+        <div className="lg:col-span-7 px-6 sm:px-10 lg:px-16 py-10 border-r border-gray-100 space-y-10">
+          
+          {/* Section: Contact */}
+          <section className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="font-serif text-2xl font-medium text-gray-800">Contact</h2>
+              <span className="text-xs text-gray-400">
+                Have an account?{' '}
+                <a href="#" className="text-blue-500 hover:underline">
+                  Create Account
+                </a>
+              </span>
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={form.email}
+                onChange={handleInputChange('email')}
+                className="w-full border border-gray-300 rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+              />
+            </div>
+          </section>
 
-          {/* Shipping */}
-          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-            <button
-              onClick={() => setStep(step === 1 ? 0 : 1)}
-              className="w-full flex items-center justify-between px-6 py-5"
-            >
-              <div className="flex items-center gap-3">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-black transition-colors ${step >= 1 ? 'bg-brand-800 text-white' : 'bg-gray-100 text-gray-500'}`}>
-                  1
-                </div>
-                <span className="font-bold text-gray-900 text-[15px]">Shipping Address</span>
+          {/* Section: Delivery */}
+          <section className="space-y-4">
+            <h2 className="font-serif text-2xl font-medium text-gray-800">Delivery</h2>
+            <div className="space-y-3">
+              <div className="relative">
+                <select
+                  value={form.country}
+                  onChange={handleInputChange('country')}
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-xs text-gray-500 outline-none focus:border-gray-500 appearance-none bg-white cursor-pointer"
+                >
+                  <option value="">Country / Region</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="USA">USA</option>
+                  <option value="UK">UK</option>
+                  <option value="UAE">UAE</option>
+                </select>
+                <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
               </div>
-              <ChevronDown size={16} className={`text-gray-400 transition-transform ${step === 1 ? 'rotate-180' : ''}`} />
-            </button>
 
-            {step === 1 && (
-              <div className="px-6 pb-6 border-t border-gray-100">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                  <Field label="Full Name"     placeholder="John Doe"           value={form.name}    onChange={f('name')}    required />
-                  <Field label="Phone Number"  placeholder="+1 234 567 8900"    value={form.phone}   onChange={f('phone')}   required />
-                  <Field label="Email Address" placeholder="you@email.com" type="email" value={form.email} onChange={f('email')} required />
-                  <div className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider block">Country</label>
-                    <div className="relative">
-                      <select
-                        value={form.country}
-                        onChange={f('country')}
-                        className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-600 outline-none focus:border-brand-600 appearance-none"
-                      >
-                        <option value="">Select Country</option>
-                        {['Ethiopia', 'USA', 'UK', 'UAE', 'Germany', 'France'].map((c) => (
-                          <option key={c}>{c}</option>
-                        ))}
-                      </select>
-                      <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  value={form.firstName}
+                  onChange={handleInputChange('firstName')}
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  value={form.lastName}
+                  onChange={handleInputChange('lastName')}
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+              </div>
+
+              <input
+                type="text"
+                placeholder="Address"
+                value={form.address}
+                onChange={handleInputChange('address')}
+                className="w-full border border-gray-300 rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  placeholder="City"
+                  value={form.city}
+                  onChange={handleInputChange('city')}
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+                <input
+                  type="text"
+                  placeholder="Postal Code"
+                  value={form.postalCode}
+                  onChange={handleInputChange('postalCode')}
+                  className="w-full border border-gray-300 rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+              </div>
+
+              <label className="flex items-center gap-2 cursor-pointer pt-1 text-xs text-gray-500 select-none">
+                <input
+                  type="checkbox"
+                  checked={saveInfoDelivery}
+                  onChange={(e) => setSaveInfoDelivery(e.target.checked)}
+                  className="w-4 h-4 rounded border-gray-300 text-black focus:ring-0 accent-black cursor-pointer"
+                />
+                <span>Save This Info For Future</span>
+              </label>
+            </div>
+          </section>
+
+          {/* Section: Payment */}
+          <section className="space-y-4">
+            <h2 className="font-serif text-2xl font-medium text-gray-800">Payment</h2>
+
+            <div className="bg-gray-50/50 border border-gray-200 rounded p-4 space-y-3">
+              <div className="relative">
+                <div className="w-full border border-gray-300 bg-white rounded px-4 py-3 text-xs flex items-center justify-between">
+                  <span className="text-gray-700">Credit Card</span>
+                  <div className="flex items-center gap-1.5">
+                    {/* Simulated Master/Visa badge */}
+                    <div className="flex -space-x-1">
+                      <div className="w-3.5 h-3.5 rounded-full bg-red-500 opacity-90"></div>
+                      <div className="w-3.5 h-3.5 rounded-full bg-amber-400 opacity-90"></div>
                     </div>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <Field label="Street Address" placeholder="123 Main Street" value={form.address} onChange={f('address')} required />
-                  </div>
-                  <Field label="Zip / Postal Code" placeholder="10001" value={form.zip} onChange={f('zip')} />
-                </div>
-                <div className="mt-5 flex justify-end">
-                  <button
-                    onClick={() => setStep(2)}
-                    className="bg-brand-800 hover:bg-brand-700 text-white px-8 py-2.5 rounded-xl font-bold text-sm transition-all active:scale-[0.97]"
-                  >
-                    Continue to Payment →
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Payment */}
-          <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-            <button
-              onClick={() => setStep(step === 2 ? 1 : 2)}
-              className="w-full flex items-center justify-between px-6 py-5"
-            >
-              <div className="flex items-center gap-3">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-black transition-colors ${step >= 2 ? 'bg-brand-800 text-white' : 'bg-gray-100 text-gray-500'}`}>
-                  2
-                </div>
-                <span className="font-bold text-gray-900 text-[15px]">Payment Method</span>
-              </div>
-              <ChevronDown size={16} className={`text-gray-400 transition-transform ${step === 2 ? 'rotate-180' : ''}`} />
-            </button>
-
-            {step === 2 && (
-              <div className="px-6 pb-6 border-t border-gray-100">
-                <div className="mt-5">
-                  <PaymentTabs selectedMethod={method} setSelectedMethod={setMethod} />
-                  <div className="mt-5">
-                    {method === 'card' && <CardPayment />}
-                    {method === 'chapa' && <ChapaPayment />}
+                    <ChevronDown size={14} className="text-gray-400 ml-1" />
                   </div>
                 </div>
-
-                {/* Security note */}
-                <div className="flex items-center gap-2 mt-5 text-[12px] text-gray-400 bg-gray-50 rounded-xl px-4 py-3">
-                  <Lock size={13} className="text-green-500 flex-shrink-0" />
-                  Your payment information is encrypted and secure.
-                </div>
               </div>
-            )}
-          </div>
+
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Card Number"
+                  value={form.cardNumber}
+                  onChange={handleInputChange('cardNumber')}
+                  className="w-full border border-gray-300 bg-white rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+                <Lock size={13} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <input
+                  type="text"
+                  placeholder="Expiration Date"
+                  value={form.expirationDate}
+                  onChange={handleInputChange('expirationDate')}
+                  className="w-full border border-gray-300 bg-white rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+                <input
+                  type="text"
+                  placeholder="Security Code"
+                  value={form.securityCode}
+                  onChange={handleInputChange('securityCode')}
+                  className="w-full border border-gray-300 bg-white rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+                />
+              </div>
+
+              <input
+                type="text"
+                placeholder="Card Holder Name"
+                value={form.cardHolderName}
+                onChange={handleInputChange('cardHolderName')}
+                className="w-full border border-gray-300 bg-white rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+              />
+
+              <label className="flex items-center gap-2 cursor-pointer pt-1 text-xs text-gray-500 select-none">
+                <input
+                  type="checkbox"
+                  checked={saveInfoPayment}
+                  onChange={(e) => setSaveInfoPayment(e.target.checked)}
+                  className="w-4 h-4 rounded border-gray-300 text-black focus:ring-0 accent-black cursor-pointer"
+                />
+                <span>Save This Info For Future</span>
+              </label>
+            </div>
+          </section>
+
+          {/* Pay Now Button */}
+          <button
+            onClick={() => setStep(3)}
+            className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded text-xs font-medium uppercase tracking-wider transition-all shadow-md"
+          >
+            Pay Now
+          </button>
+
+          {/* Copyright Note */}
+          <p className="text-center text-[10px] text-gray-400 pt-4">
+            Copyright © 2026 FASCO . All Rights Reserved.
+          </p>
         </div>
 
-        {/* ── Right: Summary ── */}
-        <div className="h-fit bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 lg:sticky lg:top-20">
-          <h3 className="font-black text-gray-900 text-[15px]">Order Summary</h3>
-
-          {/* Items */}
-          <div className="space-y-3 max-h-64 overflow-y-auto pr-1">
+        {/* ── Right Column: Order Summary ── */}
+        <div className="lg:col-span-5 bg-gray-50/70 px-6 sm:px-10 lg:px-12 py-10 space-y-6">
+          
+          {/* Cart Items List */}
+          <div className="space-y-4">
             {cartItems.map((item) => (
-              <div key={item.id} className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 flex-shrink-0">
-                  <img src={item.img} alt={item.name} className="max-h-10 max-w-10 object-contain mix-blend-multiply" />
+              <div key={item.id} className="flex items-center justify-between gap-4">
+                <div className="relative w-16 h-20 bg-gray-200 rounded overflow-hidden flex-shrink-0">
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <span className="absolute top-1 right-1 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center text-[10px] font-medium">
+                    {item.quantity}
+                  </span>
                 </div>
+
                 <div className="flex-1 min-w-0">
-                  <p className="text-[12.5px] font-semibold text-gray-800 line-clamp-1">{item.name}</p>
-                  <p className="text-[11px] text-gray-400">Qty: {item.quantity}</p>
+                  <h4 className="font-serif text-xs text-gray-800 font-medium line-clamp-1">
+                    {item.name}
+                  </h4>
+                  <p className="text-[11px] text-gray-400 mt-0.5">
+                    {item.color || 'Red'}
+                  </p>
                 </div>
-                <span className="text-[13px] font-bold text-gray-800 flex-shrink-0">
+
+                <div className="font-serif text-xs text-gray-800 font-medium">
                   ${(item.price * item.quantity).toFixed(2)}
-                </span>
+                </div>
               </div>
             ))}
           </div>
 
-          {/* Totals */}
-          <div className="border-t border-gray-100 pt-4 space-y-2 text-[13px]">
-            <div className="flex justify-between text-gray-600">
-              <span>Subtotal</span><span className="font-semibold">${totalAmount.toFixed(2)}</span>
+          {/* Discount Code Input */}
+          <div className="flex gap-2 pt-2">
+            <input
+              type="text"
+              placeholder="Discount code"
+              value={discountCode}
+              onChange={(e) => setDiscountCode(e.target.value)}
+              className="flex-1 border border-gray-300 bg-white rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
+            />
+            <button className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded text-xs font-medium transition-colors">
+              Apply
+            </button>
+          </div>
+
+          {/* Cost Breakdown */}
+          <div className="space-y-2.5 pt-4 border-t border-gray-200 text-xs text-gray-600">
+            <div className="flex justify-between">
+              <span>Subtotal</span>
+              <span className="font-medium text-gray-800">${totalAmount.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-gray-600">
+            <div className="flex justify-between">
               <span>Shipping</span>
-              <span className={`font-semibold ${shipping === 0 ? 'text-green-600' : ''}`}>
-                {shipping === 0 ? 'FREE' : `$${shipping}`}
-              </span>
+              <span className="font-medium text-gray-800">${shippingCost.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-gray-600">
-              <span>Tax (8%)</span><span className="font-semibold">${tax}</span>
+            <div className="flex justify-between font-serif text-sm font-medium text-gray-800 pt-2 border-t border-gray-200">
+              <span>Total</span>
+              <span>${grandTotal.toFixed(2)}</span>
             </div>
           </div>
 
-          <div className="border-t border-gray-100 pt-3 flex justify-between font-black text-gray-900">
-            <span>Total</span>
-            <span className="text-brand-700 text-lg">${grand}</span>
-          </div>
-
-          <button
-            onClick={() => step === 2 ? setStep(3) : setStep(step + 1)}
-            className="w-full bg-brand-800 hover:bg-brand-700 text-white py-3.5 rounded-xl font-bold text-sm transition-all active:scale-[0.97] shadow-lg shadow-brand-900/20"
-          >
-            {step === 2 ? '🔒 Place Order' : 'Continue'}
-          </button>
         </div>
       </div>
     </div>
