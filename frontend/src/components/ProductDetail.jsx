@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+// 1. Import all data sources
 import { newArrivalsData } from '../utils/newArrivalsData';
+import { flashProducts, bundleDeals } from '../utils/newArrivalsData'; // Adjust import path
 import ReviewsSection from './ReviewSection';
 import ProductHero from './ProductHero';
 import RelatedProducts from './RelatedProducts';
 
 const tabs = ['Description', 'Specifications', 'Reviews'];
+
+// 2. Combine all products into one searchable master list
+const allProducts = [...newArrivalsData, ...flashProducts, ...bundleDeals];
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -14,14 +19,14 @@ export default function ProductDetail() {
   const [tab, setTab] = useState('Description');
 
   useEffect(() => {
-    // 1. Safe matching for both String ("1") and Number (1) IDs
-    const found = newArrivalsData.find((p) => String(p.id) === String(id));
+    // 3. Search across all combined products
+    const found = allProducts.find((p) => String(p.id) === String(id));
     setProduct(found);
 
     if (found) {
-      // 2. Filter related items safely using string comparisons
+      // 4. Find related products across all categories
       setRelated(
-        newArrivalsData.filter(
+        allProducts.filter(
           (p) => p.category === found.category && String(p.id) !== String(found.id)
         )
       );
@@ -43,7 +48,6 @@ export default function ProductDetail() {
     );
   }
 
-  // Fallback for title vs name compatibility
   const productTitle = product.title || product.name;
 
   return (
@@ -86,12 +90,13 @@ export default function ProductDetail() {
         {tab === 'Description' && (
           <div className="max-w-2xl">
             <p className="text-[14px] text-gray-600 leading-relaxed">
-              Experience authentic craftsmanship with the <strong>{productTitle}</strong>. 
-              Designed for {product.category?.toLowerCase() || 'everyday wear'}, this piece combines 
-              traditional elegance with contemporary styling for any special occasion.
-            </p>
-            <p className="text-[14px] text-gray-600 leading-relaxed mt-4">
-              Handcrafted with top-grade materials. Fast shipping available across Ethiopia and worldwide.
+              {product.longDescription || (
+                <>
+                  Experience authentic craftsmanship with the <strong>{productTitle}</strong>. 
+                  Designed for {product.category?.toLowerCase() || 'everyday wear'}, this piece combines 
+                  traditional elegance with contemporary styling for any special occasion.
+                </>
+              )}
             </p>
           </div>
         )}
@@ -100,13 +105,7 @@ export default function ProductDetail() {
           <div className="max-w-xl">
             <table className="w-full text-[13.5px]">
               <tbody>
-                {[
-                  ['Category', product.category],
-                  ['Brand', product.brand],
-                  ['Price', typeof product.price === 'number' ? `$${product.price}` : product.price],
-                  ['Stock Status', product.stockStatus || 'In Stock'],
-                  ['Rating', `${product.rating} ★`],
-                ].map(([key, val]) => (
+                {Object.entries(product.specifications || {}).map(([key, val]) => (
                   <tr key={key} className="border-b border-gray-100">
                     <td className="py-3 pr-8 font-bold text-gray-700 w-40">{key}</td>
                     <td className="py-3 text-gray-500">{val || 'N/A'}</td>
@@ -117,7 +116,12 @@ export default function ProductDetail() {
           </div>
         )}
 
-        {tab === 'Reviews' && <ReviewsSection />}
+        {tab === 'Reviews' && (
+          <ReviewsSection
+            productReviews={product.reviews}
+            reviewsCount={product.reviewsCount}
+          />
+        )}
       </div>
 
       {/* Related */}

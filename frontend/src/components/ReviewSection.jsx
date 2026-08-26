@@ -22,9 +22,20 @@ const RatingBar = ({ stars, count, total }) => (
   </div>
 );
 
-export default function ReviewsSection() {
-  // 1. Initialize state with the sample data
-  const [reviews, setReviews] = useState(initialReviews);
+export default function ReviewsSection({ productReviews = [], reviewsCount }) {
+  const formattedReviews = productReviews.map((review) => ({
+    id: review.id,
+    name: review.author,
+    time: review.date,
+    rating: review.rating,
+    comment: review.comment,
+    helpful: review.helpfulCount,
+    avatar: `https://i.pravatar.cc/40?u=${review.author}`,
+  }));
+
+  const [reviews, setReviews] = useState(
+    formattedReviews.length > 0 ? formattedReviews : initialReviews
+  );
 
   // 2. Safe calculation to prevent NaN if the reviews array is empty
   const total = reviews.length;

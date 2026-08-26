@@ -11,7 +11,7 @@ const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
   const price = product.price ?? 0;
   const origPrice = product.origPrice;
   const rating = product.rating || 0;
-  const reviews = product.reviews || '';
+  const reviews = product.reviewsCount || '';
   const stockStatus = product.stockStatus || '';
   const discount = product.discount;
   const colors = product.colors || [];

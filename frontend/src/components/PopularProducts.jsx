@@ -76,7 +76,9 @@ export default function NewArrivals() {
 
                 <p className="text-[11px] text-gray-400 font-medium">{item.brand}</p>
                 
-                <p className="text-[10px] text-gray-400 pt-1">{item.reviews}</p>
+             <p className="text-[10px] text-gray-400 pt-1">
+                ({item.reviewsCount}) Customer Reviews
+              </p>
 
                 <div className="flex items-center justify-between pt-2">
                   <span className="text-base font-bold text-gray-900">

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingCart } from 'lucide-react';
+import { useCart } from '../context/CartContext'; // Adjust path to your CartContext file
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { cartCount } = useCart(); // Access cart count directly from context
 
   const navLinks = [
     { to: '/', label: 'Home' },
     { to: '/products', label: 'Products' },
     { to: '/deals', label: 'Deals' },
     { to: '/new-arrivals', label: 'New Arrivals' },
-    { to: '/Cart', label: 'cart' },
-   ,
   ];
 
   return (
@@ -42,35 +42,58 @@ const Navbar = () => {
               {label}
             </NavLink>
           ))}
-          <div className='flex gap-2'>
-          <Link
-            to="/signin"
-            className="bg-transparent border border-[#AA061B] text-[#AA061B] text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-[#AA061B] hover:text-white transition-all duration-200"
-          >
-            Sign In
+
+          {/* Desktop Cart Link with Badge */}
+          <Link to="/cart" className="relative p-2 text-gray-700 hover:text-[#AA061B] transition-colors">
+            <ShoppingCart size={22} />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-[#AA061B] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                {cartCount > 99 ? '99+' : cartCount}
+              </span>
+            )}
           </Link>
-          <Link
-            to="/signup"
-            className="bg-[#AA061B] text-white text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-[#970316] transition-all duration-200"
-          >
-            Sign Up
-          </Link>
-          
+
+          {/* Auth Buttons */}
+          <div className="flex items-center gap-2">
+            <Link
+              to="/signin"
+              className="bg-transparent border border-[#AA061B] text-[#AA061B] text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-[#AA061B] hover:text-white transition-all duration-200"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/signup"
+              className="bg-[#AA061B] text-white text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-[#970316] transition-all duration-200"
+            >
+              Sign Up
+            </Link>
           </div>
-          
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Actions */}
+        <div className="flex items-center gap-3 md:hidden">
+          {/* Mobile Cart Link with Badge */}
+          <Link to="/cart" className="relative p-2 text-gray-700">
+            <ShoppingCart size={22} />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-[#AA061B] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
+                {cartCount > 99 ? '99+' : cartCount}
+              </span>
+            )}
+          </Link>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Navigation Dropdown */}
+      {/* Mobile Menu Dropdown */}
       {menuOpen && (
         <nav className="md:hidden px-6 pb-6 pt-2 flex flex-col space-y-3 bg-white border-t border-gray-100">
           {navLinks.map(({ to, label }) => (
@@ -87,13 +110,23 @@ const Navbar = () => {
               {label}
             </NavLink>
           ))}
-          <Link
-            to="/signup"
-            onClick={() => setMenuOpen(false)}
-            className="w-full text-center bg-black text-white text-base font-medium py-2.5 rounded-lg shadow-sm hover:bg-gray-800 transition-all duration-200 mt-2"
-          >
-            Sign Up
-          </Link>
+
+          <div className="flex flex-col gap-2 pt-2">
+            <Link
+              to="/signin"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center border border-[#AA061B] text-[#AA061B] text-base font-medium py-2.5 rounded-lg hover:bg-[#AA061B] hover:text-white transition-all duration-200"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/signup"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center bg-[#AA061B] text-white text-base font-medium py-2.5 rounded-lg shadow-sm hover:bg-[#970316] transition-all duration-200"
+            >
+              Sign Up
+            </Link>
+          </div>
         </nav>
       )}
     </header>

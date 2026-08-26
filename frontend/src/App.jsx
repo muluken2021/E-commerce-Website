@@ -19,8 +19,7 @@ import DealsPage from './pages/DealsPage';
 
 const App = () => {
   const location = useLocation();
-  const hideLayout = location.pathname === '/signin'; // hide navbar/footer for login
-
+ const hideLayout = ['/signin', '/signup'].includes(location.pathname);
   return (
     <div>
       {!hideLayout && <Navbar />}

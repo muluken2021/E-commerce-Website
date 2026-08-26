@@ -38,7 +38,7 @@ export const products = [
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
     images: [
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+      "https://ethiopianclothing.net/cdn/shop/products/keficho-traditional-habesha-dress-eritrean-dresses-ethiopian-clothing-kemis_554_600x.jpg?v=1621067979",
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80"
     ],
     longDescription: "A stunning Traditional Habesha Kemis crafted from authentic handwoven Shemma cotton. Featuring intricate Tibeb embroidery along the neckline, cuffs, and hem, this dress is the perfect embodiment of Ethiopian heritage. Ideal for weddings, holidays, and special cultural celebrations.",
@@ -662,98 +662,97 @@ export const carouselDeals = [
   }
 ];
 
-
 // --- FLASH PRODUCTS ---
 export const flashProducts = [
   {
     id: 101,
-    title: 'Habesha Kemis Traditional Dress',
-    brand: 'Ethiopian Craft',
-    price: '$120.00',
-    origPrice: '$180.00',
-    discount: 33,
-    image: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80'
-    ],
+    category: "Flash Products",
+    title: "Habesha Kemis Traditional Dress",
+    brand: "Ethiopian Craft",
     rating: 5,
     reviewsCount: "(42)",
-    category: 'Traditional',
-    stockStatus: 'Almost Sold Out',
+    price: "$120.00",
+    origPrice: "$180.00",
+    discount: 33,
+    stockStatus: "Almost Sold Out",
+    image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80"
+    ],
     colors: ['#FFFFFF', '#C0C0C0', '#D4AF37'],
     longDescription: "Hand-loomed to absolute perfection. This Flash Deal offers our top-tier traditional Kemis at an unprecedented price. Features beautiful threading work with durable, authentic fibers.",
-    specifications: { Brand: "Ethiopian Craft", Material: "Shemma Cotton", Fit: "Standard", Origin: "Ethiopia" },
+    specifications: { Category: "Flash Products", Brand: "Ethiopian Craft", Material: "Shemma Cotton", Fit: "Standard", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
   {
     id: 102,
-    title: 'Modern Handwoven Cotton Scarf',
-    brand: 'Addis Weave',
-    price: '$35.00',
-    origPrice: '$50.00',
-    discount: 30,
-    image: 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80'
-    ],
+    category: "Flash Products",
+    title: "Modern Handwoven Cotton Scarf",
+    brand: "Addis Weave",
     rating: 4,
     reviewsCount: "(18)",
-    category: 'Accessories',
-    stockStatus: 'Limited Time Offer',
+    price: "$35.00",
+    origPrice: "$50.00",
+    discount: 30,
+    stockStatus: "Limited Time Offer",
+    image: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80"
+    ],
     colors: ['#AA061B', '#000000', '#22C55E'],
     longDescription: "A fusion accessory that brings Habesha weaving techniques to modern winter and autumn wear. Incredibly warm, luxuriously soft, and ethically produced by local artisans.",
-    specifications: { Brand: "Addis Weave", Material: "Cotton Blend", Fit: "One Size", Origin: "Ethiopia" },
+    specifications: { Category: "Flash Products", Brand: "Addis Weave", Material: "Cotton Blend", Fit: "One Size", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
   {
     id: 103,
-    title: 'Casual Linen Summer Shirt',
-    brand: 'Sync Style',
-    price: '$45.00',
-    origPrice: '$65.00',
-    discount: 30,
-    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80'
-    ],
+    category: "Flash Products",
+    title: "Casual Linen Summer Shirt",
+    brand: "Sync Style",
     rating: 5,
     reviewsCount: "(89)",
-    category: 'Men',
-    stockStatus: 'In Stock',
+    price: "$45.00",
+    origPrice: "$65.00",
+    discount: 30,
+    stockStatus: "In Stock",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80"
+    ],
     colors: ['#3B82F6', '#FFFFFF', '#6B7280'],
     longDescription: "Beat the heat in this ultra-breathable linen summer shirt. Designed with a relaxed fit and subtle Ethiopian-inspired trim inside the collar and cuffs for a unique touch.",
-    specifications: { Brand: "Sync Style", Material: "100% Linen", Fit: "Relaxed Summer Fit", Origin: "Ethiopia" },
+    specifications: { Category: "Flash Products", Brand: "Sync Style", Material: "100% Linen", Fit: "Relaxed Summer Fit", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
   {
     id: 104,
-    title: 'Handmade Leather Tote Bag',
-    brand: 'Ethio Leather',
-    price: '$89.00',
-    origPrice: '$140.00',
-    discount: 36,
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80',
-      'https://images.unsplash.com/photo-1611591475155-42e471926610?auto=format&fit=crop&w=600&q=80'
-    ],
+    category: "Flash Products",
+    title: "Handmade Leather Tote Bag",
+    brand: "Ethio Leather",
     rating: 5,
     reviewsCount: "(112)",
-    category: 'Accessories',
-    stockStatus: 'Almost Sold Out',
+    price: "$89.00",
+    origPrice: "$140.00",
+    discount: 36,
+    stockStatus: "Almost Sold Out",
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1611591475155-42e471926610?auto=format&fit=crop&w=600&q=80"
+    ],
     colors: ['#78350F', '#000000'],
     longDescription: "Crafted from world-renowned genuine Ethiopian leather. This everyday tote bag is spacious, highly durable, and ages beautifully over time, developing a rich patina.",
-    specifications: { Brand: "Ethio Leather", Material: "100% Genuine Leather", Size: "Large Tote", Origin: "Ethiopia" },
+    specifications: { Category: "Flash Products", Brand: "Ethio Leather", Material: "100% Genuine Leather", Size: "Large Tote", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   }
@@ -763,41 +762,45 @@ export const flashProducts = [
 export const bundleDeals = [
   {
     id: 201,
-    title: 'Complete Summer Outfit Bundle',
-    description: 'Get our handwoven dress, matching tote, and custom scarf together for an extra discount.',
-    price: '$199.00',
-    origPrice: '$310.00',
-    savings: 'Save $111',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80'
-    ],
+    category: "Bundle Deals",
+    title: "Complete Summer Outfit Bundle",
+    brand: "Sheger Bundle",
     rating: 5,
     reviewsCount: "(245)",
+    price: "$199.00",
+    origPrice: "$310.00",
+    savings: "Save $111",
+    stockStatus: "Bundle Savings",
+    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80"
+    ],
     longDescription: "An all-in-one curated package. Includes our signature lightweight dress, a premium leather tote, and a versatile scarf. Expertly matched by our stylists.",
-    specifications: { Brand: "Sheger Bundle", Items: "3 Pieces", Fit: "Varies", Origin: "Ethiopia" },
+    specifications: { Category: "Bundle Deals", Brand: "Sheger Bundle", Material: "Mixed Premium Cottons", Items: "3 Pieces", Fit: "Varies", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
   {
     id: 202,
-    title: 'His & Hers Traditional Set',
-    description: 'Matching traditional outfits perfect for holidays and family celebrations.',
-    price: '$249.00',
-    origPrice: '$380.00',
-    savings: 'Save $131',
-    image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80'
-    ],
+    category: "Bundle Deals",
+    title: "His & Hers Traditional Set",
+    brand: "Ethiopian Heritage",
     rating: 5,
     reviewsCount: "(189)",
+    price: "$249.00",
+    origPrice: "$380.00",
+    savings: "Save $131",
+    stockStatus: "Bundle Savings",
+    image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80"
+    ],
     longDescription: "Celebrate together with beautifully matched formal wear. Crafted with identical high-quality embroidery patterns on both the men's and women's outfits.",
-    specifications: { Brand: "Ethiopian Heritage", Items: "Men's Set + Women's Set", Fit: "Standard Matching", Origin: "Ethiopia" },
+    specifications: { Category: "Bundle Deals", Brand: "Ethiopian Heritage", Material: "Cotton & Shemma", Items: "Men's Set + Women's Set", Fit: "Standard Matching", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   }
