@@ -14,7 +14,7 @@ const CartPage = () => {
 
   const increase = (id) => {
     const item = cartItems.find((i) => i.id === id);
-    if (item) { addItem(item, 1); toast('success', `+1 ${item.name}`); }
+    if (item) { addItem(item, 1); toast('success', `+1 ${item.name || item.title}`); }
   };
 
   const decrease = (id) => {
@@ -27,10 +27,21 @@ const CartPage = () => {
   const handleRemove = (id) => {
     const item = cartItems.find((i) => i.id === id);
     removeItem(id);
-    toast('error', `${item?.name} removed`);
+    toast('error', `${item?.name || item?.title || 'Item'} removed`);
   };
 
-  const subtotal = totalAmount + (giftWrap ? 10 : 0);
+  // Safe price parser helper
+  const getNumericPrice = (price) => {
+    if (typeof price === 'number') return price;
+    if (typeof price === 'string') {
+      const parsed = parseFloat(price.replace(/[^0-9.]/g, ''));
+      return isNaN(parsed) ? 0 : parsed;
+    }
+    return 0;
+  };
+
+  const calculatedSubtotal = cartItems.reduce((acc, item) => acc + (getNumericPrice(item.price) * item.quantity), 0);
+  const subtotal = calculatedSubtotal + (giftWrap ? 10 : 0);
 
   /* ── Empty state ── */
   if (cartItems.length === 0) {
@@ -41,8 +52,8 @@ const CartPage = () => {
         <p className="text-gray-400 text-xs sm:text-sm max-w-sm mb-8 leading-relaxed">
           Looks like you haven't added anything yet. Explore our products and find something you love.
         </p>
-        <Link to="/category/all">
-          <button className="flex items-center gap-2.5 bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-lg font-medium text-xs tracking-wider uppercase transition-all shadow-md">
+        <Link to="/products">
+          <button className="flex items-center gap-2.5 bg-[#AA061B] hover:bg-[#760312] text-white px-8 py-3 rounded-lg font-medium text-xs tracking-wider uppercase transition-all shadow-md">
             <ShoppingBag size={16} />
             Start Shopping
             <ArrowRight size={14} />
@@ -77,65 +88,71 @@ const CartPage = () => {
 
         {/* Cart Items List */}
         <div className="divide-y divide-gray-100">
-          {cartItems.map((item) => (
-            <div key={item.id} className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-              
-              {/* Product Info */}
-              <div className="md:col-span-6 flex gap-4 items-center">
-                <Link to={`/productdetail/${item.id}`} className="w-20 h-24 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </Link>
-                <div className="flex flex-col justify-center">
-                  <Link to={`/productdetail/${item.id}`}>
-                    <h3 className="font-serif text-sm text-gray-800 font-medium hover:text-gray-600 transition-colors">
-                      {item.name}
-                    </h3>
+          {cartItems.map((item) => {
+            const itemName = item.name || item.title || 'Habesha Product';
+            const itemImage = item.img || item.image || 'https://via.placeholder.com/150';
+            const itemPrice = getNumericPrice(item.price);
+
+            return (
+              <div key={item.id} className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                
+                {/* Product Info */}
+                <div className="md:col-span-6 flex gap-4 items-center">
+                  <Link to={`/productdetail/${item.id}`} className="w-20 h-24 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
+                    <img
+                      src={itemImage}
+                      alt={itemName}
+                      className="w-full h-full object-cover object-center"
+                    />
                   </Link>
-                  <p className="text-xs text-gray-400 mt-1">
-                    Color : {item.color || 'Red'}
-                  </p>
-                  <button
-                    onClick={() => handleRemove(item.id)}
-                    className="text-xs text-gray-400 underline hover:text-red-500 transition-colors mt-3 text-left w-fit"
-                  >
-                    Remove
-                  </button>
+                  <div className="flex flex-col justify-center">
+                    <Link to={`/productdetail/${item.id}`}>
+                      <h3 className="font-serif text-sm text-gray-800 font-medium hover:text-gray-600 transition-colors">
+                        {itemName}
+                      </h3>
+                    </Link>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Color : {item.color || 'Red'}
+                    </p>
+                    <button
+                      onClick={() => handleRemove(item.id)}
+                      className="text-xs text-gray-400 underline hover:text-red-500 transition-colors mt-3 text-left w-fit cursor-pointer"
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              {/* Price */}
-              <div className="md:col-span-2 text-left md:text-center font-serif text-sm text-gray-800">
-                <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">Price:</span>
-                ${item.price.toFixed(2)}
-              </div>
-
-              {/* Quantity Counter */}
-              <div className="md:col-span-2 flex items-center md:justify-center">
-                <div className="flex items-center border border-gray-300 rounded px-2 py-1 text-xs text-gray-600 bg-white">
-                  <button onClick={() => decrease(item.id)} className="p-1 hover:text-black transition-colors">
-                    <Minus size={12} />
-                  </button>
-                  <span className="px-3 font-medium text-gray-800">
-                    {String(item.quantity).padStart(2, '0')}
-                  </span>
-                  <button onClick={() => increase(item.id)} className="p-1 hover:text-black transition-colors">
-                    <Plus size={12} />
-                  </button>
+                {/* Price */}
+                <div className="md:col-span-2 text-left md:text-center font-serif text-sm text-gray-800">
+                  <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">Price:</span>
+                  ${itemPrice.toFixed(2)}
                 </div>
-              </div>
 
-              {/* Total */}
-              <div className="md:col-span-2 text-left md:text-right font-serif text-sm text-gray-800 font-medium">
-                <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">Total:</span>
-                ${(item.price * item.quantity).toFixed(2)}
-              </div>
+                {/* Quantity Counter */}
+                <div className="md:col-span-2 flex items-center md:justify-center">
+                  <div className="flex items-center border border-gray-300 rounded px-2 py-1 text-xs text-gray-600 bg-white">
+                    <button onClick={() => decrease(item.id)} className="p-1 hover:text-black transition-colors cursor-pointer">
+                      <Minus size={12} />
+                    </button>
+                    <span className="px-3 font-medium text-gray-800">
+                      {String(item.quantity).padStart(2, '0')}
+                    </span>
+                    <button onClick={() => increase(item.id)} className="p-1 hover:text-black transition-colors cursor-pointer">
+                      <Plus size={12} />
+                    </button>
+                  </div>
+                </div>
 
-            </div>
-          ))}
+                {/* Total */}
+                <div className="md:col-span-2 text-left md:text-right font-serif text-sm text-gray-800 font-medium">
+                  <span className="md:hidden text-xs text-gray-400 mr-2 font-sans">Total:</span>
+                  ${(itemPrice * item.quantity).toFixed(2)}
+                </div>
+
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom Cart Summary */}
@@ -164,7 +181,7 @@ const CartPage = () => {
             {/* Action Buttons */}
             <div className="flex flex-col gap-3 text-center">
               <Link to="/checkout" className="w-full">
-                <button className="w-full bg-black text-white text-xs font-medium py-3.5 rounded shadow hover:bg-gray-800 transition-colors">
+                <button className="w-full bg-black text-white text-xs font-medium py-3.5 rounded shadow hover:bg-gray-800 transition-colors cursor-pointer">
                   Checkout
                 </button>
               </Link>

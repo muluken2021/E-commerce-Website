@@ -679,7 +679,7 @@ export const flashProducts = [
     stockStatus: "Almost Sold Out",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63L1GfWp0Jfx5JsKlXR0hj7SJlL4eK93vlEjs2NbNoB7Zf5sWei-YGXgD&s=10",
     images: [
-      "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63L1GfWp0Jfx5JsKlXR0hj7SJlL4eK93vlEjs2NbNoB7Zf5sWei-YGXgD&s=10",
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80"
     ],
@@ -702,7 +702,7 @@ export const flashProducts = [
     stockStatus: "Limited Time Offer",
     image: "https://img2.ogaanindia.com/pub/media/catalog/product/cache/3f6619daccdb194398d06464ab49fa6e/s/m/smr15scarf2.jpg",
     images: [
-      "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80",
+      "https://img2.ogaanindia.com/pub/media/catalog/product/cache/3f6619daccdb194398d06464ab49fa6e/s/m/smr15scarf2.jpg",
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80"
     ],
@@ -725,7 +725,7 @@ export const flashProducts = [
     stockStatus: "In Stock",
     image: "https://www.dagmawit.store/cdn/shop/files/photo_2026-07-29_09.33.00.jpg?v=1785307808&width=533",
     images: [
-      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80",
+      "https://www.dagmawit.store/cdn/shop/files/photo_2026-07-29_09.33.00.jpg?v=1785307808&width=533",
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80"
     ],

@@ -43,8 +43,8 @@ export default function CheckoutPage() {
             Thanks for your order. We'll send a confirmation to your email and ship within 2-3 business days.
           </p>
           <a
-            href="/"
-            className="inline-block bg-black hover:bg-gray-800 text-white px-8 py-3 rounded text-xs font-medium uppercase tracking-wider transition-all"
+            href="/products"
+            className="inline-block bg-[#AA061B] hover:bg-[#AA061B] text-white px-8 py-3 rounded text-xs font-medium uppercase tracking-wider transition-all"
           >
             Continue Shopping
           </a>
@@ -72,7 +72,7 @@ export default function CheckoutPage() {
               <h2 className="font-serif text-2xl font-medium text-gray-800">Contact</h2>
               <span className="text-xs text-gray-400">
                 Have an account?{' '}
-                <a href="#" className="text-blue-500 hover:underline">
+                <a href="/signup" className="text-blue-500 hover:underline">
                   Create Account
                 </a>
               </span>
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
           {/* Pay Now Button */}
           <button
             onClick={() => setStep(3)}
-            className="w-full bg-black hover:bg-gray-800 text-white py-4 rounded text-xs font-medium uppercase tracking-wider transition-all shadow-md"
+            className="w-full bg-[#AA061B] hover:bg-[#AA061B] text-white py-4 rounded text-xs font-medium uppercase tracking-wider transition-all shadow-md"
           >
             Pay Now
           </button>
@@ -285,7 +285,7 @@ export default function CheckoutPage() {
               onChange={(e) => setDiscountCode(e.target.value)}
               className="flex-1 border border-gray-300 bg-white rounded px-4 py-3 text-xs outline-none focus:border-gray-500 transition-colors placeholder-gray-400"
             />
-            <button className="bg-black hover:bg-gray-800 text-white px-6 py-3 rounded text-xs font-medium transition-colors">
+            <button className="bg-[#AA061B] hover:bg-[#AA061B] text-white px-6 py-3 rounded text-xs font-medium transition-colors">
               Apply
             </button>
           </div>

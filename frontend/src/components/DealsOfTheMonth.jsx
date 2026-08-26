@@ -1,51 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const dealsData = [
-  {
-    id: 1,
-    tag: '01 — Spring Sale',
-    discount: '30% OFF',
-    image: 'https://ethiopian.store/cdn/shop/files/photo_2026-08-03_17-21-56.jpg?v=1785768125&width=533',
-    alt: 'Woman in black off-shoulder dress',
-  },
-  {
-    id: 2,
-    tag: '02 — Summer Special',
-    discount: '25% OFF',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXI0ApZ-xfXYuz9ZfFURX4roUWrN1_jPFqweskqpXZnkrnbUBNJzC72w&s=10',
-    alt: 'Woman in blue two-piece set with hat',
-  },
-  {
-    id: 3,
-    tag: '03 — Autumn Vibe',
-    discount: '40% OFF',
-    image: 'https://ethiopianculturalshop.com/wp-content/uploads/2023/08/photo_2023-06-15_11-57-58-2.jpg',
-    alt: 'Woman in casual outfit with sunglasses',
-  },
-  {
-    id: 4,
-    tag: '04 — Winter Deal',
-    discount: '20% OFF',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80',
-    alt: 'Woman in stylish jacket',
-  },
-  {
-    id: 5,
-    tag: '05 — Urban Collection',
-    discount: '15% OFF',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',
-    alt: 'Woman posing in yellow sweater',
-  },
-  {
-    id: 6,
-    tag: '06 — Elegant Line',
-    discount: '50% OFF',
-    image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80',
-    alt: 'Man in trendy outfit',
-  },
-];
+import { flashProducts } from '../utils/newArrivalsData.js';
 
 const DealsOfTheMonth = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,23 +29,23 @@ const DealsOfTheMonth = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Smooth slide trigger helper
+  // Transition trigger helper
   const triggerTransition = (newIndex) => {
     setIsAnimating(true);
     setTimeout(() => {
       setActiveIndex(newIndex);
       setIsAnimating(false);
-    }, 300); // Duration matches CSS fade out length
+    }, 300);
   };
 
   const handleNext = () => {
-    const nextIndex = (activeIndex + 3) % dealsData.length;
+    const nextIndex = (activeIndex + 3) % flashProducts.length;
     triggerTransition(nextIndex);
   };
 
   const handlePrev = () => {
     const prevIndex =
-      activeIndex - 3 < 0 ? dealsData.length - (dealsData.length % 3 || 3) : activeIndex - 3;
+      activeIndex - 3 < 0 ? flashProducts.length - (flashProducts.length % 3 || 3) : activeIndex - 3;
     triggerTransition(prevIndex);
   };
 
@@ -104,13 +60,13 @@ const DealsOfTheMonth = () => {
 
   const formatNumber = (num) => String(num).padStart(2, '0');
 
-  // Compute 3 visible items starting from activeIndex
-  const visibleDeals = Array.from({ length: 3 }, (_, i) => {
-    const index = (activeIndex + i) % dealsData.length;
-    return dealsData[index];
+  // Compute visible items safely
+  const visibleDeals = Array.from({ length: Math.min(3, flashProducts.length) }, (_, i) => {
+    const index = (activeIndex + i) % flashProducts.length;
+    return flashProducts[index];
   });
 
-  const totalPages = Math.ceil(dealsData.length / 3);
+  const totalPages = Math.ceil(flashProducts.length / 3);
   const activePage = Math.floor(activeIndex / 3);
 
   return (
@@ -123,12 +79,12 @@ const DealsOfTheMonth = () => {
             Deals Of The Month
           </h2>
           <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-md">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem. Scelerisque duis ultrices sollicitudin.
+            Discover limited-time discounts on our exclusive flash sale collection. Grab yours before stocks run out!
           </p>
 
-           <Link to="/deals">
+          <Link to="/deals">
             <button className="bg-[#AA061B] text-white text-sm font-semibold px-8 py-3.5 rounded-lg shadow-md hover:bg-[#8d0517] transition-colors mb-10 cursor-pointer">
-                Buy Now
+              Buy Now
             </button>
           </Link>
 
@@ -178,9 +134,10 @@ const DealsOfTheMonth = () => {
         <div className="lg:col-span-7 flex flex-col items-center">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 w-full">
             {visibleDeals.map((item, index) => (
-              <div
+              <Link
+                to={`/productdetail/${item.id}`}
                 key={`${item.id}-${index}`}
-                className={`relative h-[380px] rounded-xl overflow-hidden bg-gray-100 group shadow-sm transition-all duration-500 ease-in-out transform ${
+                className={`relative h-[380px] rounded-xl overflow-hidden bg-gray-100 group shadow-sm transition-all duration-500 ease-in-out transform block ${
                   isAnimating
                     ? 'opacity-0 scale-95 translate-y-2'
                     : 'opacity-100 scale-100 translate-y-0'
@@ -189,22 +146,45 @@ const DealsOfTheMonth = () => {
               >
                 <img
                   src={item.image}
-                  alt={item.alt}
+                  alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
 
-                {/* Overlay Badge for First Card */}
-                {index === 0 && (
-                  <div className="absolute bottom-6 left-6 bg-white py-3 px-4 rounded-md shadow-md transition-all duration-300">
-                    <span className="text-[10px] text-gray-500 font-medium block uppercase tracking-wider">
-                      {item.tag}
+                {/* Dark Gradient Overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+
+                {/* Top Stock Status Badge */}
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md">
+                  <span className="text-[10px] font-bold text-gray-800 uppercase tracking-wider">
+                    {item.stockStatus}
+                  </span>
+                </div>
+
+                {/* Bottom Product Info Overlay */}
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <span className="text-[11px] text-gray-200 font-medium block uppercase tracking-wider mb-1">
+                    {item.brand}
+                  </span>
+                  <h4 className="text-sm font-semibold truncate mb-1">
+                    {item.title}
+                  </h4>
+                  <div className="flex items-center gap-2">
+                    <span className="text-base font-bold text-white">
+                      {item.price}
                     </span>
-                    <span className="text-base font-bold text-gray-800">
-                      {item.discount}
-                    </span>
+                    {item.origPrice && (
+                      <span className="text-xs text-gray-300 line-through">
+                        {item.origPrice}
+                      </span>
+                    )}
+                    {item.discount && (
+                      <span className="ml-auto text-xs bg-[#AA061B] font-bold text-white px-2 py-0.5 rounded">
+                        -{item.discount}%
+                      </span>
+                    )}
                   </div>
-                )}
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
 

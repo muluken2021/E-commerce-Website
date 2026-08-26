@@ -4,27 +4,28 @@ import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
   {
     id: 1,
+    name: 'Bethelhem T.',
+    role: 'Habesha Customer',
+    rating: 5,
+    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvrmIOQR1UlfHUD5l1rdBJ0oKXBw6orWAp6NuUwNeMSxEpf6xgPUXe7AoG&s=10',
+    quote: 'I absolutely loved my Habesha kemis. The embroidery is beautiful, the quality is excellent, and it fits perfectly.',
+  },
+  {
+    id: 2,
     name: 'James K.',
     role: 'Traveler',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-    quote: 'You won’t regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!',
+    quote: 'The traditional clothing was beautiful and authentic. I loved the craftsmanship and attention to detail.',
   },
-  {
-    id: 2,
-    name: 'John W.',
-    role: 'Designer',
-    rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
-    quote: 'Items arrived on time and exceeded expectations. Customer support was incredibly helpful during checkout.',
-  },
+  
   {
     id: 3,
-    name: 'Sarah M.',
-    role: 'Fashion Blogger',
+    name: 'Dawit A.',
+    role: 'Habesha Customer',
     rating: 5,
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
-    quote: 'Fantastic quality and beautiful packaging! Will definitely be buying from here again.',
+    avatar: 'https://t3.ftcdn.net/jpg/03/99/09/44/360_F_399094440_76Rsmxj22Xeq3m3omgDMf2tjFiXkFY2C.jpg',
+    quote: 'The traditional Ethiopian design is exactly what I was looking for. Great quality and a very smooth shopping experience.',
   },
 ];
 

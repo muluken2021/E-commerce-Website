@@ -15,6 +15,20 @@ export const CartProvider = ({ children }) => {
   const addItem = (product, quantity = 1) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
+
+      // Normalize product fields to ensure name, img, and numeric price exist
+      const formattedPrice =
+        typeof product.price === "string"
+          ? parseFloat(product.price.replace(/[^0-9.]/g, ""))
+          : product.price;
+
+      const normalizedProduct = {
+        ...product,
+        name: product.name || product.title,       // Handles 'title' vs 'name'
+        img: product.img || product.image,         // Handles 'image' vs 'img'
+        price: isNaN(formattedPrice) ? 0 : formattedPrice, // Ensures price is a clean number
+      };
+
       if (existing) {
         return prev.map((item) =>
           item.id === product.id
@@ -22,7 +36,7 @@ export const CartProvider = ({ children }) => {
             : item
         );
       } else {
-        return [...prev, { ...product, quantity }];
+        return [...prev, { ...normalizedProduct, quantity }];
       }
     });
   };
@@ -42,11 +56,10 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => setCartItems([]);
 
   const totalAmount = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc, item) => acc + (item.price || 0) * item.quantity,
     0
   );
 
-  // Calculate total count of all items in cart
   const cartCount = cartItems.reduce(
     (acc, item) => acc + item.quantity,
     0
@@ -61,7 +74,7 @@ export const CartProvider = ({ children }) => {
         updateQuantity,
         clearCart,
         totalAmount,
-        cartCount, // Exposing total item count
+        cartCount,
       }}
     >
       {children}

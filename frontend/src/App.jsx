@@ -15,6 +15,11 @@ import Support from './pages/Support';
 import SignUpForm from './pages/Auth/SignUpForm';
 import SignInForm from './pages/Auth/SignInForm';
 import DealsPage from './pages/DealsPage';
+import NewArrivals from './components/PopularProducts';
+import ContactUs from './pages/ContactUs';
+import ShippingDelivery from './pages/ShippingDelivery';
+import ReturnsAndExchanges from './pages/ReturnsAndExchanges';
+import FAQ from './pages/FAQ';
 
 
 const App = () => {
@@ -30,7 +35,15 @@ const App = () => {
         <Route path='/cart' element={<CartPage />} />
         <Route path='/products' element={<CategoryPage />} />
         <Route path='/deals' element={<DealsPage />} />
+        <Route path='/new-arrivals' element={<NewArrivals />} />
+        <Route path='/contact' element={<ContactUs />} />
+        <Route path='/shipping' element={<ShippingDelivery />} />
+        <Route path='/returns' element={<ReturnsAndExchanges />} />
+        <Route path='/faq' element={<FAQ />} />
 
+
+
+ 
         <Route path='/checkout' element={<CheckoutPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/contactus' element={<ContactPage />} />
