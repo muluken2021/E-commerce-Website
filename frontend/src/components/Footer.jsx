@@ -18,14 +18,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12 overflow-hidden">
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[420px] relative z-10">
           
-          {/* Left Model Image */}
-          <div className="hidden lg:block w-1/4 h-[420px] relative">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
-              alt="Male model with yellow coat"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
+        
 
           {/* Newsletter Form Container */}
           <div className="flex-1 max-w-lg mx-auto text-center px-4 py-8">
@@ -54,15 +47,7 @@ export default function Footer() {
             </form>
           </div>
 
-          {/* Right Model Image */}
-          <div className="hidden lg:block w-1/4 h-[420px] relative">
-            <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
-              alt="Female model with grey blazer"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-
+       
         </div>
       </div>
 

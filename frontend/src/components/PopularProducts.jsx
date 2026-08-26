@@ -100,7 +100,7 @@ export default function NewArrivals() {
 
       {/* ── CTA Button ── */}
       <div className="flex justify-center">
-        <Link to="/deals">
+        <Link to="/products">
           <button className="bg-[#AA061B] text-white text-xs font-semibold px-10 py-3.5 rounded-lg shadow-md hover:bg-[#8d0517]  transition-colors cursor-pointer">
             View More
           </button>

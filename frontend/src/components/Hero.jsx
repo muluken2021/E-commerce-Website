@@ -7,13 +7,13 @@ const HeroSection = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const brands = [
-    { name: 'CHANEL', fontClass: 'font-serif font-black tracking-widest' },
-    { name: 'LOUIS VUITTON', fontClass: 'font-serif tracking-widest uppercase' },
-    { name: 'PRADA', fontClass: 'font-serif font-black tracking-widest' },
-    { name: 'Calvin Klein', fontClass: 'font-sans font-light tracking-wide' },
-    { name: 'DENIM', fontClass: 'font-sans font-black tracking-wider' },
-  ];
+const brands = [
+  { name: 'Tibeb Habesha', fontClass: 'font-serif font-black tracking-widest' },
+  { name: 'Sheger Collection', fontClass: 'font-serif tracking-widest uppercase' },
+  { name: 'Lalibela', fontClass: 'font-serif font-black tracking-widest' },
+  { name: 'Addis Style', fontClass: 'font-sans font-light tracking-wide' },
+  { name: 'Queen Sheba', fontClass: 'font-sans font-black tracking-wider' },
+];
 
   return (
     <section className="relative w-full bg-white md:pb-25 py-8 px-4 md:px-10 max-w-7xl mx-auto">

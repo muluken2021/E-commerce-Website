@@ -35,7 +35,7 @@ export const products = [
     reviewsCount: "4.8k",
     price: "$120.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSXYHUfc08wwRY-snFoKVcnt_5IyLEjUvW2HlPkt7J4gQMcDMuDJONW6s&s=10",
     images: [
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
       "https://ethiopianclothing.net/cdn/shop/products/keficho-traditional-habesha-dress-eritrean-dresses-ethiopian-clothing-kemis_554_600x.jpg?v=1621067979",
@@ -55,7 +55,7 @@ export const products = [
     reviewsCount: "3.9k",
     price: "$145.00",
     stockStatus: "Almost Sold Out",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopianclothing.net/cdn/shop/files/photo_2024-05-09_18-16-57_2000x.jpg?v=1715269118",
     images: [
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80",
@@ -75,7 +75,7 @@ export const products = [
     reviewsCount: "3.5k",
     price: "$175.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWJ21kEpfvzwZsI7w1UNja63GXEOB4Rco0OII4ORtm2QVG0If_Gwiq9ns&s=10",
     images: [
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
@@ -95,7 +95,7 @@ export const products = [
     reviewsCount: "2.7k",
     price: "$95.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7NqKXzpnGRSujaoMIar_LcWqP_q949BY_Cbz0NXAGJuuEGdSk9OCwcFss&s=10",
     images: [
       "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
@@ -115,7 +115,7 @@ export const products = [
     reviewsCount: "2.1k",
     price: "$135.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1506629905607-d9c36d8c4f7c?auto=format&fit=crop&w=800&q=80",
+    image: "https://habeshaoutlets.com/cdn/shop/files/Screenshot_20250707_220303_Instagram.jpg?v=1752245284",
     images: [
       "https://images.unsplash.com/photo-1506629905607-d9c36d8c4f7c?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
@@ -135,7 +135,7 @@ export const products = [
     reviewsCount: "4.2k",
     price: "$190.00",
     stockStatus: "Almost Sold Out",
-    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD8BHJ9k-YmCMSPVz8YAZqzjxGRQ01Q2HxhsDEjJd4ibNWCvW79sIXM6A&s=10",
     images: [
       "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
@@ -159,7 +159,7 @@ export const products = [
     reviewsCount: "3.8k",
     price: "$85.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9OINUJR7kj2c8Y_a8LKEYmxxOVyx6_shcMdfQPhXzbVpwIpXRTnORGME&s=10",
     images: [
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80",
@@ -179,7 +179,7 @@ export const products = [
     reviewsCount: "3.2k",
     price: "$110.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopianclothing.net/cdn/shop/files/Ashenafi_Habesha_Men_s_Clothes_2048x.jpg?v=1750783471",
     images: [
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=800&q=80",
@@ -199,7 +199,7 @@ export const products = [
     reviewsCount: "2.9k",
     price: "$150.00",
     stockStatus: "Almost Sold Out",
-    image: "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=800&q=80",
+    image: "https://habeshaoutlets.com/cdn/shop/files/459a40e4d9fb54410c6451c70c14df6e_1.jpg?v=1756218953",
     images: [
       "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
@@ -219,7 +219,7 @@ export const products = [
     reviewsCount: "1.9k",
     price: "$70.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80",
+    image: "https://i.etsystatic.com/52898921/r/il/59fbb7/6564827810/il_340x270.6564827810_e9we.jpg",
     images: [
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
@@ -239,7 +239,7 @@ export const products = [
     reviewsCount: "4.1k",
     price: "$220.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopian.store/cdn/shop/files/il_fullxfull.5099412667_tk6x-139642.jpg?v=1749304192&width=1445",
     images: [
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&w=800&q=80",
@@ -259,7 +259,7 @@ export const products = [
     reviewsCount: "2.6k",
     price: "$125.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1555069519-127aadedf1ee?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopianclothing.net/cdn/shop/files/Chane_Ethiopian_Men_s_Clothe2_1600x.jpg?v=1751993724",
     images: [
       "https://images.unsplash.com/photo-1555069519-127aadedf1ee?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80",
@@ -283,7 +283,7 @@ export const products = [
     reviewsCount: "1.9k",
     price: "$55.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBtpvUcnxUamnmarxBMiRfxX_QFP3ttaSxGgSDCHMQXZwqVd27lkjlSA0&s=10",
     images: [
       "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
@@ -303,7 +303,7 @@ export const products = [
     reviewsCount: "1.5k",
     price: "$48.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThLG2o8e61F9a82xiSUm2Pd5mubQErDYucS9X1Vzeg0R0YGOiBUToNsFk&s=10",
     images: [
       "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&fit=crop&w=800&q=80",
@@ -323,7 +323,7 @@ export const products = [
     reviewsCount: "1.2k",
     price: "$65.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopianculturalshop.com/wp-content/uploads/2023/08/photo_2023-06-15_11-57-58-2.jpg",
     images: [
       "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1502720705749-3c6d8c3c5e2e?auto=format&fit=crop&w=800&q=80",
@@ -343,7 +343,7 @@ export const products = [
     reviewsCount: "980",
     price: "$42.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80",
+    image: "https://www.fllae.com/cdn/shop/files/DSCF1757.jpg?v=1781269889",
     images: [
       "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
@@ -363,7 +363,7 @@ export const products = [
     reviewsCount: "1.7k",
     price: "$75.00",
     stockStatus: "Almost Sold Out",
-    image: "https://images.unsplash.com/photo-1502720705749-3c6d8c3c5e2e?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTfec5Car8ocKt77J5Giuy2LerQBzkTuB5GrQmegxIGw7nFsQJioO6jOc&s=10",
     images: [
       "https://images.unsplash.com/photo-1502720705749-3c6d8c3c5e2e?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=800&q=80",
@@ -383,7 +383,7 @@ export const products = [
     reviewsCount: "1.1k",
     price: "$58.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&fit=crop&w=800&q=80",
+    image: "https://media.easy-peasy.ai/27feb2bb-aeb4-4a83-9fb6-8f3f2a15885e/9a100286-8729-4182-8d54-f2dca68bacd7.png",
     images: [
       "https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80",
@@ -398,26 +398,28 @@ export const products = [
   // =========================
   // WOMEN KIDS FASHION
   // =========================
+
   {
     id: 19,
     category: "Women Kids Fashion",
-    title: "Little Habesha Kemis",
-    brand: "Little Habesha",
+    title: "Little Ethiopian Princess Dress",
+    brand: "Ethiopian Heritage Kids",
     rating: 5,
-    reviewsCount: "2.2k",
-    price: "$55.00",
+    reviewsCount: "2.0k",
+    price: "$82.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU7alwfexphh9xqqgpKALYAT4hoPNp_PRfgDlyCAM70gkYm6UrO1qOQG_x&s=10",
     images: [
-      "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80"
     ],
-    longDescription: "A beautiful, twirl-worthy Habesha dress scaled down for little girls. Featuring bright, playful embroidery colors and soft elastic gatherings. It's incredibly light and features a non-scratchy neckline so she can stay comfortable all day.",
-    specifications: { Category: "Women Kids Fashion", Brand: "Little Habesha", Material: "100% Soft Cotton", Fit: "A-Line Flared", Care: "Machine Wash Cold", Origin: "Ethiopia" },
+    longDescription: "The ultimate showpiece for her wardrobe. This dress features a tiered design, ruffled sleeves, and heavy ornate embroidery that mimics the royal attire of Ethiopian history. Guaranteed to make her feel like a true princess.",
+    specifications: { Category: "Women Kids Fashion", Brand: "Ethiopian Heritage Kids", Material: "Premium Cotton & Silk", Fit: "Ballgown Style", Care: "Dry Clean Only", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
+ 
   {
     id: 20,
     category: "Women Kids Fashion",
@@ -427,7 +429,7 @@ export const products = [
     reviewsCount: "1.8k",
     price: "$62.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAcWKNjyea5A3VpLsMHFiT3FbgkyJyJBmxultwJki2jgCH_MRk3oiI_ede&s=10",
     images: [
       "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80",
@@ -447,7 +449,7 @@ export const products = [
     reviewsCount: "1.6k",
     price: "$78.00",
     stockStatus: "Almost Sold Out",
-    image: "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG7HmnEPIdggL-IsvdEwoZ90r5n0B_NOPinM_9fXCHLZDEJmVl_Si2OIA&s=10",
     images: [
       "https://images.unsplash.com/photo-1519457431-44ccd64a579b?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80",
@@ -467,7 +469,7 @@ export const products = [
     reviewsCount: "1.1k",
     price: "$45.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopianculturalshop.com/wp-content/uploads/2023/08/photo_2023-06-15_11-27-54.jpg",
     images: [
       "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80",
@@ -487,7 +489,7 @@ export const products = [
     reviewsCount: "1.4k",
     price: "$70.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=800&q=80",
+    image: "https://i.etsystatic.com/60243263/r/il/b801dd/7528175752/il_570xN.7528175752_l392.jpg",
     images: [
       "https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80",
@@ -498,23 +500,23 @@ export const products = [
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
-  {
+   {
     id: 24,
     category: "Women Kids Fashion",
-    title: "Little Ethiopian Princess Dress",
-    brand: "Ethiopian Heritage Kids",
+    title: "Little Habesha Kemis",
+    brand: "Little Habesha",
     rating: 5,
-    reviewsCount: "2.0k",
-    price: "$82.00",
+    reviewsCount: "2.2k",
+    price: "$55.00",
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs7mh1KBzUcfRgE6BWpHKzCSMaEFUM-YyZcv_Sl1MXQxqPNWACOewRZD0&s=10",
     images: [
-      "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1607453998774-d533f65dac99?auto=format&fit=crop&w=800&q=80"
     ],
-    longDescription: "The ultimate showpiece for her wardrobe. This dress features a tiered design, ruffled sleeves, and heavy ornate embroidery that mimics the royal attire of Ethiopian history. Guaranteed to make her feel like a true princess.",
-    specifications: { Category: "Women Kids Fashion", Brand: "Ethiopian Heritage Kids", Material: "Premium Cotton & Silk", Fit: "Ballgown Style", Care: "Dry Clean Only", Origin: "Ethiopia" },
+    longDescription: "A beautiful, twirl-worthy Habesha dress scaled down for little girls. Featuring bright, playful embroidery colors and soft elastic gatherings. It's incredibly light and features a non-scratchy neckline so she can stay comfortable all day.",
+    specifications: { Category: "Women Kids Fashion", Brand: "Little Habesha", Material: "100% Soft Cotton", Fit: "A-Line Flared", Care: "Machine Wash Cold", Origin: "Ethiopia" },
     reviewsSummary: standardReviewsSummary,
     reviews: standardReviewsList
   },
@@ -531,7 +533,7 @@ export const products = [
     reviewsCount: "5.1k",
     price: "$89.00",
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopian.store/cdn/shop/files/photo_2026-05-29_14-05-58.jpg?v=1780053166",
     images: [
       "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
@@ -551,7 +553,7 @@ export const products = [
     reviewsCount: "3.7k",
     price: "$59.00",
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopianclothing.net/cdn/shop/files/Fikadu_Habesha_Men_s_Clothes_2000x.jpg?v=1747502174",
     images: [
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80",
@@ -571,7 +573,7 @@ export const products = [
     reviewsCount: "4.5k",
     price: "$180.00",
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+    image: "https://ethiopian.store/cdn/shop/files/IMG_20240415_094624_383-01-286741.jpg?v=1749303786&width=1445",
     images: [
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80",
@@ -591,7 +593,7 @@ export const products = [
     reviewsCount: "2.8k",
     price: "$49.00",
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80",
+    image: "https://i.etsystatic.com/60243263/r/il/80e24f/7018014537/il_1080xN.7018014537_po5r.jpg",
     images: [
       "https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80",
@@ -611,7 +613,7 @@ export const products = [
     reviewsCount: "3.3k",
     price: "$35.00",
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80",
+    image: "https://helloomarket.com/image/cache/catalog/0957-10006---814x1000.jpg",
     images: [
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80",
@@ -631,7 +633,7 @@ export const products = [
     reviewsCount: "4.9k",
     price: "$250.00",
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzQMRYhByx7cVzMX9zgjByWhqF4Q2JyGfylvtZhCazyjG_l1NYcCZP9RsG&s=10",
     images: [
       "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
@@ -675,7 +677,7 @@ export const flashProducts = [
     origPrice: "$180.00",
     discount: 33,
     stockStatus: "Almost Sold Out",
-    image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS63L1GfWp0Jfx5JsKlXR0hj7SJlL4eK93vlEjs2NbNoB7Zf5sWei-YGXgD&s=10",
     images: [
       "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
@@ -698,7 +700,7 @@ export const flashProducts = [
     origPrice: "$50.00",
     discount: 30,
     stockStatus: "Limited Time Offer",
-    image: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80",
+    image: "https://img2.ogaanindia.com/pub/media/catalog/product/cache/3f6619daccdb194398d06464ab49fa6e/s/m/smr15scarf2.jpg",
     images: [
       "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80",
@@ -721,7 +723,7 @@ export const flashProducts = [
     origPrice: "$65.00",
     discount: 30,
     stockStatus: "In Stock",
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80",
+    image: "https://www.dagmawit.store/cdn/shop/files/photo_2026-07-29_09.33.00.jpg?v=1785307808&width=533",
     images: [
       "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
@@ -771,7 +773,7 @@ export const bundleDeals = [
     origPrice: "$310.00",
     savings: "Save $111",
     stockStatus: "Bundle Savings",
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi2L55mWt5molq78dQsFw6ms4M-JMCrTZDIzF9pv59E187ysC3DnX__pQ&s=10",
     images: [
       "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
@@ -793,7 +795,7 @@ export const bundleDeals = [
     origPrice: "$380.00",
     savings: "Save $131",
     stockStatus: "Bundle Savings",
-    image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
+    image: "https://i.etsystatic.com/62235377/r/il/b797e1/7369239609/il_570xN.7369239609_mik7.jpg",
     images: [
       "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
