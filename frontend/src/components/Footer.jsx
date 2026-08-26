@@ -47,7 +47,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="bg-black text-white text-xs font-semibold px-8 py-3.5 rounded-lg shadow-lg hover:bg-gray-800 transition-colors"
+                className="bg-[#AA061B] text-white text-sm font-semibold px-8 py-3.5 rounded-lg shadow-lg hover:bg-gray-800 transition-colors"
               >
                 Subscribe Now
               </button>
@@ -72,8 +72,8 @@ export default function Footer() {
           
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="font-serif text-2xl md:text-3xl font-medium tracking-wider text-gray-800 uppercase">
-              FASCO
+            <span className="font-serif text-2xl md:text-3xl font-medium tracking-wider text-[#AA061B] uppercase">
+              HABESHA
             </span>
           </Link>
 
@@ -99,7 +99,7 @@ export default function Footer() {
 
       {/* ── Bottom Copyright ── */}
       <div className="border-t border-gray-100 py-4 text-center text-[10px] text-gray-400">
-        Copyright © 2026 FASCO . All Rights Reserved.
+        Copyright © 2026 HABESHA . All Rights Reserved.
       </div>
     </footer>
   );

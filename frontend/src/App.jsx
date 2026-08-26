@@ -8,15 +8,18 @@ import CartPage from './pages/CartPage';
 import CategoryPage from './pages/CategoryPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ProfilePage from './pages/ProfilePage';
-import AuthPage from './pages/AuthPage';
+
 import ContactPage from './pages/ContactPage';
 import ScrollToTop from './components/ScrollToTop';
 import Support from './pages/Support';
+import SignUpForm from './pages/Auth/SignUpForm';
+import SignInForm from './pages/Auth/SignInForm';
+import DealsPage from './pages/DealsPage';
 
 
 const App = () => {
   const location = useLocation();
-  const hideLayout = location.pathname === '/login'; // hide navbar/footer for login
+  const hideLayout = location.pathname === '/signin'; // hide navbar/footer for login
 
   return (
     <div>
@@ -26,13 +29,17 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/productdetail/:id' element={<ProductDetail />} />
         <Route path='/cart' element={<CartPage />} />
-        <Route path='/category/:id' element={<CategoryPage />} />
+        <Route path='/products' element={<CategoryPage />} />
+        <Route path='/deals' element={<DealsPage />} />
+
         <Route path='/checkout' element={<CheckoutPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/contactus' element={<ContactPage />} />
         <Route path='/support' element={<Support />} />
 
-        <Route path='/login' element={<AuthPage />} />
+        <Route path='/signup' element={<SignUpForm />} />
+        <Route path='/signin' element={<SignInForm />} />
+
       </Routes>
 
       {!hideLayout && <Footer />}

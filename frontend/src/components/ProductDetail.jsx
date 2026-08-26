@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products } from '../utils/products';
+import { newArrivalsData } from '../utils/newArrivalsData';
 import ReviewsSection from './ReviewSection';
 import ProductHero from './ProductHero';
 import RelatedProducts from './RelatedProducts';
@@ -14,11 +14,19 @@ export default function ProductDetail() {
   const [tab, setTab] = useState('Description');
 
   useEffect(() => {
-    const found = products.find((p) => p.id === parseInt(id, 10));
+    // 1. Safe matching for both String ("1") and Number (1) IDs
+    const found = newArrivalsData.find((p) => String(p.id) === String(id));
     setProduct(found);
+
     if (found) {
-      setRelated(products.filter((p) => p.category === found.category && p.id !== found.id));
+      // 2. Filter related items safely using string comparisons
+      setRelated(
+        newArrivalsData.filter(
+          (p) => p.category === found.category && String(p.id) !== String(found.id)
+        )
+      );
     }
+    
     setTab('Description');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
@@ -28,25 +36,28 @@ export default function ProductDetail() {
       <div className="flex items-center justify-center min-h-[60vh] text-gray-400 flex-col gap-3">
         <p className="text-5xl">🔍</p>
         <p className="text-lg font-semibold text-gray-500">Product not found</p>
-        <Link to="/category/all" className="text-brand-700 font-semibold hover:underline text-sm">
+        <Link to="/" className="text-[#AA061B] font-semibold hover:underline text-sm">
           Browse all products
         </Link>
       </div>
     );
   }
 
+  // Fallback for title vs name compatibility
+  const productTitle = product.title || product.name;
+
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
         <nav className="text-[12px] text-gray-400 flex items-center gap-1.5">
-          <Link to="/" className="hover:text-brand-700 transition-colors">Home</Link>
+          <Link to="/" className="hover:text-[#AA061B] transition-colors">Home</Link>
           <span>/</span>
-          <Link to={`/category/${product.category.toLowerCase().split(' ')[0]}`} className="hover:text-brand-700 transition-colors">
+          <Link to={`/category/${encodeURIComponent(product.category)}`} className="hover:text-[#AA061B] transition-colors">
             {product.category}
           </Link>
           <span>/</span>
-          <span className="text-gray-600 font-semibold line-clamp-1">{product.name}</span>
+          <span className="text-gray-600 font-semibold line-clamp-1">{productTitle}</span>
         </nav>
       </div>
 
@@ -60,13 +71,13 @@ export default function ProductDetail() {
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`pb-3 px-5 text-[14px] font-bold transition-colors relative ${
+              className={`pb-3 px-5 text-[14px] font-bold transition-colors relative cursor-pointer ${
                 tab === t ? 'text-gray-900' : 'text-gray-400 hover:text-gray-600'
               }`}
             >
               {t}
               {tab === t && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-700 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#AA061B] rounded-full" />
               )}
             </button>
           ))}
@@ -75,14 +86,12 @@ export default function ProductDetail() {
         {tab === 'Description' && (
           <div className="max-w-2xl">
             <p className="text-[14px] text-gray-600 leading-relaxed">
-              Experience premium quality with the <strong>{product.name}</strong>. 
-              Designed for {product.subcategory?.toLowerCase() || 'everyday use'}, this product combines 
-              outstanding performance with elegant design. Whether you're at home or on the go, 
-              it delivers consistently excellent results.
+              Experience authentic craftsmanship with the <strong>{productTitle}</strong>. 
+              Designed for {product.category?.toLowerCase() || 'everyday wear'}, this piece combines 
+              traditional elegance with contemporary styling for any special occasion.
             </p>
             <p className="text-[14px] text-gray-600 leading-relaxed mt-4">
-              Built to last with top-grade materials and backed by our 2-year warranty. 
-              Free returns within 30 days if you're not completely satisfied.
+              Handcrafted with top-grade materials. Fast shipping available across Ethiopia and worldwide.
             </p>
           </div>
         )}
@@ -92,15 +101,15 @@ export default function ProductDetail() {
             <table className="w-full text-[13.5px]">
               <tbody>
                 {[
-                  ['Category',    product.category],
-                  ['Subcategory', product.subcategory],
-                  ['Brand',       product.brand],
-                  ['Price',       `$${product.price.toLocaleString()}`],
-                  ['Discount',    product.discount || 'None'],
+                  ['Category', product.category],
+                  ['Brand', product.brand],
+                  ['Price', typeof product.price === 'number' ? `$${product.price}` : product.price],
+                  ['Stock Status', product.stockStatus || 'In Stock'],
+                  ['Rating', `${product.rating} ★`],
                 ].map(([key, val]) => (
                   <tr key={key} className="border-b border-gray-100">
                     <td className="py-3 pr-8 font-bold text-gray-700 w-40">{key}</td>
-                    <td className="py-3 text-gray-500">{val}</td>
+                    <td className="py-3 text-gray-500">{val || 'N/A'}</td>
                   </tr>
                 ))}
               </tbody>

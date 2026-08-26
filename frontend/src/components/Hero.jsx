@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingCart, ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const scrollToTop = () => {
@@ -15,14 +16,14 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative w-full bg-white py-8 px-4 md:px-10 max-w-7xl mx-auto">
+    <section className="relative w-full bg-white md:pb-25 py-8 px-4 md:px-10 max-w-7xl mx-auto">
       {/* ── Grid Container ── */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         
         {/* Left Column (Male Model on Wooden Box) */}
         <div className="bg-[#E5E5E5] rounded-xl overflow-hidden min-h-[420px] flex items-end justify-center">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+            src="https://ethiopianculturalshop.com/wp-content/uploads/2023/08/photo_2023-08-31_12-56-22.jpg"
             alt="Male Model Left"
             className="w-full h-full object-cover object-top"
           />
@@ -33,7 +34,7 @@ const HeroSection = () => {
           {/* Top Banner (Group of Women) */}
           <div className="w-full h-24 rounded-xl overflow-hidden bg-gray-100">
             <img
-              src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFXI0ApZ-xfXYuz9ZfFURX4roUWrN1_jPFqweskqpXZnkrnbUBNJzC72w&s=10"
               alt="Women Collection Top"
               className="w-full h-full object-cover"
             />
@@ -41,7 +42,7 @@ const HeroSection = () => {
 
           {/* Hero Text Content */}
           <div className="text-center py-4 flex flex-col items-center justify-center">
-            <h1 className="text-4xl md:text-5xl font-black text-gray-800 tracking-tight leading-none uppercase">
+            <h1 className="text-4xl md:text-5xl font-black text-[#AA061B] tracking-tight leading-none uppercase">
               Ultimate
             </h1>
             <span className="text-5xl md:text-6xl font-extralight text-transparent [-webkit-text-stroke:1px_#374151] tracking-widest block uppercase my-1">
@@ -50,15 +51,17 @@ const HeroSection = () => {
             <p className="text-xs font-semibold text-gray-500 tracking-widest uppercase mb-4">
               New Collection
             </p>
-            <button className="bg-black text-white text-xs font-medium uppercase px-8 py-3 rounded-md shadow-lg hover:bg-gray-800 transition-colors">
+            <Link to="/products">
+            <button className="cursor-pointer bg-[#AA061B] text-white text-xs font-medium uppercase px-8 py-3 rounded-md shadow-lg hover:bg-[#8d0517] transition-colors">
               Shop Now
             </button>
+            </Link>
           </div>
 
           {/* Bottom Banner (Two Women Pink Background) */}
           <div className="w-full h-24 rounded-xl overflow-hidden bg-rose-200">
             <img
-              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBHlOH2y6ygXno9kMB6Uo1UEPJ_QJSclnn7czhboMXpnkD5_LENl8L9cc&s=10"
               alt="Women Collection Bottom"
               className="w-full h-full object-cover"
             />
@@ -68,7 +71,7 @@ const HeroSection = () => {
         {/* Right Column (Male Model on Stool) */}
         <div className="bg-[#E5E5E5] rounded-xl overflow-hidden min-h-[420px] flex items-end justify-center">
           <img
-            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
+            src="https://ethiopianclothing.net/cdn/shop/files/Fikadu_Habesha_Men_s_Clothes2_2000x.jpg?v=1747502256"
             alt="Male Model Right"
             className="w-full h-full object-cover object-top"
           />

@@ -7,10 +7,11 @@ const Navbar = () => {
 
   const navLinks = [
     { to: '/', label: 'Home' },
+    { to: '/products', label: 'Products' },
     { to: '/deals', label: 'Deals' },
     { to: '/new-arrivals', label: 'New Arrivals' },
-    { to: '/packages', label: 'Packages' },
-    { to: '/signin', label: 'Sign in' },
+    { to: '/Cart', label: 'cart' },
+   ,
   ];
 
   return (
@@ -19,8 +20,8 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="font-serif text-3xl font-medium tracking-wider text-gray-800 uppercase">
-            FASCO
+          <span className="font-serif text-3xl font-medium tracking-wider text-[#AA061B] uppercase">
+            HABESHA
           </span>
         </Link>
 
@@ -33,7 +34,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `text-sm tracking-wide transition-colors ${
                   isActive
-                    ? 'text-black font-semibold'
+                    ? 'text-[#AA061B] font-semibold'
                     : 'text-gray-500 hover:text-black'
                 }`
               }
@@ -41,13 +42,22 @@ const Navbar = () => {
               {label}
             </NavLink>
           ))}
-          
+          <div className='flex gap-2'>
+          <Link
+            to="/signin"
+            className="bg-transparent border border-[#AA061B] text-[#AA061B] text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-[#AA061B] hover:text-white transition-all duration-200"
+          >
+            Sign In
+          </Link>
           <Link
             to="/signup"
-            className="bg-black text-white text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-gray-800 transition-all duration-200"
+            className="bg-[#AA061B] text-white text-sm font-medium px-6 py-2.5 rounded-lg shadow-sm hover:bg-[#970316] transition-all duration-200"
           >
             Sign Up
           </Link>
+          
+          </div>
+          
         </nav>
 
         {/* Mobile Menu Button */}

@@ -15,7 +15,7 @@ const Home = () => {
       {/* <Categories /> */}
       <PopularProducts />
       <InstagramGallery/>
-      <ArticlesSection />
+      {/* <ArticlesSection /> */}
       <Reviews />
     </div>
   );

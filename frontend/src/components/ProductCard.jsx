@@ -1,107 +1,198 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Star, ShoppingCart, MapPin } from 'lucide-react';
+import { Heart, Eye, ShoppingCart, Star } from 'lucide-react';
 
-const ProductCard = ({ product, onAddToCart }) => {
-  const { id, name, price, img, discount, brand, category } = product;
+const ProductCard = ({ product = {}, onAddToCart, onQuickView }) => {
+  // Normalize dataset fields (title/name, image/img, price formatting)
+  const id = product.id;
+  const name = product.title || product.name || 'Untitled Product';
+  const brand = product.brand || '';
+  const img = product.image || product.img || '';
+  const price = product.price ?? 0;
+  const origPrice = product.origPrice;
+  const rating = product.rating || 0;
+  const reviews = product.reviews || '';
+  const stockStatus = product.stockStatus || '';
+  const discount = product.discount;
+  const colors = product.colors || [];
+
+  const isSoldOut = product.isSoldOut || stockStatus.toLowerCase() === 'sold out';
+  const isAlmostSoldOut = stockStatus.toLowerCase() === 'almost sold out';
+  const isLimitedOffer = stockStatus.toLowerCase() === 'limited time offer';
+
   const [imgSrc, setImgSrc] = useState(img);
   const [errored, setErrored] = useState(false);
   const [liked, setLiked] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(colors[0] || null);
+
+  // Sync image state if product prop updates dynamically
+  useEffect(() => {
+    setImgSrc(img);
+    setErrored(false);
+  }, [img]);
 
   const handleError = () => {
     if (!errored) {
       setErrored(true);
-      setImgSrc('https://placehold.co/400x400/f4f4f4/aaa?text=Product');
+      setImgSrc('https://placehold.co/600x800/f4f4f4/aaa?text=No+Image');
     }
   };
 
-  // Derive "original" price (about 12 % higher if discount exists)
-  const origPrice = discount ? Math.round(price * 1.12) : null;
+  const renderPrice = (val) => {
+    if (typeof val === 'number') return `$${val.toFixed(2)}`;
+    if (typeof val === 'string') return val.startsWith('$') ? val : `$${val}`;
+    return '$0.00';
+  };
 
   return (
-    <article className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
-
-      {/* ── Image ── */}
-      <Link to={`/productdetail/${id}`} className="block">
-        <div className="relative bg-gray-50 flex items-center justify-center h-44 overflow-hidden">
+    <article className="group flex flex-col font-sans">
+      {/* ── Image & Hover Overlay Container ── */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100 rounded-sm mb-3">
+        <Link to={`/productdetail/${id}`} className="block w-full h-full">
           <img
             src={imgSrc}
             alt={name}
             onError={handleError}
-            className="h-36 w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105 mix-blend-multiply"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
           />
-          {/* Wishlist */}
+        </Link>
+
+        {/* Sold Out / Stock Badges */}
+        {isSoldOut ? (
+          <div className="absolute inset-0 bg-black/20 flex items-center justify-center pointer-events-none">
+            <span className="w-16 h-16 rounded-full bg-black/70 text-white text-[10px] font-medium tracking-wider uppercase flex items-center justify-center text-center p-1 backdrop-blur-xs">
+              Sold Out
+            </span>
+          </div>
+        ) : (
+          <div className="absolute top-3 left-3 flex flex-col gap-1 items-start pointer-events-none">
+            {discount && (
+              <span className="bg-red-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider shadow-xs">
+                {typeof discount === 'number' ? `-${discount}%` : discount}
+              </span>
+            )}
+            {isAlmostSoldOut && (
+              <span className="bg-amber-500 text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider shadow-xs">
+                Almost Sold Out
+              </span>
+            )}
+            {isLimitedOffer && (
+              <span className="bg-black text-white text-[10px] font-semibold px-2 py-0.5 rounded uppercase tracking-wider shadow-xs">
+                Limited Offer
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* Action Buttons (Hover Slide-in) */}
+        <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 z-10">
           <button
             type="button"
-            onClick={(e) => { e.preventDefault(); setLiked(!liked); }}
+            onClick={(e) => {
+              e.preventDefault();
+              setLiked(!liked);
+            }}
             aria-label={liked ? 'Remove from wishlist' : 'Add to wishlist'}
-            className={`absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center shadow-sm transition-colors ${
-              liked ? 'bg-red-50 text-red-400' : 'bg-white text-gray-300 hover:text-red-400'
+            className={`w-8 h-8 rounded-full flex items-center justify-center shadow-md transition-colors ${
+              liked
+                ? 'bg-red-50 text-red-500'
+                : 'bg-white text-gray-700 hover:bg-black hover:text-white'
             }`}
           >
-            <Heart size={13} fill={liked ? 'currentColor' : 'none'} strokeWidth={2} />
+            <Heart size={14} fill={liked ? 'currentColor' : 'none'} strokeWidth={2} />
           </button>
 
-          {/* Discount badge */}
-          {discount && (
-            <span className="absolute top-3 left-3 bg-brand-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-              {discount}
-            </span>
-          )}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onQuickView) onQuickView(product);
+              else if (onAddToCart) onAddToCart(product);
+            }}
+            aria-label="Quick View"
+            className="w-8 h-8 rounded-full bg-white text-gray-700 hover:bg-black hover:text-white flex items-center justify-center shadow-md transition-colors"
+          >
+            <Eye size={14} strokeWidth={2} />
+          </button>
         </div>
-      </Link>
 
-      {/* ── Info ── */}
-      <div className="p-4">
-        {/* Name */}
+        {/* Quick Add Bar */}
+        {!isSoldOut && (
+          <div className="absolute bottom-0 inset-x-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+            <button
+              type="button"
+              onClick={() => onAddToCart && onAddToCart(product)}
+              className="w-full py-2 bg-white/95 hover:bg-black text-gray-900 hover:text-white text-xs font-medium tracking-wide rounded-xs shadow-sm transition-colors flex items-center justify-center gap-1.5 backdrop-blur-sm"
+            >
+              <ShoppingCart size={13} />
+              Add to Cart
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* ── Product Details ── */}
+      <div className="flex flex-col space-y-1">
+        {brand && (
+          <span className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">
+            {brand}
+          </span>
+        )}
+
         <Link to={`/productdetail/${id}`}>
-          <h3 className="text-[13.5px] font-bold text-gray-900 line-clamp-1 hover:text-brand-700 transition-colors">
+          <h3 className="text-xs sm:text-sm font-medium text-gray-800 line-clamp-1 hover:text-gray-500 transition-colors">
             {name}
           </h3>
         </Link>
 
-        {/* Seller / Brand */}
-        <div className="flex items-center gap-1 mt-1 text-[11px] text-gray-400">
-          <MapPin size={10} className="flex-shrink-0" />
-          <span className="line-clamp-1">{brand || 'Lenny Store'}</span>
-        </div>
-
-        {/* Price row */}
-        <div className="flex items-center justify-between mt-3">
-          <div className="flex items-center gap-2">
-            <span className="text-[15px] font-black text-brand-700">
-              ${price.toLocaleString()}
-            </span>
-            {origPrice && (
-              <span className="text-[11px] text-gray-400 line-through">
-                ${origPrice.toLocaleString()}
-              </span>
-            )}
+        {/* Ratings and Review Count */}
+        {rating > 0 && (
+          <div className="flex items-center gap-1">
+            <div className="flex text-amber-400">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  size={11}
+                  fill={i < rating ? 'currentColor' : 'none'}
+                  className={i < rating ? 'text-amber-400' : 'text-gray-200'}
+                />
+              ))}
+            </div>
+            {reviews && <span className="text-[10px] text-gray-400">{reviews}</span>}
           </div>
+        )}
 
-          {/* Add to cart */}
-          <button
-            type="button"
-            onClick={() => onAddToCart(product)}
-            aria-label={`Add ${name} to cart`}
-            className="w-8 h-8 rounded-xl bg-brand-800 hover:bg-brand-700 text-white flex items-center justify-center transition-colors active:scale-95 shadow-sm"
-          >
-            <ShoppingCart size={13} strokeWidth={2.5} />
-          </button>
+        {/* Price Row */}
+        <div className="flex items-center gap-2 text-xs font-serif text-gray-800 pt-0.5">
+          <span className="font-semibold">{renderPrice(price)}</span>
+          {origPrice && (
+            <span className="text-gray-400 line-through text-[11px]">
+              {renderPrice(origPrice)}
+            </span>
+          )}
         </div>
 
-        {/* Rating */}
-        <div className="flex items-center gap-1 mt-2.5">
-          {Array(5).fill(0).map((_, i) => (
-            <Star
-              key={i}
-              size={11}
-              className={i < 4 ? 'text-yellow-400' : 'text-gray-200'}
-              fill={i < 4 ? '#fbbf24' : '#e5e7eb'}
-            />
-          ))}
-          <span className="text-[11px] text-gray-400 ml-1">4.8 · 1,238 Sold</span>
-        </div>
+        {/* Color Swatches */}
+        {colors.length > 0 && (
+          <div className="flex items-center gap-1.5 pt-1">
+            {colors.map((c, idx) => {
+              const active = selectedColor === c;
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setSelectedColor(c)}
+                  style={{ backgroundColor: c }}
+                  className={`w-3.5 h-3.5 rounded-full border transition-transform ${
+                    active ? 'ring-1 ring-offset-1 ring-black scale-110' : 'border-gray-300 hover:scale-110'
+                  }`}
+                  aria-label={`Select color ${c}`}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </article>
   );
