@@ -92,16 +92,11 @@ const brands = [
 
       {/* ── Floating Action Buttons (Bottom Right) ── */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <button
-          aria-label="View Cart"
-          className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors"
-        >
-          <ShoppingCart size={18} />
-        </button>
+       
         <button
           onClick={scrollToTop}
           aria-label="Scroll to Top"
-          className="w-10 h-10 bg-white border border-gray-200 text-gray-700 rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 transition-colors"
+          className="w-10 h-10 bg-[#AA061B] text-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 transition-colors"
         >
           <ArrowUp size={18} />
         </button>
